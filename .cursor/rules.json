@@ -1,0 +1,9 @@
+{
+  "rules": [
+    {
+      "name": "Holocron AI Engineer",
+      "context": "steerings/project-context.md",
+      "instructions": "Siga os padrões definidos em steerings/coding-standards.md e steerings/knowledge-base.md. Documente decisões como ADRs. Dados do aluno vão em Postgres, não Markdown."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "holocron-ai-engineer",
+  "version": "0.1.0",
+  "description": "Tutor inteligente personalizado para o curso de Engenharia de IA Aplicada",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/api/index.ts",
+    "build": "tsc",
+    "mcp": "tsx src/mcp/index.ts",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "test": "vitest",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.0",
+    "@langchain/langgraph": "^0.2.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "fastify": "^5.0.0",
+    "pg": "^8.13.0",
+    "pgvector": "^0.2.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sayymon/holocron.git"
+  }
+}
