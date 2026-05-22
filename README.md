@@ -6,7 +6,7 @@
 
 > **🌟 Seu companheiro de estudos sempre disponível**
 >
-> Complemento inteligente para o curso de Engenharia de IA Aplicada — pergunte, pratique, simule e aprenda de forma natural durante as aulas.
+> Complemento inteligente para a pós de Engenharia de IA Aplicada — pergunte, pratique, simule e aprenda de forma natural durante as aulas.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
@@ -17,9 +17,9 @@
 
 ## 💡 O que é?
 
-> *"Como os Holocrons Jedi armazenavam sabedoria ancestral, o Holocron AI Engineer cristaliza todo o conhecimento do curso para você acessar de forma natural, onde e quando precisar."*
+> *"Como os Holocrons Jedi armazenavam sabedoria ancestral, o Holocron AI Engineer cristaliza todo o conhecimento da pós para você acessar de forma natural, onde e quando precisar."*
 
-**Holocron AI Engineer** é um **tutor inteligente integrado** que acompanha você durante todo o curso de Engenharia de IA Aplicada. Não é apenas documentação — é um **companheiro de estudos interativo** que:
+**Holocron AI Engineer** é um **tutor inteligente integrado** que acompanha você durante todo a pós de Engenharia de IA Aplicada. Não é apenas documentação — é um **companheiro de estudos interativo** que:
 
 - 💬 **Responde dúvidas** enquanto você assiste às aulas
 - 🧪 **Simula cenários práticos** para você testar conceitos
@@ -29,15 +29,30 @@
 
 ## 🌟 Como funciona?
 
-Todo o conteúdo do curso (12 módulos, ~100 unidades) é cristalizado em uma **base de conhecimento viva** usando RAG. Você acessa esse conhecimento de forma natural:
+Todo o conteúdo da pós **Engenharia de IA Aplicada** (12 módulos, ~100 unidades) é cristalizado em uma **base de conhecimento viva** usando RAG.
+
+### 🎓 Conhecimento validado por especialistas mundiais
+
+O conteúdo do Holocron é baseado na pós ministrada por:
+
+- **[Erick Wendel](docs/curso/professores.md#erick-wendel)** — Google Developer Expert, Microsoft MVP, membro do core team do Node.js
+- **[Hugo Santos](docs/curso/professores.md#hugo-santos)** — Consultor internacional em IA
+- **[Alvaro Camillo](docs/curso/professores.md#alvaro-camillo)** — Google Developer Expert, Senior Staff Engineer (Santander)
+- **[Ahirton Lopes](docs/curso/professores.md#ahirton-lopes)** — 6× Microsoft MVP, 2× Google Developer Expert, membro do Google Advisory Board
+- **[Camilla Martins](docs/curso/professores.md#camilla-martins)** — Google Developer Expert, 3× Docker Captain, HashiCorp Ambassador
+- **[Jéssica Costa](docs/curso/professores.md#jéssica-costa)** — Google Developer Expert em IA, Doutoranda em Engenharia Biomédica
+
+**5 Google Developer Experts** + **6× Microsoft MVP** + **Node.js Core Team** = conhecimento de **quem está no topo da carreira mundial**.
+
+Você acessa esse conhecimento de forma natural:
 
 ## 🎯 O que ele faz
 
-- **Domina** 100% do conteúdo do curso (12 módulos, ~100 unidades atomizadas)
+- **Domina** 100% do conteúdo da pós (12 módulos, ~100 unidades atomizadas)
 - **Conhece você** — progresso, dificuldades, projetos aplicados (armazenado no Postgres)
 - **Ensina de forma socrática** — questiona, faz pensar, propõe soluções
 - **Valida** — dá feedback em código, sugere otimizações, aponta gaps
-- **Evolui** — a base é realimentada com novas fontes continuamente baseadas nos conteudos do curso (versioning via Git)
+- **Evolui** — a base é realimentada com novas fontes continuamente baseadas nos conteudos da pós (versioning via Git)
 
 ### 🚀 Como você acessa o Holocron
 
@@ -117,6 +132,33 @@ Um agente especializado que responde sobre:
 
 ---
 
+## 🎯 Mapa de Competências — O que você vai dominar
+
+O Holocron acompanha seu progresso em **4 dimensões de competências**:
+
+| Dimensão | O que você desenvolve |
+| -------- | --------------------- |
+| 🧠 **Técnica** | Domínio de ferramentas, frameworks, algoritmos (LangChain, LangGraph, RAG, MCPs) |
+| 🏗️ **Arquitetural** | Projetar sistemas escaláveis, tomar decisões de design, criar ADRs |
+| 🚀 **Operacional** | Deploy em produção, CI/CD, monitoramento, troubleshooting |
+| 🧑‍💼 **Comportamental** | Comunicação, gestão de projetos, trabalho em equipe, apresentações técnicas |
+
+### 📊 Competências consolidadas por módulo
+
+Ao final do curso, você será capaz de:
+
+- ✅ **Integrar múltiplos provedores de LLMs** com fallback e caching (Módulo 2)
+- ✅ **Criar MCP servers** para expor contexto empresarial em IDEs (Módulo 3)
+- ✅ **Implementar agentes ReAct** com memória de longo prazo (Módulo 4)
+- ✅ **Projetar pipelines RAG** escaláveis com vector databases (Módulo 8)
+- ✅ **Fazer fine-tuning** de LLMs para domínios específicos (Módulo 9)
+- ✅ **Implementar guardrails** e prevenir prompt injection (Módulo 10)
+- ✅ **Colocar sistemas de IA em produção** com DevOps completo (Módulo 6)
+
+👉 Veja o [Mapa de Competências completo](docs/curso/mapa-competencias.md) com objetivos detalhados por módulo.
+
+---
+
 ### 🎓 Para todos os níveis de experiência
 
 O Holocron se adapta ao seu perfil:
@@ -171,6 +213,35 @@ O Holocron não é apenas um projeto de estudo — ele é construído **aplicand
 | 🔒 Segurança | Guardrails, rate limiting, governança |
 | 🎓 Capstone | O próprio Holocron |
 | 💼 Carreira | Portfolio piece |
+
+---
+
+## 🧪 Garantia de Qualidade — Golden-Sets
+
+Para garantir que o Holocron ensina corretamente, usamos **golden-sets**: conjuntos de perguntas-chave com respostas esperadas para cada módulo.
+
+### Como funcionam os golden-sets?
+
+```text
+Pergunta → Resposta do Holocron → Comparação com Golden-Set → Score de Qualidade
+```
+
+**Exemplo de golden-set:**
+
+| Pergunta | Módulo | Pontos-chave esperados |
+| -------- | ------ | ---------------------- |
+| "O que é um embedding?" | 1 — Fundamentos | Representação vetorial densa • Captura semântica • Proximidade = similaridade |
+| "Quando usar MCP vs Tools?" | 3 — MCP | MCP = contexto (read-only) • Tools = ação (side-effects) • Podem coexistir |
+| "Como implementar memória de longo prazo?" | 4 — Agentes | Vector store (semântica) • SQL (estruturada) • Híbrida (melhor abordagem) |
+
+### Benefícios
+
+- ✅ **Validação automática** — testes de qualidade do RAG
+- ✅ **Calibração de dificuldade** — ajuste de quizzes baseado em performance
+- ✅ **Avaliação de alunos** — comparação de respostas com padrões esperados
+- ✅ **Melhoria contínua** — identifica gaps na base de conhecimento
+
+👉 Veja todos os [Golden-Sets](docs/curso/golden-sets.md) com respostas detalhadas.
 
 ---
 
