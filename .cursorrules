@@ -1,0 +1,5 @@
+Leia steerings/project-context.md, steerings/coding-standards.md, steerings/knowledge-base.md e steerings/architecture.md para contexto completo do projeto.
+
+Holocron AI Engineer — Tutor inteligente para o curso de Engenharia de IA Aplicada.
+TypeScript, ESM, Node.js 20+, PostgreSQL + pgvector, LangChain/LangGraph, MCP SDK, Fastify, Vitest.
+Dados do aluno em Postgres (não Markdown). KB em Markdown atômico com Front Matter. Commits em português.
