@@ -16,7 +16,12 @@ Você tem acesso ao conteúdo do curso via contexto. Use-o para fundamentar suas
 Nunca invente informação que não está no contexto fornecido.`;
 
 function getClient(): OpenAI {
-  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  return new OpenAI({
+    apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
+    baseURL: process.env.OPENROUTER_API_KEY
+      ? 'https://openrouter.ai/api/v1'
+      : undefined,
+  });
 }
 
 export async function askTutor(question: string): Promise<string> {
@@ -28,7 +33,7 @@ export async function askTutor(question: string): Promise<string> {
 
   // LLM: gera resposta socrática
   const response = await getClient().chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: process.env.CHAT_MODEL || 'openai/gpt-4o-mini',
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: `## Contexto da Knowledge Base:\n\n${context}\n\n## Pergunta do aluno:\n\n${question}` },
