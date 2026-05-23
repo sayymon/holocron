@@ -67,17 +67,44 @@ Holocron está **onde você precisa dele** — escolha seu canal preferido:
 Conecte o Holocron MCP Server ao **Claude Code, Cursor, Kiro, Windsurf** ou qualquer IDE com suporte MCP. O tutor aparece como um contexto nativo na sua IDE.
 
 ```json
-// settings.json (Claude Code, Cursor, etc.)
+// ~/.kiro/settings/mcp.json (ou equivalente na sua IDE)
 {
   "mcpServers": {
     "holocron": {
-      "command": "node",
-      "args": ["dist/mcp/server.js"],
-      "env": { "HOLOCRON_DB_URL": "postgresql://..." }
+      "command": "npx",
+      "args": ["tsx", "src/mcp/index.ts"],
+      "cwd": "/path/to/holocron",
+      "env": {
+        "DATABASE_URL": "postgresql://holocron:holocron@localhost:5432/holocron",
+        "OPENROUTER_API_KEY": "sk-or-...",
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+      }
     }
   }
 }
 ```
+
+**Tools disponíveis:**
+
+| Tool | Tipo | Descrição |
+|------|------|-----------|
+| `list_modules` | Síncrona | Lista os 12 módulos do curso |
+| `get_module` | Síncrona | Retorna README de um módulo específico |
+| `get_document` | Síncrona | Retorna conteúdo de qualquer doc da KB |
+| `search_content` | Async | Busca semântica no conteúdo (retorna `task_id`) |
+| `ask_tutor` | Async | Pergunta ao tutor socrático (retorna `task_id`) |
+| `get_task_result` | Polling | Obtém resultado de uma task async |
+
+**Fluxo async (para tools de longa duração):**
+
+```
+1. search_content("O que é RAG?")  →  task_id="abc123"
+2. [aguarda ~2-5s]
+3. get_task_result("abc123")       →  ✅ Resultado (0.8s): [resultados...]
+```
+
+![MCP Servers - Tools](holocron-mcp-server-tools.png)
+![MCP List Modules Test](holocron-test-mcp-list_modules.png)
 
 **💡 Exemplo:** Enquanto codifica um agente LangGraph, pergunta *"Como implemento memória de longo prazo?"* e o Holocron busca nos docs do módulo 4 + exemplos práticos aplicados.
 
