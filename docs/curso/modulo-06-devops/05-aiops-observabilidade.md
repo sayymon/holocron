@@ -68,4 +68,4 @@ Série temporal → Forecasting (Prophet) → Projeção futura
 - **Unidade 04:** Métricas alimentam troubleshooting
 - **Unidade 09:** Métricas de custo para FinOps
 - **Unidade 11:** Anomalias trigam auto-remediação
-- **Hotmart:** NewRelic + Kibana + CloudWatch como fontes de dados
+- **empresa:** NewRelic + Kibana + CloudWatch como fontes de dados

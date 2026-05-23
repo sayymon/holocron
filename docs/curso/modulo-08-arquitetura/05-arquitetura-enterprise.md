@@ -4,7 +4,7 @@ modulo: 8
 unidade: 5
 tags: [enterprise, api-gateway, kubernetes, observabilidade, model-tiering, produção]
 dificuldade: avançado
-fonte: "Curso Engenharia de IA Aplicada + Hotmart AI Platform + AWS Well-Architected AI/ML"
+fonte: "Curso Engenharia de IA Aplicada + empresa AI Platform + AWS Well-Architected AI/ML"
 atualizado_em: 2026-05-22
 confiabilidade: alta
 ---
@@ -36,9 +36,9 @@ Levar IA de POC para produção enterprise exige resolver: escala, custo, observ
 | Guardrails | Filtros de input/output |
 | Logging | Traces completos para auditoria |
 
-### Implementação na Hotmart
+### Implementação na empresa
 
-O [[hotmart-ai-v2]] Gateway centraliza acesso a LLMs:
+O [[ai-gateway]] Gateway centraliza acesso a LLMs:
 - Multi-provider via AWS Bedrock (Claude, GPT, Gemini)
 - [[langfuse]] para observabilidade
 - Cost allocation por squad
@@ -212,7 +212,7 @@ Diferentes modelos para diferentes necessidades. Não usar canhão para matar mo
 
 ### Aplicação Prática
 
-- **Mobile (Hotmart App):** modelo leve on-device para sugestões rápidas, cloud para respostas complexas
+- **Mobile (empresa App):** modelo leve on-device para sugestões rápidas, cloud para respostas complexas
 - **Embeddings:** podem rodar edge para reduzir latência de busca
 - **Guardrails:** filtros simples edge, validação complexa cloud
 
@@ -231,7 +231,7 @@ Diferentes modelos para diferentes necessidades. Não usar canhão para matar mo
 
 ## Conexões
 
-- [[hotmart-ai-v2]] — implementação real de AI Gateway
+- [[ai-gateway]] — implementação real de AI Gateway
 - [[argocd]] — GitOps e canary para AI services
 - [[langfuse]] — observabilidade LLM
 - [[kubernetes]] — orquestração de containers

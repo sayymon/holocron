@@ -27,8 +27,8 @@ Aplicações que encapsulam APIs de LLMs (principalmente OpenAI) com uma camada 
 |-----------|----------|----------------|
 | Escrita | Jasper, Copy.ai | Templates de domínio, brand voice |
 | Código | Cursor, GitHub Copilot | Contexto de codebase, IDE integration |
-| Atendimento | Intercom Fin, CAIO (Hotmart) | RAG sobre base de conhecimento |
-| Dados | Julius AI, DataBot (Hotmart) | NL-to-SQL, visualização |
+| Atendimento | Intercom Fin, CAIO (empresa de tecnologia) | RAG sobre base de conhecimento |
+| Dados | Julius AI, DataBot (empresa de tecnologia) | NL-to-SQL, visualização |
 | Educação | Khan Academy Khanmigo | Pedagogia adaptativa |
 
 ### Por que "wrapper" não é pejorativo
@@ -45,7 +45,7 @@ Um wrapper bem feito resolve:
 |--------|---------|---------------------|
 | Foundation Model | OpenAI, Anthropic | Altíssima (bilhões em compute) |
 | Platform | LangChain, Vercel AI | Alta (ecossistema, comunidade) |
-| Vertical SaaS + IA | Harvey (legal), Hotmart AI | Média (domínio + dados) |
+| Vertical SaaS + IA | Harvey (legal), empresa de tecnologia AI | Média (domínio + dados) |
 | Wrapper simples | Milhares | Baixa (comoditizado) |
 
 ## Oportunidades Reais

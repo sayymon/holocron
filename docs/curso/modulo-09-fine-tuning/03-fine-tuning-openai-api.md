@@ -125,7 +125,7 @@ async function query(modelId, userMessage) {
 
 ```
 ft:{base_model}:{org}:{suffix}:{id}
-Exemplo: ft:gpt-4o-mini-2024-07-18:hotmart:sales-v2:abc123
+Exemplo: ft:gpt-4o-mini-2024-07-18:my-org:sales-v2:abc123
 ```
 
 ### Boas práticas

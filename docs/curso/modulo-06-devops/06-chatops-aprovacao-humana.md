@@ -83,4 +83,4 @@ Requisição → Validação RBAC → Approval Request
 - **Unidade 03:** Ações K8s executadas via ChatOps
 - **Unidade 07:** RBAC alinhado com políticas de segurança
 - **Unidade 11:** Auto-remediação com gate de aprovação humana
-- **Hotmart:** JiraOps para gestão de incidentes, C3PO para comunicação
+- **empresa:** JiraOps para gestão de incidentes, C3PO para comunicação

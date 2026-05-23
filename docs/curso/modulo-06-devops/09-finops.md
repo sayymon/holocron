@@ -88,4 +88,4 @@ Histórico de billing → Feature engineering → Modelo → Projeção 30/60/90
 
 - **Unidade 02:** Custo estimado no momento da geração de IaC
 - **Unidade 05:** Métricas de uso alimentam rightsizing
-- **Hotmart:** Economia 11.4M BRL (2025), 73% infra idle, Karpenter
+- **empresa:** Economia 11.4M BRL (2025), 73% infra idle, Karpenter

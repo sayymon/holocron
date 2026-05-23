@@ -76,4 +76,4 @@ Deploy canary (5%) → Coleta métricas (5min) → Análise
 
 - **Unidade 03:** Deploy em K8s via ArgoCD
 - **Unidade 07:** SAST/DAST como parte de segurança
-- **Hotmart:** GitHub Actions (padrão), ArgoCD para canary
+- **empresa:** GitHub Actions (padrão), ArgoCD para canary

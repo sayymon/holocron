@@ -59,7 +59,7 @@ Reactive → Memory → Tools → ReAct → Self-Reflection
 - **Summary Memory** — resume conversas antigas
 - **Vector Memory** — busca por relevância semântica via similarity search
 
-**Quando usar:** Chatbots com continuidade (ex: [[caio]]), tutores que lembram progresso, assistentes pessoais.
+**Quando usar:** Chatbots com continuidade (ex: [[chatbot-cx]]), tutores que lembram progresso, assistentes pessoais.
 
 ## 3. Tool-Using Agent
 

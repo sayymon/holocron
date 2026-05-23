@@ -97,4 +97,4 @@ Ação planejada → Dry-run → Diff esperado
 - **Unidade 04:** Diagnóstico precede remediação
 - **Unidade 06:** Aprovação humana via ChatOps
 - **Unidade 10:** Runbooks como base dos playbooks
-- **Hotmart:** Karpenter para scaling, ArgoCD para rollback
+- **empresa:** Karpenter para scaling, ArgoCD para rollback

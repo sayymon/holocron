@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "holocron": {
+      "command": "npx",
+      "args": ["tsx", "src/mcp/index.ts"],
+      "env": {
+        "DATABASE_URL": "postgresql://holocron:holocron@localhost:5432/holocron",
+        "OPENROUTER_API_KEY": "${env:OPENROUTER_API_KEY}"
+      }
+    }
+  }
+}

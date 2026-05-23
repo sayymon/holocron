@@ -109,7 +109,7 @@ Plataforma open-source — não é um provedor único, mas um ecossistema.
 
 ## AWS Bedrock (Meta-provedor)
 
-Serviço gerenciado da AWS com acesso a múltiplos foundation models via API unificada. **Usado na Hotmart via AI Gateway.**
+Serviço gerenciado da AWS com acesso a múltiplos foundation models via API unificada. **Usado na empresa de tecnologia via AI Gateway.**
 
 Modelos disponíveis: Claude (Anthropic), Llama (Meta), Titan (Amazon), Mistral.
 
@@ -120,7 +120,7 @@ Modelos disponíveis: Claude (Anthropic), Llama (Meta), Titan (Amazon), Mistral.
 - Texto longo → Claude (200K) ou Gemini (1M)
 - Multimodal → Gemini ou GPT-4o
 - Alto volume, baixo custo → GPT-4o-mini ou Haiku
-- Multi-provider → Gateway (Bedrock, LiteLLM, Hotmart AI Gateway)
+- Multi-provider → Gateway (Bedrock, LiteLLM, empresa de tecnologia AI Gateway)
 
 ## Conexões
 

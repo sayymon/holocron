@@ -72,7 +72,7 @@ Multi-agent resolve dividindo responsabilidades entre agentes especializados.
    → Não: retorna resultado final
 ```
 
-**Quando usar:** Tasks complexas com múltiplas especialidades, fluxo não predeterminado. Ex: [[hotmart-ai-companion]] orquestrando agentes especialistas.
+**Quando usar:** Tasks complexas com múltiplas especialidades, fluxo não predeterminado. Ex: [[ai-companion]] orquestrando agentes especialistas.
 
 ## 4. Hierarchical (Multi-level Supervisor)
 
@@ -132,7 +132,7 @@ Multi-agent resolve dividindo responsabilidades entre agentes especializados.
 | Controle | Centralizado | Distribuído |
 | Overhead | Supervisor em todo ciclo | Direto entre agentes |
 
-**Quando usar:** Atendimento ao cliente (triagem → especialista), workflows com transições naturais. Ex: [[caio]] transferindo para humano.
+**Quando usar:** Atendimento ao cliente (triagem → especialista), workflows com transições naturais. Ex: [[chatbot-cx]] transferindo para humano.
 
 ## Comparativo
 
@@ -166,7 +166,7 @@ Agentes sabem seus limites?
 ## Conexões
 
 - [[langgraph]] — framework principal para multi-agent
-- [[hotmart-ai-companion]] — exemplo real de supervisor pattern
-- [[caio]] — exemplo real de handoff (AI → humano)
+- [[ai-companion]] — exemplo real de supervisor pattern
+- [[chatbot-cx]] — exemplo real de handoff (AI → humano)
 - [[mcp]] — comunicação padronizada entre agentes e tools
-- [[sara]] — agente com RAG em arquitetura de produção
+- [[support-agent]] — agente com RAG em arquitetura de produção

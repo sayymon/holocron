@@ -82,9 +82,9 @@ O MCP Server atua como **adaptador** — traduz o protocolo padronizado (JSON-RP
 5. **Idempotência** — tools com side-effects devem ser idempotentes quando possível
 6. **Paginação** — para queries que retornam muitos resultados
 
-## Exemplo Real: Hotmart Atlassian MCP
+## Exemplo Real: empresa de tecnologia Atlassian MCP
 
-O MCP Atlassian da Hotmart expõe tools para criar issues, buscar por JQL, ler/criar páginas Confluence. Qualquer agente (CAIO, SARA, Kiro) conecta e usa sem código custom.
+O MCP Atlassian da empresa de tecnologia expõe tools para criar issues, buscar por JQL, ler/criar páginas Confluence. Qualquer agente (CAIO, SARA, Kiro) conecta e usa sem código custom.
 
 ## Anti-padrões
 

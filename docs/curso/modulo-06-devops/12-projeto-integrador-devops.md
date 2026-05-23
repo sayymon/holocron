@@ -83,4 +83,4 @@ Orchestrator Agent
 - **Todas as unidades** do módulo convergem aqui
 - **Módulo 04:** Padrões de agentes aplicados
 - **Módulo 08:** Arquitetura AI-First
-- **Hotmart:** Heimdall + ArgoCD + Karpenter + NewRelic como inspiração
+- **empresa:** Heimdall + ArgoCD + Karpenter + NewRelic como inspiração

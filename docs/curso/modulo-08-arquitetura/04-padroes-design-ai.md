@@ -107,9 +107,9 @@ Nem toda query precisa do modelo mais caro/capaz. Um router classifica a complex
 
 **Economia típica:** 60-80% das queries resolvidas pelo modelo lite = 60-80% economia.
 
-### Aplicação na Hotmart
+### Aplicação na empresa
 
-O [[hotmart-ai-v2]] Gateway implementa model routing:
+O [[ai-gateway]] Gateway implementa model routing:
 - Queries simples → modelos menores via Bedrock
 - Queries complexas → Claude Sonnet/GPT-4
 - Observabilidade via [[langfuse]] para ajustar thresholds
@@ -195,7 +195,7 @@ Humano participa do loop de decisão do agente em pontos críticos. Não é fall
 | Aprendizado contínuo | Feedback Loop | Melhorar respostas |
 | Criação de conteúdo | Collaborative | Blog posts, docs |
 
-### HITL no [[caio]]
+### HITL no [[chatbot-cx]]
 
 ```
 1. Cliente pergunta algo
@@ -225,6 +225,6 @@ Os padrões se compõem. Um sistema real usa vários:
 
 - [[rag-retrieval-augmented-generation]] — fundamentos de RAG
 - [[vector-database]] — storage para semantic cache e RAG
-- [[hotmart-ai-v2]] — implementa model router em produção
+- [[ai-gateway]] — implementa model router em produção
 - [[langfuse]] — observabilidade para medir hit rates e qualidade
-- [[caio]] — exemplo real de HITL em produção
+- [[chatbot-cx]] — exemplo real de HITL em produção

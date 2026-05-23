@@ -82,4 +82,4 @@ Estado Desejado (Git) ←→ Estado Real (Cloud API)
 
 - **Unidade 01:** Usa RAG e prompting como base
 - **Unidade 03:** Helm charts gerados aqui são deployados no K8s
-- **Hotmart:** TechDeck como catálogo de recursos padronizados
+- **empresa:** TechDeck como catálogo de recursos padronizados

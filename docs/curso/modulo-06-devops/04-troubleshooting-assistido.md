@@ -83,4 +83,4 @@ Alerta → Coleta de contexto temporal (±5min)
 - **Unidade 03:** Erros de K8s diagnosticados aqui
 - **Unidade 05:** Métricas de observabilidade como input
 - **Unidade 10:** RCA alimenta base de post-mortems
-- **Hotmart:** SARA resolve 27.5% dos tickets com abordagem similar
+- **empresa:** SARA resolve 27.5% dos tickets com abordagem similar

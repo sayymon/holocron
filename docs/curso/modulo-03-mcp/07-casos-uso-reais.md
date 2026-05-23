@@ -24,7 +24,7 @@ IDE conecta a múltiplos MCP Servers simultaneamente:
 - **Docs MCP** — buscar documentação interna
 
 ### Resultado
-Desenvolvedor resolve tarefas sem trocar de contexto. Exemplo real: Kiro na Hotmart conecta Atlassian, GitHub, Google Workspace e Cosmos DS.
+Desenvolvedor resolve tarefas sem trocar de contexto. Exemplo real: Kiro na empresa de tecnologia conecta Atlassian, GitHub, Google Workspace e Cosmos DS.
 
 ## 2. Sistemas Legados (Strangler Fig via MCP)
 
@@ -54,14 +54,14 @@ Empresa com ERP SAP B1 cria MCP Server que expõe consultas financeiras. Agentes
 Agentes de atendimento precisam consultar múltiplos sistemas para resolver um ticket.
 
 ### Solução com MCP
-Agente de IA (como CAIO na Hotmart) conecta a:
+Agente de IA (como CAIO na empresa de tecnologia) conecta a:
 - **CRM MCP** — histórico do cliente
 - **Billing MCP** — faturas, pagamentos
 - **Product MCP** — status de entrega, acesso
 - **Knowledge Base MCP** — artigos de ajuda
 
 ### Resultado
-CAIO na Hotmart atende em PT/EN/ES via chat, WhatsApp e email, consultando sistemas internos via MCP de forma transparente.
+CAIO na empresa de tecnologia atende em PT/EN/ES via chat, WhatsApp e email, consultando sistemas internos via MCP de forma transparente.
 
 ## 4. Automação de Vendas
 
@@ -74,7 +74,7 @@ SDRs gastam tempo em tarefas repetitivas: qualificação, enriquecimento de lead
 - **Email MCP** — enviar sequências personalizadas
 - **Calendar MCP** — agendar reuniões
 
-### Exemplo Hotmart
+### Exemplo empresa de tecnologia
 Sales Assistant (Automations Unit) usa MCPs para automatizar fluxo de vendas BR e LATAM.
 
 ## 5. Governança e Compliance

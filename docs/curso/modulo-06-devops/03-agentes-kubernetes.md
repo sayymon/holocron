@@ -82,4 +82,4 @@ Agent gera manifest → PR no Git → ArgoCD detecta → Sync
 
 - **Unidade 02:** Helm charts do IaC Copilot deployados aqui
 - **Unidade 05:** Métricas de observabilidade alimentam decisões de scaling
-- **Hotmart:** 60 clusters K8s, Karpenter, ArgoCD como padrão
+- **empresa:** 60 clusters K8s, Karpenter, ArgoCD como padrão

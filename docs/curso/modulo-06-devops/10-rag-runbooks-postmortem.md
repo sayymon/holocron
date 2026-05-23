@@ -95,4 +95,4 @@ ROOT CAUSE: Memory leak no handler de upload (PR #456)
 - **Unidade 04:** RCA alimenta post-mortems
 - **Unidade 05:** Alertas trigam busca de runbooks
 - **Unidade 11:** Runbooks são base para auto-remediação
-- **Hotmart:** Holocron como base de conhecimento, SARA para resolução
+- **empresa:** Holocron como base de conhecimento, SARA para resolução

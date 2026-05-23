@@ -4,7 +4,7 @@ modulo: 3
 unidade: 5
 tags: [mcp, enterprise, serviços-internos, estratégia, adoção]
 dificuldade: avançado
-fonte: "Curso Engenharia de IA Aplicada + Práticas Hotmart"
+fonte: "Curso Engenharia de IA Aplicada + Práticas de Mercado"
 atualizado_em: 2026-05-22
 confiabilidade: alta
 ---
@@ -89,9 +89,9 @@ server.tool("criar_item", "Cria novo item", { /* schema */ }, async (args) => { 
 | Quem mantém? | Squad owner do serviço |
 | SLA mínimo? | 99.5% uptime, <200ms p95 |
 
-## Caso Hotmart
+## Caso de Uso Real
 
-MCPs ativos na Hotmart:
+MCPs ativos em empresas de tecnologia:
 - **Atlassian** — Jira + Confluence (CRUD, JQL, CQL)
 - **Golden Path** — Documentação de padrões de arquitetura
 - **Cosmos DS** — Design System (componentes, tokens, guidelines)

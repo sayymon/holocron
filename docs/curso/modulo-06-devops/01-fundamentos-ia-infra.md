@@ -69,4 +69,4 @@ User Query → Retrieval → Context Augmentation → LLM → Resposta validada
 
 - **Módulo 02:** Técnicas de prompting aplicadas aqui
 - **Módulo 04:** Base para agentes DevOps das próximas unidades
-- **Hotmart:** Hotmart AI Gateway como provider de LLM
+- **empresa:** AI Gateway corporativo como provider de LLM

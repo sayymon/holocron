@@ -34,9 +34,9 @@ Este módulo explora como LLMs, agentes e técnicas de IA generativa transformam
 
 Ao final do módulo, o aluno será capaz de construir um agente DevOps completo que gera IaC, gerencia clusters Kubernetes, diagnostica problemas, otimiza custos e executa remediações com supervisão humana.
 
-## Conexões com o Ecossistema Hotmart
+## Conexões com Ecossistemas Reais
 
-| Conceito do Módulo | Aplicação Hotmart |
+| Conceito do Módulo | Aplicação em Empresas |
 |-------------------|-------------------|
 | IaC Copilot | TechDeck + ArgoCD |
 | Agentes K8s | 60 clusters, Karpenter |

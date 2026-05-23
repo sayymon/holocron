@@ -76,4 +76,4 @@ LLM gera Rego policy → Testa contra fixtures → Deploy no Gatekeeper
 
 - **Unidade 02:** OPA valida IaC gerado pelo copilot
 - **Unidade 08:** SAST/DAST no pipeline CI/CD
-- **Hotmart:** SOC 2 certificação, Heimdall quality score
+- **empresa:** SOC 2 certificação, Heimdall quality score

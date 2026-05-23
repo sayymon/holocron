@@ -56,7 +56,7 @@ Arquitetura tradicional assume **determinismo** — mesma entrada, mesma saída.
 
 - IA sugere, humano decide
 - [[human-in-the-loop]] obrigatório
-- Ex: GitHub Copilot, [[hotmart-ai-companion]]
+- Ex: GitHub Copilot, [[ai-companion]]
 
 ### 3. AI como Motor (AI-Native)
 
@@ -80,7 +80,7 @@ Arquitetura tradicional assume **determinismo** — mesma entrada, mesma saída.
 
 - IA toma decisões e executa ações
 - Precisa de [[guardrails]] robustos
-- Ex: [[sara]], Devin, AutoGPT
+- Ex: [[support-agent]], Devin, AutoGPT
 
 ### 5. AI como Infraestrutura (Platform)
 
@@ -93,7 +93,7 @@ Arquitetura tradicional assume **determinismo** — mesma entrada, mesma saída.
 
 - IA é camada de plataforma consumida por N apps
 - Centraliza governança, custos, observabilidade
-- Ex: [[hotmart-ai-v2]], AWS Bedrock
+- Ex: [[ai-gateway]], AWS Bedrock
 
 ## Decision Framework
 

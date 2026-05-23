@@ -23,7 +23,7 @@ Estou cursando Engenharia de IA Aplicada (12 módulos, ~100 unidades) e preciso 
 
 Criar o **Holocron AI Engineer** — um tutor inteligente personalizado que cristaliza o conhecimento do curso em documentos atômicos e usa RAG + Agentes para ensinar de forma socrática.
 
-O projeto segue a mesma filosofia do Holocron Hotmart:
+O projeto segue a mesma filosofia de Knowledge Bases atômicas:
 - Knowledge Base em Markdown atômico (Obsidian-compatible)
 - Cada commit é um capítulo
 - Documentação como código
@@ -45,5 +45,5 @@ O projeto segue a mesma filosofia do Holocron Hotmart:
 
 ## Referências
 
-- Holocron Hotmart (inspiração de estrutura e filosofia)
+- Inspiração em projetos de Knowledge Base atômica
 - Ementa oficial do curso de Engenharia de IA Aplicada

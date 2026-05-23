@@ -71,9 +71,9 @@ MCP suporta dois mecanismos de transporte:
 | Tools | Botões do dispositivo — ações disponíveis |
 | Resources | Arquivos no dispositivo — dados acessíveis |
 
-## Conexão com o Ecossistema Hotmart
+## Conexão com o Ecossistema empresa de tecnologia
 
-Na Hotmart, MCPs conectam agentes (CAIO, SARA, AI Companion) a serviços internos de forma padronizada. O Hotmart AI Gateway v2 atua como orquestrador, e MCPs como Atlassian, Cosmos DS e GitHub já estão ativos.
+Na empresa de tecnologia, MCPs conectam agentes (CAIO, SARA, AI Companion) a serviços internos de forma padronizada. O empresa de tecnologia AI Gateway v2 atua como orquestrador, e MCPs como Atlassian, Cosmos DS e GitHub já estão ativos.
 
 ## Referências
 
