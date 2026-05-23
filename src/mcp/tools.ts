@@ -5,7 +5,7 @@ import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import { semanticSearch, hybridSearch } from '../rag/index.js';
-import { askTutor } from './tutor.js';
+import { runTutor } from '../agents/index.js';
 
 const DOCS_PATH = path.resolve(process.cwd(), 'docs');
 
@@ -82,7 +82,7 @@ export function registerTools(server: McpServer) {
     'Faz uma pergunta ao tutor do curso. Ele busca na base de conhecimento e responde de forma socrática, desafiando o aluno a pensar.',
     { question: z.string().describe('Pergunta sobre o conteúdo do curso') },
     async ({ question }) => {
-      const answer = await askTutor(question);
+      const answer = await runTutor(question);
       return { content: [{ type: 'text', text: answer }] };
     }
   );

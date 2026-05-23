@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import path from 'path';
 import { indexDocuments, semanticSearch, hybridSearch } from './rag/index.js';
-import { askTutor } from './mcp/tutor.js';
+import { runTutor } from './agents/index.js';
 import pool from './db/client.js';
 
 const [,, command, ...args] = process.argv;
@@ -41,7 +41,7 @@ async function main() {
       const question = args.join(' ');
       if (!question) { console.error('Usage: holocron ask <pergunta>'); process.exit(1); }
       console.log(`🔮 Holocron pensando...\n`);
-      const answer = await askTutor(question);
+      const answer = await runTutor(question);
       console.log(answer);
       break;
     }
