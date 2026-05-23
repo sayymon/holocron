@@ -1,15 +1,11 @@
 import OpenAI from 'openai';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 function getClient(): OpenAI {
-  return new OpenAI({
-    apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
-    baseURL: process.env.OPENROUTER_API_KEY
-      ? 'https://openrouter.ai/api/v1'
-      : undefined,
-  });
+  const apiKey = process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY;
+  const baseURL = process.env.OPENROUTER_API_KEY
+    ? 'https://openrouter.ai/api/v1'
+    : undefined;
+  return new OpenAI({ apiKey, baseURL });
 }
 
 export async function getEmbedding(text: string): Promise<number[]> {

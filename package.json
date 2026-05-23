@@ -13,8 +13,10 @@
     "cli": "tsx src/cli.ts",
     "index": "tsx src/cli.ts index",
     "search": "tsx src/cli.ts search",
+    "ask": "tsx src/cli.ts ask",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
+    "db:migrate": "tsx src/db/migrate.ts",
     "test": "vitest",
     "lint": "eslint src/"
   },

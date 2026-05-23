@@ -101,6 +101,8 @@ holocron quiz modulo-04-agentes
 holocron status
 ```
 
+![Exemplo de Uso](holocron-test-cli.png)
+
 ---
 
 #### 🌐 **3. Interface Web — Chat interativo com LibreChat**
@@ -115,6 +117,8 @@ Uma interface conversacional web (powered by **LibreChat**) onde você pode:
 - 📊 **Dashboard de progresso** — visualize scores, gaps de conhecimento, próximas unidades
 
 **🛠️ Tech stack:** LibreChat (frontend) + Holocron backend (RAG + Agentes)
+
+*** TODO - A ser construido**
 
 ---
 

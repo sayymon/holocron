@@ -1,5 +1,7 @@
+import 'dotenv/config';
 import path from 'path';
 import { indexDocuments, semanticSearch, hybridSearch } from './rag/index.js';
+import { askTutor } from './mcp/tutor.js';
 import pool from './db/client.js';
 
 const [,, command, ...args] = process.argv;
@@ -35,13 +37,22 @@ async function main() {
       }
       break;
     }
+    case 'ask': {
+      const question = args.join(' ');
+      if (!question) { console.error('Usage: holocron ask <pergunta>'); process.exit(1); }
+      console.log(`🔮 Holocron pensando...\n`);
+      const answer = await askTutor(question);
+      console.log(answer);
+      break;
+    }
     default:
       console.log(`Holocron CLI
   
   Commands:
     index [path]        Index documents from path (default: ./docs)
     search <query>      Semantic search
-    hybrid <query>      Hybrid search (semantic + keyword)`);
+    hybrid <query>      Hybrid search (semantic + keyword)
+    ask <question>      Ask the tutor (RAG + LLM)`);
   }
 
   await pool.end();
