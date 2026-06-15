@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { registerTools } from './tools.js';
+import { registerGraphTools } from './graph-tools.js';
 
 // Evita que erros não-capturados matem o processo MCP
 process.on('unhandledRejection', (reason) => {
@@ -14,10 +15,11 @@ process.on('uncaughtException', (err) => {
 
 const server = new McpServer({
   name: 'holocron',
-  version: '0.1.0',
+  version: '0.2.0',
 });
 
 registerTools(server);
+registerGraphTools(server);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
