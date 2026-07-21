@@ -10,6 +10,7 @@
     "dev": "tsx watch src/api/index.ts",
     "build": "tsc",
     "mcp": "tsx src/mcp/index.ts",
+    "mcp:inspect": "npx @modelcontextprotocol/inspector tsx src/mcp/index.ts",
     "cli": "tsx src/cli.ts",
     "index": "tsx src/cli.ts index",
     "search": "tsx src/cli.ts search",
