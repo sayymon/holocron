@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - main [ref=e7]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - button [ref=e14] [cursor=pointer]:
+            - figure [ref=e15]
+          - button [ref=e17] [cursor=pointer]:
+            - figure [ref=e18]
+          - button [ref=e20] [cursor=pointer]:
+            - figure [ref=e21]
+          - button [ref=e23] [cursor=pointer]:
+            - figure [ref=e24]
+        - generic [ref=e25]:
+          - img [ref=e29]
+          - heading "STOP ADEDANHA ADEDONHA" [level=1] [ref=e30]
+        - button "PT" [ref=e33] [cursor=pointer]:
+          - figure [ref=e35]
+          - strong [ref=e36]: PT
+          - figure [ref=e38]
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - heading "JOGUE AGORA" [level=3] [ref=e41]
+          - generic [ref=e42]:
+            - generic [ref=e43]:
+              - button [ref=e54] [cursor=pointer]:
+                - figure [ref=e55]
+              - textbox [ref=e57]: Anonimo737
+            - generic [ref=e58]:
+              - button "JOGAR" [ref=e60] [cursor=pointer]:
+                - figure [ref=e62]
+                - strong [ref=e63]: JOGAR
+              - button "CRIAR SALA" [ref=e65] [cursor=pointer]:
+                - figure [ref=e67]
+                - strong [ref=e68]: CRIAR SALA
+              - button "SALAS" [ref=e70] [cursor=pointer]:
+                - figure [ref=e72]
+                - strong [ref=e73]: SALAS
+        - generic [ref=e74]:
+          - heading "COMO JOGAR" [level=3] [ref=e75]
+          - generic [ref=e76]:
+            - generic [ref=e78]:
+              - figure [ref=e79]:
+                - img [ref=e81]
+              - heading "1. SORTEIO DA LETRA" [level=5] [ref=e168]
+              - paragraph [ref=e169]: Cada rodada começa com uma letra aleatória
+            - list [ref=e170]:
+              - listitem [ref=e171] [cursor=pointer]:
+                - img [ref=e172]
+              - listitem [ref=e174] [cursor=pointer]:
+                - img [ref=e175]
+              - listitem [ref=e177] [cursor=pointer]:
+                - img [ref=e178]
+              - listitem [ref=e180] [cursor=pointer]:
+                - img [ref=e181]
+              - listitem [ref=e183] [cursor=pointer]:
+                - img [ref=e184]
+              - listitem [ref=e186] [cursor=pointer]:
+                - img [ref=e187]
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - link [ref=e192] [cursor=pointer]:
+              - /url: https://onrizon.com
+              - img [ref=e193]
+            - paragraph [ref=e195]: 2009 - 2026 Onrizon
+          - 'heading "StopotS é um jogo de categorias, também conhecido como Adedanha ou Adedonha. Jogadores recebem uma letra aleatória e preenchem categorias com palavras que comecem com ela. O primeiro a completar grita “STOP!”. Então, os jogadores avaliam as respostas: 10 pontos para válidas, 5 para repetidas e 0 para incorretas." [level=4] [ref=e196]'
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - link "Android" [ref=e199] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.gartic.StopotS
+              - strong [ref=e200]: Android
+            - link "iOS" [ref=e201] [cursor=pointer]:
+              - /url: https://apps.apple.com/us/app/stopots-stop-adedonha/id1451540497
+              - strong [ref=e202]: iOS
+          - navigation [ref=e203]:
+            - generic [ref=e204] [cursor=pointer]: CONTATO
+            - text: "|"
+            - generic [ref=e205] [cursor=pointer]: TERMOS
+            - text: "|"
+            - generic [ref=e206] [cursor=pointer]: PRIVACIDADE
+            - text: "|"
+            - generic [ref=e207] [cursor=pointer]: ASSETS
+            - text: "|"
+            - generic [ref=e208] [cursor=pointer]: NOTÍCIAS
+  - alert [ref=e210]
