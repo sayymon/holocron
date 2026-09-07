@@ -323,27 +323,27 @@ function generateHTML(markdown, stats) {
     function resetView() { mm?.fit(); }
     
     function expandAll() {
+      if (!mm || !mm.state) return;
+      const root = mm.state.data;
+      if (!root) return;
       function expand(node) {
-        if (node.children) {
-          node.payload = { ...node.payload, fold: 0 };
-          node.children.forEach(expand);
-        }
+        if (node.payload) node.payload.fold = 0;
+        if (node.children) node.children.forEach(expand);
       }
-      expand(mm.state.data);
+      expand(root);
       mm.renderData();
       mm.fit();
     }
     
     function collapseAll() {
+      if (!mm || !mm.state) return;
+      const root = mm.state.data;
+      if (!root) return;
       function collapse(node, depth = 0) {
-        if (node.children && depth > 0) {
-          node.payload = { ...node.payload, fold: 1 };
-        }
-        if (node.children) {
-          node.children.forEach((c) => collapse(c, depth + 1));
-        }
+        if (depth > 0 && node.payload) node.payload.fold = 1;
+        if (node.children) node.children.forEach(c => collapse(c, depth + 1));
       }
-      collapse(mm.state.data);
+      collapse(root);
       mm.renderData();
       mm.fit();
     }
