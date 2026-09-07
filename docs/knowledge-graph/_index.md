@@ -15,15 +15,42 @@ knowledge-graph/
 │   ├── fundamentos/                Bases de IA e Machine Learning
 │   │   ├── ia.md
 │   │   ├── machine-learning.md
-│   │   └── transformers.md
+│   │   ├── supervised-learning.md
+│   │   ├── unsupervised-learning.md
+│   │   ├── reinforcement-learning.md
+│   │   ├── deep-learning.md
+│   │   ├── nlp.md
+│   │   ├── transformers.md
+│   │   ├── computer-vision.md
+│   │   └── generative-ai.md
+│   ├── generative-ai/              IA Generativa (estrutura atômica)
+│   │   ├── visao-geral.md
+│   │   ├── historia.md
+│   │   ├── tipos-modelos-generativos.md
+│   │   ├── diffusion-models.md
+│   │   ├── aplicacoes/             Docs atômicos por modalidade
+│   │   │   ├── geracao-texto.md
+│   │   │   ├── geracao-codigo.md
+│   │   │   ├── geracao-imagem.md
+│   │   │   ├── geracao-audio.md
+│   │   │   ├── geracao-video.md
+│   │   │   └── multimodal.md
+│   │   └── benchmarks/
+│   │       └── benchmarks-generative-ai.md
 │   ├── llms/                       Large Language Models e representações
 │   │   ├── llms.md
-│   │   └── embeddings.md
+│   │   ├── embeddings.md
+│   │   ├── tokenizacao.md
+│   │   └── reasoning-models.md
 │   ├── paradigmas/                 Como construir com IA
 │   │   ├── rag.md
+│   │   ├── chunking.md
 │   │   ├── agentes-ia.md
 │   │   ├── prompt-engineering.md
-│   │   └── fine-tuning.md
+│   │   ├── fine-tuning.md
+│   │   ├── peft.md
+│   │   ├── lora.md
+│   │   └── qlora.md
 │   └── padroes/                    Protocolos e patterns
 │       ├── mcp.md
 │       └── human-in-the-loop.md
@@ -70,18 +97,45 @@ knowledge-graph/
 |----|-----------|
 | [[ia]] | Inteligência Artificial — o campo |
 | [[machine-learning]] | Aprendizado de máquina |
+| [[supervised-learning]] | Aprendizado supervisionado (com rotulos) |
+| [[unsupervised-learning]] | Aprendizado não-supervisionado (sem rotulos) |
+| [[reinforcement-learning]] | Aprendizado por reforco (com recompensa) |
+| [[deep-learning]] | Redes neurais profundas |
 | [[transformers]] | Arquitetura base dos LLMs |
+| [[nlp]] | Processamento de Linguagem Natural |
+| [[computer-vision]] | Visao computacional |
+| [[generative-ai]] | IA Generativa — texto, imagem, codigo, audio, video |
+
+### Generative AI — Aplicações
+| Nó | Descrição |
+|----|-----------|
+| [[geracao-texto]] | Geração de texto — LLMs |
+| [[geracao-codigo]] | Geração de código — assistentes |
+| [[geracao-imagem]] | Geração de imagem — Diffusion |
+| [[geracao-audio]] | Geração de áudio — TTS, STT, música |
+| [[geracao-video]] | Geração de vídeo — Sora, Runway |
+| [[multimodal]] | Modelos multimodais |
+
+### Generative AI — Conceitos
+| Nó | Descrição |
+|----|-----------|
+| [[tipos-modelos-generativos]] | Transformer, Diffusion, GANs, VAEs, MoE |
+| [[diffusion-models]] | Modelos de difusao para geracao |
+| [[benchmarks-generative-ai]] | Metricas e leaderboard |
 
 ### LLMs & Representações
 | Nó | Descrição |
 |----|-----------|
 | [[llms]] | Large Language Models — taxonomia completa |
 | [[embeddings]] | Representação vetorial de significado |
+| [[tokenizacao]] | Como LLMs leem texto — BPE, WordPiece, SentencePiece |
+| [[reasoning-models]] | Modelos de raciocínio — o-series, Extended Thinking |
 
 ### Paradigmas de Construção
 | Nó | Descrição |
 |----|-----------|
 | [[rag]] | Retrieval-Augmented Generation |
+| [[chunking]] | Dividindo documentos para RAG |
 | [[agentes-ia]] | O paradigma agentic |
 | [[prompt-engineering]] | A arte de instruir LLMs |
 | [[fine-tuning]] | Customização de modelos |
@@ -99,13 +153,13 @@ knowledge-graph/
 ### Providers de LLM
 | Nó | Tipo | Preço entrada |
 |----|------|:-------------:|
-| [[openai-gpt]] | Proprietário | $0.05-$21/MTok |
+| [[openai-gpt]] | Proprietário | $0.05-$50/MTok |
 | [[anthropic-claude]] | Proprietário | $0.80-$15/MTok |
-| [[google-gemini]] | Proprietário | $0.10-$1.25/MTok |
-| [[meta-llama]] | Open-weights | Grátis (self-host) |
-| [[deepseek]] | Open-weights | $0.27/MTok (API) |
-| [[qwen]] | Open-source (Apache 2.0) | Grátis |
-| [[mistral]] | Open/Proprietário | Grátis-$2/MTok |
+| [[google-gemini]] | Proprietário | $0.10-$10/MTok |
+| [[meta-llama]] | Open-weights | $0.24/MTok (Bedrock) |
+| [[deepseek]] | Open-weights (MIT) | $0.07-$0.55/MTok |
+| [[qwen]] | Open-source (Apache 2.0) | $0.03-$0.60/MTok |
+| [[mistral]] | Open/Proprietário | $0.15-$7.50/MTok |
 
 ### Frameworks
 | Nó | Foco |

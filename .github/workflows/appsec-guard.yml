@@ -1,0 +1,16 @@
+name: "AppSec Rules Protection"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  appsec:
+    runs-on: secops-app-sec
+    steps:
+      - name: AppSec
+        uses: Hotmart-Org/actions/appsec@master

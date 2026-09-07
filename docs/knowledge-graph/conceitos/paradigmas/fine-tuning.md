@@ -50,16 +50,23 @@ Fine-tuning é o processo de **retreinar** (parte de) um LLM com dados específi
 | **RLHF** | Muito alto | Muito alto | Máxima (alinhamento) | Muito alta |
 | **GRPO** | Alto | Alto | Alta | Alta |
 
+### PEFT — Parameter-Efficient Fine-Tuning
+Família de técnicas que permitem adaptar modelos treinando apenas uma fração dos parâmetros.
+→ [[peft]] (doc completo)
+
 ### LoRA (Low-Rank Adaptation)
 - Treina apenas **adaptadores de baixo rank** (0.1-1% dos parâmetros)
 - Modelo base fica congelado
 - Adaptadores podem ser swapados em runtime
 - **80% menos custo** que full fine-tuning
+- **Técnica mais popular de PEFT** (padrão da indústria 2026)
+→ [[lora]] (doc completo)
 
-### QLoRA
-- LoRA + quantização 4-bit do modelo base
-- Permite fine-tuning de modelos 70B em **single GPU** (24GB)
-- Qualidade ligeiramente inferior ao LoRA completo
+### QLoRA (Quantized LoRA)
+- LoRA + quantização 4-bit do modelo base (NF4)
+- Permite fine-tuning de modelos 70B em **single GPU** (48GB)
+- Qualidade ~93-96% do full FT (trade-off: ~3-6% perda por 65% economia)
+→ [[qlora]] (doc completo)
 
 ## Plataformas
 

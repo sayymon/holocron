@@ -1,0 +1,900 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - generic [ref=f1e4]:
+      - link "Home" [ref=f1e5] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com
+      - link "Dashboard" [ref=f1e9] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/dashboard/
+      - link "Search" [ref=f1e13] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/search/
+      - link "Deals" [ref=f1e17] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/deals/
+      - link "Leaderboard" [ref=f1e23] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/leaderboard/
+      - link "Tasks" [ref=f1e27] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/tasks/recommended/
+      - link "Mini tools" [ref=f1e31] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/mini-tools/
+      - link "Characters" [ref=f1e35] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/characters/
+      - link "Map" [ref=f1e43] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/map/
+      - link "Prompts" [ref=f1e47] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/ebook/
+      - link "Launch / Advertise" [ref=f1e55] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/get-featured/
+      - link "Newsletter" [ref=f1e59] [cursor=pointer]:
+        - /url: https://newsletter.theresanaiforthat.com/subscribe
+      - link "Merchandise" [ref=f1e64] [cursor=pointer]:
+        - /url: https://shop.theresanaiforthat.com/
+      - link "Contact us" [ref=f1e68] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com/contact-us/
+      - link "Create tool" [ref=f1e73] [cursor=pointer]:
+        - /url: "#"
+    - generic [ref=f1e74]:
+      - link "Home" [ref=f1e76] [cursor=pointer]:
+        - /url: https://theresanaiforthat.com
+        - text: taaft.com/any-keyword ®
+      - paragraph [ref=f1e77]:
+        - generic: Spotlight
+        - link "SureThing.io - \"OpenClaw\" for Beginners SureThing.io - \"OpenClaw\" for Beginners Task automation" [ref=f1e78] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/ai/surething/?ref=spotlight_top
+          - img "SureThing.io - \"OpenClaw\" for Beginners"
+          - generic: SureThing.io - "OpenClaw" for Beginners
+          - generic: Task automation
+      - generic [ref=f1e80]:
+        - textbox "Search..." [active] [ref=f1e81]
+        - generic [ref=f1e82] [cursor=pointer]: ⌘ + K
+      - generic [ref=f1e85]:
+        - generic [ref=f1e86]: The front page of AI.
+        - generic [ref=f1e87]: Used by 90M+ humans.
+      - generic [ref=f1e91]:
+        - link "Generate images" [ref=f1e92] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/@taaft/image-generator/?ref=header
+        - link "Create AI Tools" [ref=f1e93] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/create/?ref=header_link
+    - generic [ref=f1e94]:
+      - generic [ref=f1e95]:
+        - link [ref=f1e96] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com
+          - img "TAAFT" [ref=f1e97]
+        - generic [ref=f1e98] [cursor=pointer]:
+          - checkbox [ref=f1e100]
+          - text: Free mode ?
+      - generic [ref=f1e102]:
+        - button "Tasks" [ref=f1e104] [cursor=pointer]
+        - link "📔 Prompts" [ref=f1e110] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/ebook/?ref=nav_bar
+        - link "Dashboard" [ref=f1e111] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/dashboard/
+        - generic [ref=f1e114] [cursor=pointer]:
+          - generic: Search
+          - generic: ⌘ + K
+        - button "Recently viewed (H)" [ref=f1e116] [cursor=pointer]
+      - generic [ref=f1e120]:
+        - link "saymon santos's profile picture saymon santos" [ref=f1e121] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/@saymonsantos/
+          - generic:
+            - img "saymon santos's profile picture"
+            - text: saymon santos
+        - generic [ref=f1e122]:
+          - generic [ref=f1e123]: 🛠️ 1 tools
+          - generic [ref=f1e124]: 🙏 1 karma
+    - generic: New
+    - generic [ref=f1e126]:
+      - generic:
+        - generic:
+          - tablist "Homepage listing categories" [ref=f1e127]:
+            - generic [ref=f1e128]:
+              - tab "Live updating Today 32" [selected] [ref=f1e129] [cursor=pointer]:
+                - generic [ref=f1e131]: Live updating
+                - text: Today
+                - generic [ref=f1e132]: "32"
+              - button "Filter Today releases by entity type" [ref=f1e133] [cursor=pointer]
+            - tab "Tools 51,577" [ref=f1e137] [cursor=pointer]:
+              - text: Tools
+              - generic [ref=f1e138]: 51,577
+            - tab "Devices 264" [ref=f1e139] [cursor=pointer]:
+              - text: Devices
+              - generic [ref=f1e140]: "264"
+            - tab "Robots 584" [ref=f1e141] [cursor=pointer]:
+              - text: Robots
+              - generic [ref=f1e142]: "584"
+            - tab "News 10,405" [ref=f1e143] [cursor=pointer]:
+              - text: News
+              - generic [ref=f1e144]: 10,405
+            - tab "Companies 7,494" [ref=f1e145] [cursor=pointer]:
+              - text: Companies
+              - generic [ref=f1e146]: 7,494
+            - tab "Countries 100" [ref=f1e147] [cursor=pointer]:
+              - text: Countries
+              - generic [ref=f1e148]: "100"
+            - tab "Tasks 11,508" [ref=f1e149] [cursor=pointer]:
+              - text: Tasks
+              - generic [ref=f1e150]: 11,508
+            - tab "Models 1,375" [ref=f1e151] [cursor=pointer]:
+              - text: Models
+              - generic [ref=f1e152]: 1,375
+            - tab "Videos 6,734" [ref=f1e153] [cursor=pointer]:
+              - text: Videos
+              - generic [ref=f1e154]: 6,734
+            - tab "Collections 13,585" [ref=f1e155] [cursor=pointer]:
+              - text: Collections
+              - generic [ref=f1e156]: 13,585
+            - tab "Fundraises 2,107" [ref=f1e157] [cursor=pointer]:
+              - text: Fundraises
+              - generic [ref=f1e158]: 2,107
+            - tab "Investors 2,322" [ref=f1e159] [cursor=pointer]:
+              - text: Investors
+              - generic [ref=f1e160]: 2,322
+            - tab "Repositories 42,513" [ref=f1e161] [cursor=pointer]:
+              - text: Repositories
+              - generic [ref=f1e162]: 42,513
+          - button "More listing tabs" [ref=f1e164] [cursor=pointer]:
+            - generic [ref=f1e165]: •••
+      - tabpanel [ref=f1e166]:
+        - generic [ref=f1e167]:
+          - button
+          - generic [ref=f1e172]:
+            - generic [ref=f1e173] [cursor=pointer]:
+              - generic [ref=f1e175]:
+                - generic [ref=f1e176]: 1h
+                - generic [ref=f1e177]: "69"
+              - link "AI Music Video Generator" [ref=f1e184]:
+                - /url: https://theresanaiforthat.com/ai/ai-music-video-generator/
+                - generic [ref=f1e185]:
+                  - img "AI Music Video Generator" [ref=f1e186]
+                  - generic "Tool" [ref=f1e187]
+              - generic [ref=f1e191]:
+                - generic [ref=f1e192]:
+                  - text: Tool
+                  - generic [ref=f1e193]:
+                    - link "AI Music Video Generator" [ref=f1e194]:
+                      - /url: https://theresanaiforthat.com/ai/ai-music-video-generator/
+                    - img "This tool has been claimed by its owner." [ref=f1e196]
+                  - 'generic "Features: 4" [ref=f1e197]': "4"
+                  - button "Show pricing details" [ref=f1e206]:
+                    - generic [ref=f1e207]: $7.99
+                    - generic [ref=f1e208]: /mo
+                - link "Turn a Suno song into a music video with beat-synced auto-editing" [ref=f1e209]:
+                  - /url: https://theresanaiforthat.com/ai/ai-music-video-generator/
+              - link "🎵 Music videos" [ref=f1e212]:
+                - /url: https://theresanaiforthat.com/task/music-videos/
+              - 'link "Austin Verified author Country: United States @austin-2994424-1709864166" [ref=f1e214]':
+                - /url: https://theresanaiforthat.com/@austin-2994424-1709864166/
+                - generic [ref=f1e215]:
+                  - generic [ref=f1e216]:
+                    - strong [ref=f1e217]: Austin
+                    - img "Verified author" [ref=f1e218]
+                    - 'img "Country: United States" [ref=f1e219]':
+                      - generic [ref=f1e220]: 🇺🇸
+                      - text: United States
+                  - generic [ref=f1e221]: "@austin-2994424-1709864166"
+              - button "1" [ref=f1e223]
+            - generic [ref=f1e224] [cursor=pointer]:
+              - generic [ref=f1e226]:
+                - generic [ref=f1e227]: 2h
+                - generic [ref=f1e228]: "75"
+              - link "PhotoExpert" [ref=f1e235]:
+                - /url: https://theresanaiforthat.com/ai/photoexpert/
+                - generic [ref=f1e236]:
+                  - img "PhotoExpert" [ref=f1e237]
+                  - generic "Tool" [ref=f1e238]
+              - generic [ref=f1e242]:
+                - generic [ref=f1e243]:
+                  - text: Tool
+                  - generic [ref=f1e244]:
+                    - link "PhotoExpert" [ref=f1e245]:
+                      - /url: https://theresanaiforthat.com/ai/photoexpert/
+                    - img "This tool has been claimed by its owner." [ref=f1e247]
+                  - 'generic "Features: 1" [ref=f1e248]': "1"
+                  - button "Show pricing details" [ref=f1e257]:
+                    - generic [ref=f1e259]: $1.99
+                - link "Get an expert AI score and enhancement for your best photo." [ref=f1e260]:
+                  - /url: https://theresanaiforthat.com/ai/photoexpert/
+              - link "🔍 Image analysis" [ref=f1e263]:
+                - /url: https://theresanaiforthat.com/task/image-analysis/
+              - 'link "PhotoExpert Verified author Country: United States @team-photoexpert" [ref=f1e265]':
+                - /url: https://theresanaiforthat.com/@team-photoexpert/
+                - generic [ref=f1e266]:
+                  - generic [ref=f1e267]:
+                    - strong [ref=f1e268]: PhotoExpert
+                    - img "Verified author" [ref=f1e269]
+                    - 'img "Country: United States" [ref=f1e270]':
+                      - generic [ref=f1e271]: 🇺🇸
+                      - text: United States
+                  - generic [ref=f1e272]: "@team-photoexpert"
+              - button "1" [ref=f1e274]
+            - generic [ref=f1e275] [cursor=pointer]:
+              - generic [ref=f1e277]:
+                - generic [ref=f1e278]: Ad
+                - generic [ref=f1e279]: 24k
+              - link "SureThing.io - \"OpenClaw\" for Beginners" [ref=f1e286]:
+                - /url: https://theresanaiforthat.com/ai/surething/?ref=home_today_ad
+                - generic [ref=f1e287]:
+                  - img "SureThing.io - \"OpenClaw\" for Beginners" [ref=f1e288]
+                  - generic "Tool" [ref=f1e289]
+              - generic [ref=f1e293]:
+                - generic [ref=f1e294]:
+                  - text: Tool
+                  - generic [ref=f1e295]:
+                    - link "SureThing.io - \"OpenClaw\" for Beginners" [ref=f1e296]:
+                      - /url: https://theresanaiforthat.com/ai/surething/?ref=home_today_ad
+                    - img "This tool has been claimed by its owner." [ref=f1e298]
+                    - button "Play video preview" [ref=f1e300]
+                  - generic "Version v2.0" [ref=f1e303]: v2.0
+                  - button "Show pricing details" [ref=f1e304]:
+                    - generic [ref=f1e306]: $30
+                    - generic [ref=f1e307]: /mo
+                - link "First General AI Agency. Designed for long-horizon tasks." [ref=f1e308]:
+                  - /url: https://theresanaiforthat.com/ai/surething/?ref=home_today_ad
+              - link "🤖 Task automation" [ref=f1e311]:
+                - /url: https://theresanaiforthat.com/task/task-automation/
+              - 'link "SureThing Verified author Country: United States @surething" [ref=f1e313]':
+                - /url: https://theresanaiforthat.com/@surething/
+                - generic [ref=f1e314]:
+                  - generic [ref=f1e315]:
+                    - strong [ref=f1e316]: SureThing
+                    - img "Verified author" [ref=f1e317]
+                    - 'img "Country: United States" [ref=f1e318]':
+                      - generic [ref=f1e319]: 🇺🇸
+                      - text: United States
+                  - generic [ref=f1e320]: "@surething"
+              - button "95" [ref=f1e322]
+            - generic [ref=f1e323] [cursor=pointer]:
+              - generic [ref=f1e325]:
+                - generic [ref=f1e326]: 2h
+                - generic [ref=f1e327]: "716"
+              - link "Is Kimi K3 Really Fable Class" [ref=f1e334]:
+                - /url: https://theresanaiforthat.com/youtube/is-kimi-k3-really-fable-class-lmqqiwqf-8i/
+                - generic [ref=f1e335]:
+                  - img "Is Kimi K3 Really Fable Class" [ref=f1e336]
+                  - generic "Video" [ref=f1e337]
+              - generic [ref=f1e341]:
+                - text: Video
+                - generic [ref=f1e342]:
+                  - link "Is Kimi K3 Really Fable Class" [ref=f1e343]:
+                    - /url: https://theresanaiforthat.com/youtube/is-kimi-k3-really-fable-class-lmqqiwqf-8i/
+                  - generic [ref=f1e345]: 24:44
+                  - 'generic "Difficulty: Beginner" [ref=f1e349]': Beginner
+              - generic "Research" [ref=f1e355]: 🎥 Research
+              - generic [ref=f1e358]:
+                - generic [ref=f1e359]:
+                  - strong [ref=f1e360]: "The AI Daily Brief: Artificial Intelligence News"
+                  - 'img "Country: United States" [ref=f1e361]':
+                    - generic [ref=f1e362]: 🇺🇸
+                - generic [ref=f1e363]: "@aidailybrief"
+              - button "0" [ref=f1e365]
+            - generic [ref=f1e366] [cursor=pointer]:
+              - generic [ref=f1e368]:
+                - generic [ref=f1e369]: 2h
+                - generic [ref=f1e370]: "39"
+              - link "🦾 OpenAI's Model Broke Out of Its Cage" [ref=f1e377]:
+                - /url: https://theresanaiforthat.com/news/2026/07/openai-s-model-broke-out-of-its-cage/
+                - generic [ref=f1e378]:
+                  - img "🦾 OpenAI's Model Broke Out of Its Cage" [ref=f1e379]
+                  - generic "News" [ref=f1e380]:
+                    - img "newspaper" [ref=f1e381]
+              - generic [ref=f1e394]:
+                - text: News
+                - link "🦾 OpenAI's Model Broke Out of Its Cage" [ref=f1e396]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/openai-s-model-broke-out-of-its-cage/
+              - link "📄 OpenAI" [ref=f1e399]:
+                - /url: https://theresanaiforthat.com/news/?topic=openai
+              - link [ref=f1e401]:
+                - /url: https://theresanaiforthat.com/company/theresanaiforthat/
+                - strong [ref=f1e402]: TAAFT
+              - button "1" [ref=f1e404]
+            - text: Model 🔒 Funding
+            - generic [ref=f1e405] [cursor=pointer]:
+              - generic [ref=f1e407]:
+                - generic [ref=f1e408]: 3h
+                - generic [ref=f1e409]: 131k
+              - link "ThumbnailCreator.com" [ref=f1e416]:
+                - /url: https://theresanaiforthat.com/ai/thumbnailcreator/
+                - generic [ref=f1e417]:
+                  - img "ThumbnailCreator.com" [ref=f1e418]
+                  - generic "Tool" [ref=f1e419]
+              - generic [ref=f1e423]:
+                - generic [ref=f1e424]:
+                  - text: Tool
+                  - generic [ref=f1e425]:
+                    - link "ThumbnailCreator.com" [ref=f1e426]:
+                      - /url: https://theresanaiforthat.com/ai/thumbnailcreator/
+                    - img "This tool has been claimed by its owner." [ref=f1e428]
+                    - button "Play video preview" [ref=f1e430]
+                  - generic "Version v3.3" [ref=f1e433]: v3.3
+                  - 'generic "Features: 6" [ref=f1e434]': "6"
+                  - 'generic "Comments: 37" [ref=f1e443]':
+                    - button "Show comments" [ref=f1e444]:
+                      - generic [ref=f1e445]: "37"
+                  - button "Show pricing details" [ref=f1e449]:
+                    - generic [ref=f1e451]: $9
+                    - generic [ref=f1e452]: /mo
+                - link "Create eye-catching YouTube thumbnails in seconds." [ref=f1e453]:
+                  - /url: https://theresanaiforthat.com/ai/thumbnailcreator/
+              - link "🎥 YouTube thumbnails" [ref=f1e456]:
+                - /url: https://theresanaiforthat.com/task/youtube-thumbnails/
+              - 'link "Aleric Heck Verified author Country: United States @alericheck" [ref=f1e458]':
+                - /url: https://theresanaiforthat.com/@alericheck/
+                - generic [ref=f1e459]:
+                  - generic [ref=f1e460]:
+                    - strong [ref=f1e461]: Aleric Heck
+                    - img "Verified author" [ref=f1e462]
+                    - 'img "Country: United States" [ref=f1e463]':
+                      - generic [ref=f1e464]: 🇺🇸
+                      - text: United States
+                  - generic [ref=f1e465]: "@alericheck"
+              - button "241" [ref=f1e467]
+            - text: Funding
+            - generic [ref=f1e468] [cursor=pointer]:
+              - generic [ref=f1e470]:
+                - generic [ref=f1e471]: 3h
+                - generic [ref=f1e472]: "24"
+              - link "Substack adds an AI detector to help spot blogs written by no one" [ref=f1e479]:
+                - /url: https://theresanaiforthat.com/news/2026/07/substack-adds-an-ai-detector-to-help-spot-blogs-written-by-no-one/
+                - generic [ref=f1e480]:
+                  - img "Substack adds an AI detector to help spot blogs written by no one" [ref=f1e481]
+                  - generic "News" [ref=f1e482]:
+                    - img "newspaper" [ref=f1e483]
+              - generic [ref=f1e496]:
+                - text: News
+                - link "Substack adds an AI detector to help spot blogs written by no one" [ref=f1e498]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/substack-adds-an-ai-detector-to-help-spot-blogs-written-by-no-one/
+              - link "📄 Detection" [ref=f1e501]:
+                - /url: https://theresanaiforthat.com/news/?topic=ai-detection
+              - strong [ref=f1e504]: theverge.com
+              - button "0" [ref=f1e506]
+            - text: Funding Funding Funding Funding
+            - generic [ref=f1e507] [cursor=pointer]:
+              - generic [ref=f1e509]:
+                - generic [ref=f1e510]: 6h
+                - generic [ref=f1e511]: "89"
+              - 'link "SpaceX: The Artificial Intelligence (AI) Infrastructure Build-out Just Got Interesting (NASDAQ:SPCX)" [ref=f1e518]':
+                - /url: https://theresanaiforthat.com/news/2026/07/spacex-the-artificial-intelligence-ai-infrastructure-build-out-just-got-interesting-nasdaq-spcx/
+                - generic [ref=f1e519]:
+                  - 'img "SpaceX: The Artificial Intelligence (AI) Infrastructure Build-out Just Got Interesting (NASDAQ:SPCX)" [ref=f1e520]'
+                  - generic "News" [ref=f1e521]:
+                    - img "newspaper" [ref=f1e522]
+              - generic [ref=f1e535]:
+                - text: News
+                - 'link "SpaceX: The Artificial Intelligence (AI) Infrastructure Build-out Just Got Interesting (NASDAQ:SPCX)" [ref=f1e537]':
+                  - /url: https://theresanaiforthat.com/news/2026/07/spacex-the-artificial-intelligence-ai-infrastructure-build-out-just-got-interesting-nasdaq-spcx/
+              - link "📄 SpaceX" [ref=f1e540]:
+                - /url: https://theresanaiforthat.com/news/?topic=spacex
+              - strong [ref=f1e543]: fool.com
+              - button "2" [ref=f1e545]
+            - generic [ref=f1e546] [cursor=pointer]:
+              - generic [ref=f1e548]:
+                - generic [ref=f1e549]: 6h
+                - generic [ref=f1e550]: "38"
+              - link "US Threatens Sanctions on China Over Alleged AI Model Theft" [ref=f1e557]:
+                - /url: https://theresanaiforthat.com/news/2026/07/us-threatens-sanctions-on-china-over-alleged-ai-model-theft/
+                - generic [ref=f1e558]:
+                  - img "US Threatens Sanctions on China Over Alleged AI Model Theft" [ref=f1e559]
+                  - generic "News" [ref=f1e560]:
+                    - img "newspaper" [ref=f1e561]
+              - generic [ref=f1e574]:
+                - text: News
+                - link "US Threatens Sanctions on China Over Alleged AI Model Theft" [ref=f1e576]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/us-threatens-sanctions-on-china-over-alleged-ai-model-theft/
+              - link "📄 Sanctions" [ref=f1e579]:
+                - /url: https://theresanaiforthat.com/news/?topic=sanctions
+              - strong [ref=f1e582]: pymnts.com
+              - button "2" [ref=f1e584]
+            - text: Funding United States
+            - generic [ref=f1e585] [cursor=pointer]:
+              - generic [ref=f1e587]:
+                - generic [ref=f1e588]: 7h
+                - generic [ref=f1e589]: "73"
+              - link "LaunchBay" [ref=f1e596]:
+                - /url: https://theresanaiforthat.com/ai/launchbay/
+                - generic [ref=f1e597]:
+                  - img "LaunchBay" [ref=f1e598]
+                  - generic "Tool" [ref=f1e599]
+              - generic [ref=f1e603]:
+                - generic [ref=f1e604]:
+                  - text: Tool
+                  - generic [ref=f1e605]:
+                    - link "LaunchBay" [ref=f1e606]:
+                      - /url: https://theresanaiforthat.com/ai/launchbay/
+                    - img "This tool has been claimed by its owner." [ref=f1e608]
+                  - 'generic "Features: 1" [ref=f1e609]': "1"
+                  - button "Show pricing details" [ref=f1e618]:
+                    - generic [ref=f1e620]: $19
+                    - generic [ref=f1e621]: /mo
+                - link "Client onboarding, projects, and follow-ups in one place." [ref=f1e622]:
+                  - /url: https://theresanaiforthat.com/ai/launchbay/
+              - link "🚀 Customer onboarding" [ref=f1e625]:
+                - /url: https://theresanaiforthat.com/task/customer-onboarding/
+              - 'link "Zack Garbow Verified author Country: United States @zack-garbow" [ref=f1e627]':
+                - /url: https://theresanaiforthat.com/@zack-garbow/
+                - generic [ref=f1e628]:
+                  - generic [ref=f1e629]:
+                    - strong [ref=f1e630]: Zack Garbow
+                    - img "Verified author" [ref=f1e631]
+                    - 'img "Country: United States" [ref=f1e632]':
+                      - generic [ref=f1e633]: 🇺🇸
+                      - text: United States
+                  - generic [ref=f1e634]: "@zack-garbow"
+              - button "2" [ref=f1e636]
+            - text: Funding Funding Funding Funding 💰 Germany
+            - generic [ref=f1e637] [cursor=pointer]:
+              - generic [ref=f1e639]:
+                - generic [ref=f1e640]: 9h
+                - generic [ref=f1e641]: "30"
+              - link "Anthropic hit with largest-ever $1.5 billion penalty in copyright lawsuit — court says training AI on published material is fair use, but startup’s pirated library infringes on authors’ rights" [ref=f1e648]:
+                - /url: https://theresanaiforthat.com/news/2026/07/anthropic-hit-with-largest-ever-1-5-billion-penalty-in-copyright-lawsuit-court-says-training-ai-on-published-material-is-fair-use-but-startup-s-pirated-library-infringes-on-authors-rights/
+                - generic [ref=f1e649]:
+                  - img "Anthropic hit with largest-ever $1.5 billion penalty in copyright lawsuit — court says training AI on published material is fair use, but startup’s pirated library infringes on authors’ rights" [ref=f1e650]
+                  - generic "News" [ref=f1e651]:
+                    - img "newspaper" [ref=f1e652]
+              - generic [ref=f1e665]:
+                - text: News
+                - link "Anthropic hit with largest-ever $1.5 billion penalty in copyright lawsuit — court says training AI on published material is fair use, but startup’s pirated library infringes on authors’ rights" [ref=f1e667]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/anthropic-hit-with-largest-ever-1-5-billion-penalty-in-copyright-lawsuit-court-says-training-ai-on-published-material-is-fair-use-but-startup-s-pirated-library-infringes-on-authors-rights/
+              - link "📄 Copyright Lawsuit" [ref=f1e670]:
+                - /url: https://theresanaiforthat.com/news/?topic=copyright-lawsuit
+              - strong [ref=f1e673]: tomshardware.com
+              - button "0" [ref=f1e675]
+            - generic [ref=f1e676] [cursor=pointer]:
+              - generic [ref=f1e678]:
+                - generic [ref=f1e679]: 9h
+                - generic [ref=f1e680]: 5.9k
+              - link "GoFaceless" [ref=f1e687]:
+                - /url: https://theresanaiforthat.com/ai/gofaceless/
+                - generic [ref=f1e688]:
+                  - img "GoFaceless" [ref=f1e689]
+                  - generic "Tool" [ref=f1e690]
+              - generic [ref=f1e694]:
+                - generic [ref=f1e695]:
+                  - text: Tool
+                  - generic [ref=f1e696]:
+                    - link "GoFaceless" [ref=f1e697]:
+                      - /url: https://theresanaiforthat.com/ai/gofaceless/
+                    - img "This tool has been claimed by its owner." [ref=f1e699]
+                    - button "Play video preview" [ref=f1e701]
+                  - generic "Version v2.0" [ref=f1e704]: v2.0
+                  - 'generic "Features: 12" [ref=f1e705]': "12"
+                  - 'generic "Comments: 8" [ref=f1e714]':
+                    - button "Show comments" [ref=f1e715]:
+                      - generic [ref=f1e716]: "8"
+                  - button "Show pricing details" [ref=f1e720]:
+                    - generic [ref=f1e722]: $29
+                    - generic [ref=f1e723]: /mo
+                - link "Turn any idea into a finished faceless video." [ref=f1e724]:
+                  - /url: https://theresanaiforthat.com/ai/gofaceless/
+              - link "🕵️ Faceless videos" [ref=f1e727]:
+                - /url: https://theresanaiforthat.com/task/faceless-videos/
+              - 'link "Franck Nijimbere Verified author Country: United Kingdom @nijfranck" [ref=f1e729]':
+                - /url: https://theresanaiforthat.com/@nijfranck/
+                - generic [ref=f1e730]:
+                  - generic [ref=f1e731]:
+                    - strong [ref=f1e732]: Franck Nijimbere
+                    - img "Verified author" [ref=f1e733]
+                    - 'img "Country: United Kingdom" [ref=f1e734]':
+                      - generic [ref=f1e735]: 🇬🇧
+                      - text: United Kingdom
+                  - generic [ref=f1e736]: "@nijfranck"
+              - button "35" [ref=f1e738]
+            - generic [ref=f1e739] [cursor=pointer]:
+              - generic [ref=f1e741]:
+                - generic [ref=f1e742]: Ad
+                - generic [ref=f1e743]: 139k
+              - link "CodeRabbit" [ref=f1e750]:
+                - /url: https://theresanaiforthat.com/ai/coderabbit/?ref=home_today_ad
+                - generic [ref=f1e751]:
+                  - img "CodeRabbit" [ref=f1e752]
+                  - generic "Tool" [ref=f1e753]
+              - generic [ref=f1e757]:
+                - generic [ref=f1e758]:
+                  - text: Tool
+                  - generic [ref=f1e759]:
+                    - link "CodeRabbit" [ref=f1e760]:
+                      - /url: https://theresanaiforthat.com/ai/coderabbit/?ref=home_today_ad
+                    - img "This tool has been claimed by its owner." [ref=f1e762]
+                    - button "Play video preview" [ref=f1e764]
+                  - generic "Version v1.9" [ref=f1e767]: v1.9
+                  - button "Show pricing details" [ref=f1e768]:
+                    - generic [ref=f1e770]: $12
+                    - generic [ref=f1e771]: /mo
+                - link "Enhanced code review for improved workflow and quality." [ref=f1e772]:
+                  - /url: https://theresanaiforthat.com/ai/coderabbit/?ref=home_today_ad
+              - link "🔍 Code reviews" [ref=f1e775]:
+                - /url: https://theresanaiforthat.com/task/code-reviews/
+              - link "Vishu Kaur Verified author @vishukaur" [ref=f1e777]:
+                - /url: https://theresanaiforthat.com/@vishukaur/
+                - generic [ref=f1e778]:
+                  - generic [ref=f1e779]:
+                    - strong [ref=f1e780]: Vishu Kaur
+                    - img "Verified author" [ref=f1e781]
+                  - generic [ref=f1e782]: "@vishukaur"
+              - button "806" [ref=f1e784]
+            - generic [ref=f1e785] [cursor=pointer]:
+              - generic [ref=f1e787]:
+                - generic [ref=f1e788]: 9h
+                - generic [ref=f1e789]: "292"
+              - link "Hola AI" [ref=f1e796]:
+                - /url: https://theresanaiforthat.com/ai/hola-ai/
+                - generic [ref=f1e797]:
+                  - img "Hola AI" [ref=f1e798]
+                  - generic "Tool" [ref=f1e799]
+              - generic [ref=f1e803]:
+                - generic [ref=f1e804]:
+                  - text: Tool
+                  - generic [ref=f1e805]:
+                    - link "Hola AI" [ref=f1e806]:
+                      - /url: https://theresanaiforthat.com/ai/hola-ai/
+                    - img "This tool has been claimed by its owner." [ref=f1e808]
+                  - 'generic "Features: 8" [ref=f1e809]': "8"
+                - link "Monetize your Prompts! The ad exchange built for AI Conversations" [ref=f1e818]:
+                  - /url: https://theresanaiforthat.com/ai/hola-ai/
+              - link "📈 Revenue growth" [ref=f1e821]:
+                - /url: https://theresanaiforthat.com/task/revenue-growth/
+              - 'link "Michael Barnaby Verified author Country: United Kingdom @michael-barnaby" [ref=f1e823]':
+                - /url: https://theresanaiforthat.com/@michael-barnaby/
+                - generic [ref=f1e824]:
+                  - generic [ref=f1e825]:
+                    - strong [ref=f1e826]: Michael Barnaby
+                    - img "Verified author" [ref=f1e827]
+                    - 'img "Country: United Kingdom" [ref=f1e828]':
+                      - generic [ref=f1e829]: 🇬🇧
+                      - text: United Kingdom
+                  - generic [ref=f1e830]: "@michael-barnaby"
+              - button "7" [ref=f1e832]
+            - text: Funding
+            - generic [ref=f1e833] [cursor=pointer]:
+              - generic [ref=f1e835]:
+                - generic [ref=f1e836]: 10h
+                - generic [ref=f1e837]: "17"
+              - link "Z.ai powers up a 1-gigawatt AI data center built entirely on Chinese chips, report claims — GLM developer now runs multiple 10,000-chip clusters with zero Nvidia silicon" [ref=f1e844]:
+                - /url: https://theresanaiforthat.com/news/2026/07/z-ai-powers-up-a-1-gigawatt-ai-data-center-built-entirely-on-chinese-chips-report-claims-glm-developer-now-runs-multiple-10-000-chip-clusters-with-zero-nvidia-silicon/
+                - generic [ref=f1e845]:
+                  - img "Z.ai powers up a 1-gigawatt AI data center built entirely on Chinese chips, report claims — GLM developer now runs multiple 10,000-chip clusters with zero Nvidia silicon" [ref=f1e846]
+                  - generic "News" [ref=f1e847]:
+                    - img "newspaper" [ref=f1e848]
+              - generic [ref=f1e861]:
+                - text: News
+                - link "Z.ai powers up a 1-gigawatt AI data center built entirely on Chinese chips, report claims — GLM developer now runs multiple 10,000-chip clusters with zero Nvidia silicon" [ref=f1e863]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/z-ai-powers-up-a-1-gigawatt-ai-data-center-built-entirely-on-chinese-chips-report-claims-glm-developer-now-runs-multiple-10-000-chip-clusters-with-zero-nvidia-silicon/
+              - link "📄 Data Center" [ref=f1e866]:
+                - /url: https://theresanaiforthat.com/news/?topic=ai-data-center
+              - strong [ref=f1e869]: tomshardware.com
+              - button "1" [ref=f1e871]
+            - generic [ref=f1e872] [cursor=pointer]:
+              - generic [ref=f1e874]:
+                - generic [ref=f1e875]: 10h
+                - generic [ref=f1e876]: "110"
+              - link "DeepJournal" [ref=f1e883]:
+                - /url: https://theresanaiforthat.com/ai/deepjournal/
+                - generic [ref=f1e884]:
+                  - img "DeepJournal" [ref=f1e885]
+                  - generic "Tool" [ref=f1e886]
+              - generic [ref=f1e890]:
+                - generic [ref=f1e891]:
+                  - text: Tool
+                  - generic [ref=f1e892]:
+                    - link "DeepJournal" [ref=f1e893]:
+                      - /url: https://theresanaiforthat.com/ai/deepjournal/
+                    - img "This tool has been claimed by its owner." [ref=f1e895]
+                  - 'generic "Features: 5" [ref=f1e896]': "5"
+                  - button "Show pricing details" [ref=f1e905]:
+                    - generic [ref=f1e907]: $20
+                    - generic [ref=f1e908]: /mo
+                - link "The AI journal that remembers, privately." [ref=f1e909]:
+                  - /url: https://theresanaiforthat.com/ai/deepjournal/
+              - link "📔 Journaling" [ref=f1e912]:
+                - /url: https://theresanaiforthat.com/task/journaling/
+              - 'link "DeepJournal Verified author Country: France @deepjournal" [ref=f1e914]':
+                - /url: https://theresanaiforthat.com/@deepjournal/
+                - generic [ref=f1e915]:
+                  - generic [ref=f1e916]:
+                    - strong [ref=f1e917]: DeepJournal
+                    - img "Verified author" [ref=f1e918]
+                    - 'img "Country: France" [ref=f1e919]':
+                      - generic [ref=f1e920]: 🇫🇷
+                      - text: France
+                  - generic [ref=f1e921]: "@deepjournal"
+              - button "3" [ref=f1e923]
+            - generic [ref=f1e924] [cursor=pointer]:
+              - generic [ref=f1e926]:
+                - generic [ref=f1e927]: 10h
+                - generic [ref=f1e928]: "11"
+              - link "Alibaba's Qwen3.8-Max Claims Second Place Behind Fable 5 With No Benchmarks Published" [ref=f1e935]:
+                - /url: https://theresanaiforthat.com/news/2026/07/alibaba-s-qwen3-8-max-claims-second-place-behind-fable-5-with-no-benchmarks-published/
+                - generic [ref=f1e936]:
+                  - img "Alibaba's Qwen3.8-Max Claims Second Place Behind Fable 5 With No Benchmarks Published" [ref=f1e937]
+                  - generic "News" [ref=f1e938]:
+                    - img "newspaper" [ref=f1e939]
+              - generic [ref=f1e952]:
+                - text: News
+                - link "Alibaba's Qwen3.8-Max Claims Second Place Behind Fable 5 With No Benchmarks Published" [ref=f1e954]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/alibaba-s-qwen3-8-max-claims-second-place-behind-fable-5-with-no-benchmarks-published/
+              - link "📄 Benchmark" [ref=f1e957]:
+                - /url: https://theresanaiforthat.com/news/?topic=benchmark
+              - strong [ref=f1e960]: techtimes.com
+              - button "0" [ref=f1e962]
+            - text: Funding
+            - generic [ref=f1e963] [cursor=pointer]:
+              - generic [ref=f1e965]:
+                - generic [ref=f1e966]: 10h
+                - generic [ref=f1e967]: "18"
+              - 'link "Advanced Micro Devices vs. Intel: What the Revenue Trajectories of These Artificial Intelligence Companies Tell Investors" [ref=f1e974]':
+                - /url: https://theresanaiforthat.com/news/2026/07/advanced-micro-devices-vs-intel-what-the-revenue-trajectories-of-these-artificial-intelligence-companies-tell-investors/
+                - generic [ref=f1e975]:
+                  - 'img "Advanced Micro Devices vs. Intel: What the Revenue Trajectories of These Artificial Intelligence Companies Tell Investors" [ref=f1e976]'
+                  - generic "News" [ref=f1e977]:
+                    - img "newspaper" [ref=f1e978]
+              - generic [ref=f1e991]:
+                - text: News
+                - 'link "Advanced Micro Devices vs. Intel: What the Revenue Trajectories of These Artificial Intelligence Companies Tell Investors" [ref=f1e993]':
+                  - /url: https://theresanaiforthat.com/news/2026/07/advanced-micro-devices-vs-intel-what-the-revenue-trajectories-of-these-artificial-intelligence-companies-tell-investors/
+              - link "📄 Revenue Analysis" [ref=f1e996]:
+                - /url: https://theresanaiforthat.com/news/?topic=revenue-analysis
+              - strong [ref=f1e999]: fool.com
+              - button "1" [ref=f1e1001]
+            - text: Funding
+            - generic [ref=f1e1002] [cursor=pointer]:
+              - generic [ref=f1e1004]:
+                - generic [ref=f1e1005]: 11h
+                - generic [ref=f1e1006]: "25"
+              - 'link "Artificial Intelligence and the Future of Humanity: Nobel Laureates Call for Global Safeguards" [ref=f1e1013]':
+                - /url: https://theresanaiforthat.com/news/2026/07/artificial-intelligence-and-the-future-of-humanity-nobel-laureates-call-for-global-safeguards/
+                - generic [ref=f1e1014]:
+                  - 'img "Artificial Intelligence and the Future of Humanity: Nobel Laureates Call for Global Safeguards" [ref=f1e1015]'
+                  - generic "News" [ref=f1e1016]:
+                    - img "newspaper" [ref=f1e1017]
+              - generic [ref=f1e1030]:
+                - text: News
+                - 'link "Artificial Intelligence and the Future of Humanity: Nobel Laureates Call for Global Safeguards" [ref=f1e1032]':
+                  - /url: https://theresanaiforthat.com/news/2026/07/artificial-intelligence-and-the-future-of-humanity-nobel-laureates-call-for-global-safeguards/
+              - link "📄 Safety" [ref=f1e1035]:
+                - /url: https://theresanaiforthat.com/news/?topic=ai-safety
+              - strong [ref=f1e1038]: ipsnews.net
+              - button "0" [ref=f1e1040]
+            - text: Funding 💰 United States Funding 💰 United States Funding Funding 💰 United States Event Funding
+            - generic [ref=f1e1041] [cursor=pointer]:
+              - generic [ref=f1e1043]:
+                - generic [ref=f1e1044]: 14h
+                - generic [ref=f1e1045]: "18"
+              - link "AI FUTURE OF HUMANITY - Inter Press Service" [ref=f1e1052]:
+                - /url: https://theresanaiforthat.com/news/2026/07/ai-future-of-humanity-inter-press-service/
+                - generic [ref=f1e1053]:
+                  - img "AI FUTURE OF HUMANITY - Inter Press Service" [ref=f1e1054]
+                  - generic "News" [ref=f1e1055]:
+                    - img "newspaper" [ref=f1e1056]
+              - generic [ref=f1e1069]:
+                - text: News
+                - link "AI FUTURE OF HUMANITY - Inter Press Service" [ref=f1e1071]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/ai-future-of-humanity-inter-press-service/
+              - link "📄 Nobel Laureates" [ref=f1e1074]:
+                - /url: https://theresanaiforthat.com/news/?topic=nobel-laureates
+              - strong [ref=f1e1077]: ipsnews.net
+              - button "0" [ref=f1e1079]
+            - text: Funding
+            - generic [ref=f1e1080] [cursor=pointer]:
+              - generic [ref=f1e1082]:
+                - generic [ref=f1e1083]: 15h
+                - generic [ref=f1e1084]: "187"
+              - link "Geekflare" [ref=f1e1091]:
+                - /url: https://theresanaiforthat.com/ai/geekflare/
+                - generic [ref=f1e1092]:
+                  - img "Geekflare" [ref=f1e1093]
+                  - generic "Tool" [ref=f1e1094]
+              - generic [ref=f1e1098]:
+                - generic [ref=f1e1099]:
+                  - text: Tool
+                  - generic [ref=f1e1100]:
+                    - link "Geekflare" [ref=f1e1101]:
+                      - /url: https://theresanaiforthat.com/ai/geekflare/
+                    - img "This tool has been claimed by its owner." [ref=f1e1103]
+                  - 'generic "Features: 4" [ref=f1e1104]': "4"
+                  - button "Show pricing details" [ref=f1e1113]:
+                    - generic [ref=f1e1115]: $9
+                    - generic [ref=f1e1116]: /mo
+                - link "Turn the chaotic web into clean, structured data." [ref=f1e1117]:
+                  - /url: https://theresanaiforthat.com/ai/geekflare/
+              - link "📊 Web scraping" [ref=f1e1120]:
+                - /url: https://theresanaiforthat.com/task/web-scraping/
+              - 'link "Chandan Kumar Verified author Country: United Kingdom @chandan-kumar-71mgd" [ref=f1e1122]':
+                - /url: https://theresanaiforthat.com/@chandan-kumar-71mgd/
+                - generic [ref=f1e1123]:
+                  - generic [ref=f1e1124]:
+                    - strong [ref=f1e1125]: Chandan Kumar
+                    - img "Verified author" [ref=f1e1126]
+                    - 'img "Country: United Kingdom" [ref=f1e1127]':
+                      - generic [ref=f1e1128]: 🇬🇧
+                      - text: United Kingdom
+                  - generic [ref=f1e1129]: "@chandan-kumar-71mgd"
+              - button "6" [ref=f1e1131]
+            - text: Funding Funding
+            - generic [ref=f1e1132] [cursor=pointer]:
+              - generic [ref=f1e1134]:
+                - generic [ref=f1e1135]: 16h
+                - generic [ref=f1e1136]: "252"
+              - link "PDF2EPUB.ai" [ref=f1e1143]:
+                - /url: https://theresanaiforthat.com/ai/pdf2epub-ai/
+                - generic [ref=f1e1144]:
+                  - img "PDF2EPUB.ai" [ref=f1e1145]
+                  - generic "Tool" [ref=f1e1146]
+              - generic [ref=f1e1150]:
+                - generic [ref=f1e1151]:
+                  - text: Tool
+                  - generic [ref=f1e1152]:
+                    - link "PDF2EPUB.ai" [ref=f1e1153]:
+                      - /url: https://theresanaiforthat.com/ai/pdf2epub-ai/
+                    - img "This tool has been claimed by its owner." [ref=f1e1155]
+                    - button "Play video preview" [ref=f1e1157]
+                  - 'generic "Features: 1" [ref=f1e1160]': "1"
+                  - button "Show pricing details" [ref=f1e1169]:
+                    - generic [ref=f1e1170]: $8.25
+                    - generic [ref=f1e1171]: /mo
+                - link "Convert any PDF into a perfectly readable eBook" [ref=f1e1172]:
+                  - /url: https://theresanaiforthat.com/ai/pdf2epub-ai/
+              - link "📖 PDF to EPUB" [ref=f1e1175]:
+                - /url: https://theresanaiforthat.com/task/pdf-to-epub/
+              - 'link "steven Verified author Country: Singapore @stevendong" [ref=f1e1177]':
+                - /url: https://theresanaiforthat.com/@stevendong/
+                - generic [ref=f1e1178]:
+                  - generic [ref=f1e1179]:
+                    - strong [ref=f1e1180]: steven
+                    - img "Verified author" [ref=f1e1181]
+                    - 'img "Country: Singapore" [ref=f1e1182]':
+                      - generic [ref=f1e1183]: 🇸🇬
+                      - text: Singapore
+                  - generic [ref=f1e1184]: "@stevendong"
+              - button "5" [ref=f1e1186]
+            - text: Repository 🛡️ Funding
+            - generic [ref=f1e1187] [cursor=pointer]:
+              - generic [ref=f1e1189]:
+                - generic [ref=f1e1190]: Ad
+                - generic [ref=f1e1191]: "692"
+              - link "MNKI" [ref=f1e1198]:
+                - /url: https://theresanaiforthat.com/ai/mnki/?ref=home_today_ad
+                - generic [ref=f1e1199]:
+                  - img "MNKI" [ref=f1e1200]
+                  - generic "Tool" [ref=f1e1201]
+              - generic [ref=f1e1205]:
+                - generic [ref=f1e1206]:
+                  - text: Tool
+                  - generic [ref=f1e1207]:
+                    - link "MNKI" [ref=f1e1208]:
+                      - /url: https://theresanaiforthat.com/ai/mnki/?ref=home_today_ad
+                    - img "This tool has been claimed by its owner." [ref=f1e1210]
+                    - button "Play video preview" [ref=f1e1212]
+                  - button "Show pricing details" [ref=f1e1215]:
+                    - generic [ref=f1e1217]: $28.99
+                    - generic [ref=f1e1218]: /mo
+                - link "Turn architectural sketches into photorealistic renders in seconds." [ref=f1e1219]:
+                  - /url: https://theresanaiforthat.com/ai/mnki/?ref=home_today_ad
+              - link "🏛 Architectural design" [ref=f1e1222]:
+                - /url: https://theresanaiforthat.com/task/architectural-design/
+              - 'link "MNKI Verified author Country: Egypt @mnki-ai" [ref=f1e1224]':
+                - /url: https://theresanaiforthat.com/@mnki-ai/
+                - generic [ref=f1e1225]:
+                  - generic [ref=f1e1226]:
+                    - strong [ref=f1e1227]: MNKI
+                    - img "Verified author" [ref=f1e1228]
+                    - 'img "Country: Egypt" [ref=f1e1229]':
+                      - generic [ref=f1e1230]: 🇪🇬
+                      - text: Egypt
+                  - generic [ref=f1e1231]: "@mnki-ai"
+              - button "10" [ref=f1e1233]
+            - generic [ref=f1e1234] [cursor=pointer]:
+              - generic [ref=f1e1236]:
+                - generic [ref=f1e1237]: 16h
+                - generic [ref=f1e1238]: "12"
+              - 'link "Artificial Intelligence Meets Longevity Science: Insilico Medicine and Global Pioneers Redefine Therapeutic Discovery Paradigms" [ref=f1e1245]':
+                - /url: https://theresanaiforthat.com/news/2026/07/artificial-intelligence-meets-longevity-science-insilico-medicine-and-global-pioneers-redefine-therapeutic-discovery-paradigms/
+                - generic [ref=f1e1246]:
+                  - 'img "Artificial Intelligence Meets Longevity Science: Insilico Medicine and Global Pioneers Redefine Therapeutic Discovery Paradigms" [ref=f1e1247]'
+                  - generic "News" [ref=f1e1248]:
+                    - img "newspaper" [ref=f1e1249]
+              - generic [ref=f1e1262]:
+                - text: News
+                - 'link "Artificial Intelligence Meets Longevity Science: Insilico Medicine and Global Pioneers Redefine Therapeutic Discovery Paradigms" [ref=f1e1264]':
+                  - /url: https://theresanaiforthat.com/news/2026/07/artificial-intelligence-meets-longevity-science-insilico-medicine-and-global-pioneers-redefine-therapeutic-discovery-paradigms/
+              - link "📄 Longevity Science" [ref=f1e1267]:
+                - /url: https://theresanaiforthat.com/news/?topic=longevity-science
+              - strong [ref=f1e1270]: geneonline.com
+              - button "1" [ref=f1e1272]
+            - text: Funding Funding
+            - generic [ref=f1e1273] [cursor=pointer]:
+              - generic [ref=f1e1275]:
+                - generic [ref=f1e1276]: 18h
+                - generic [ref=f1e1277]: "11"
+              - link "Election voting advice from AI chatbots ‘inaccurate and unreliable’" [ref=f1e1284]:
+                - /url: https://theresanaiforthat.com/news/2026/07/election-voting-advice-from-ai-chatbots-inaccurate-and-unreliable/
+                - generic [ref=f1e1285]:
+                  - img "Election voting advice from AI chatbots ‘inaccurate and unreliable’" [ref=f1e1286]
+                  - generic "News" [ref=f1e1287]:
+                    - img "newspaper" [ref=f1e1288]
+              - generic [ref=f1e1301]:
+                - text: News
+                - link "Election voting advice from AI chatbots ‘inaccurate and unreliable’" [ref=f1e1303]:
+                  - /url: https://theresanaiforthat.com/news/2026/07/election-voting-advice-from-ai-chatbots-inaccurate-and-unreliable/
+              - link "📄 Chatbots" [ref=f1e1306]:
+                - /url: https://theresanaiforthat.com/news/?topic=ai-chatbots
+              - strong [ref=f1e1309]: theguardian.com
+              - button "1" [ref=f1e1311]
+            - status "Loading more releases" [ref=f1e1313]
+      - text: ✓ ✓ United States Artificial Intelligence United States Artificial Intelligence United States Artificial Intelligence China Artificial Intelligence United States Aerospace Technology United States Artificial Intelligence United States Computer Hardware Manufacturing China Artificial Intelligence United States Artificial Intelligence United States Robotics Engineering United States Data Infrastructure and Analytics United States Artificial Intelligence France Artificial Intelligence United States Artificial Intelligence United States Artificial Intelligence China Artificial Intelligence United Kingdom Biotechnology United States Software Development United States Artificial Intelligence China Artificial Intelligence China Artificial Intelligence United States Robotics Engineering Germany Aerospace Technology United States Software Development United States Artificial Intelligence China Artificial Intelligence United States Hospitals and Health Care United States Research United States United States Artificial Intelligence United States Artificial Intelligence United States Research United States Artificial Intelligence United States Data Infrastructure and Analytics United States Staffing and Recruiting United States Artificial Intelligence United States Aerospace Technology United States Biotechnology United States Cybersecurity Hong Kong Artificial Intelligence United States Artificial Intelligence United States Artificial Intelligence United States Artificial Intelligence United States Cybersecurity United States Financial United States Financial China Computer Hardware Manufacturing United States Data Infrastructure and Analytics Canada Artificial Intelligence China Robotics Engineering 🔒 📷 🤖 🤖 🔊 🤖 🔍 🔍 🔍 🤖 💬 🤖 🗣️ 🗣️ 🔒 💬 🎤 🤖 💬 📽 📽 💬 💬 💬 🎥 🎥 🏥 🤖 👁️ 📜 🏠 🎥 🎥 🎥 🎵 🖼️ 🏥 💬 🎥 🎥 🎙 🖼️ 🎙 🤖 💻 🤖 🎤 Robotics Engineering Artificial Intelligence Artificial Intelligence Data Infrastructure and Analytics Accounting Artificial Intelligence 🧭 🤖 📊 🤖 🔍 🔍 🤖 🤖 🏡 🎾 🎾 🎾 🤖 🤖 🤖 🏭 🤖 🤖 🤖 🤖 🤖 🤖 🤖 🎤 🤝 🤖 🤖 🤖 🎭 🏭 🏭 🏭 🤖 🤖 🤖 🎥 🤖 🤗 🤖 🤖 🤖 🏥 💼 👀 🤖 🤖 ♟️ 🤖 🤖 🤖 👷 🐾 📝 🤖 📝 🌐 📘 🏥 🥑 🛌 🔍 ‍♀️ 🏋️ 🌍 🔇 📚 🏌️‍♂️ 📊 📊 📊 🤖 🤖 🚀 🧠 🧠 🏋️ 💼 🌍 🧠 💤 🚀 🎵 🗓️ 🏋️ 🏠 💼 💼 📋 🏥 🎙️ 👵 💡 🧠 📝 🌱 🎤 💪 🏠 💼
+  - contentinfo [ref=f1e1314]:
+    - generic [ref=f1e1315]: The front page of AI, used by 90M+ humans.
+    - generic [ref=f1e1316]:
+      - generic [ref=f1e1317]:
+        - generic [ref=f1e1318]:
+          - link "Contact us icon" [ref=f1e1319] [cursor=pointer]:
+            - /url: https://theresanaiforthat.com/contact-us/
+            - img "Contact us icon"
+          - link "Twitter icon" [ref=f1e1320] [cursor=pointer]:
+            - /url: https://twitter.com/theresanaiforit
+            - img "Twitter icon"
+          - link "LinkedIn icon" [ref=f1e1321] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/taaft/
+            - img "LinkedIn icon"
+          - link "YouTube icon" [ref=f1e1322] [cursor=pointer]:
+            - /url: https://www.youtube.com/@theresanaiforit
+            - img "YouTube icon"
+        - generic [ref=f1e1323]: There’s An AI For That SRL5 HalelorBucharest 030118Romania
+        - link "Launch an AI tool" [ref=f1e1324] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/get-featured/#opt_submit
+      - generic [ref=f1e1325]:
+        - generic [ref=f1e1326]: AI Tools
+        - link "Mini Tools" [ref=f1e1327] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/mini-tools/
+        - link "Collections" [ref=f1e1328] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/collections/
+        - link "Tasks" [ref=f1e1329] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/tasks/
+        - link "Characters" [ref=f1e1330] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/characters/
+        - link "Leaderboard" [ref=f1e1331] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/leaderboard/
+        - link "Map" [ref=f1e1332] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/map/
+        - link "Most Saved" [ref=f1e1333] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/most-saved/
+        - link "Popular AIs" [ref=f1e1334] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/popular/
+        - link "Job Impact" [ref=f1e1335] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/job-impact/
+        - link "Timeline" [ref=f1e1336] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/timeline/
+        - link "AI Glossary" [ref=f1e1337] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/glossary/
+      - generic [ref=f1e1338]:
+        - generic [ref=f1e1339]: Company
+        - link "Sponsor us" [ref=f1e1340] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/sponsor-us/
+        - link "Manage ads" [ref=f1e1341] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/dashboard/
+        - link "Promote AI" [ref=f1e1342] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/get-featured/#opt_ppc
+        - link "Affiliate program" [ref=f1e1343] [cursor=pointer]:
+          - /url: https://taaft.getrewardful.com/signup
+      - generic [ref=f1e1344]:
+        - generic [ref=f1e1345]: About
+        - link "About us" [ref=f1e1346] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/about/
+        - link "Careers" [ref=f1e1347] [cursor=pointer]:
+          - /url: https://careers.theresanaiforthat.com/
+        - link "Terms" [ref=f1e1348] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/terms/
+        - link "Privacy" [ref=f1e1349] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/privacy/
+        - link "Contact us" [ref=f1e1350] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/contact-us/
+        - link "Documentation" [ref=f1e1351] [cursor=pointer]:
+          - /url: https://theresanaiforthat.com/docs/
+        - link "Newsletter" [ref=f1e1352] [cursor=pointer]:
+          - /url: https://newsletter.theresanaiforthat.com/
+    - link "Home" [ref=f1e1354] [cursor=pointer]:
+      - /url: https://theresanaiforthat.com
+      - text: taaft.com/any-keyword
+      - generic:
+        - img "There's An AI For That logo"
+      - text: ®
+    - generic [ref=f1e1355]: © 2026 There's An AI For That®. All rights reserved.
+  - link "Go to top" [ref=f1e1356] [cursor=pointer]:
+    - /url: "#main"
