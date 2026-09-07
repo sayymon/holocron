@@ -13,11 +13,18 @@ wikilinks:
   - ollama
   - inference-platforms
   - generative-ai
+  - llama-4
 ---
 
 # Meta Llama — Open-Weights Lider
 
 > Meta e a empresa por tras do Llama, a familia de modelos open-weights mais popular do mundo. Em 2026, lancou Llama 4 (MoE) e Muse Spark (proprietario).
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **Llama 4** | [[llama-4]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

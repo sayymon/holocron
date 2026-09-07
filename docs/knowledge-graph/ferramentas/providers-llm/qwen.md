@@ -13,11 +13,18 @@ wikilinks:
   - inference-platforms
   - generative-ai
   - multimodal
+  - qwen-3.5
 ---
 
 # Qwen — Open-Source Apache 2.0 (Alibaba)
 
 > Qwen e a familia de modelos da Alibaba Cloud. Principal destaque: licenca Apache 2.0 (a mais permissiva entre frontiers open-source). Forte em multilingue e coding.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **Qwen 3.5 397B** | [[qwen-3.5]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

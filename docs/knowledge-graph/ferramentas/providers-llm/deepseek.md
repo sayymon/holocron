@@ -14,11 +14,18 @@ wikilinks:
   - geracao-codigo
   - reasoning-models
   - generative-ai
+  - deepseek-v4
 ---
 
 # DeepSeek — O Coding Champion Open-Source
 
-> DeepSeek e um lab chinês que surpreendeu o mercado com modelos MoE de altissima qualidade a custo muito baixo. DeepSeek V4 lidera SWE-Bench entre open-source.
+> DeepSeek e um lab chines que surpreendeu o mercado com modelos MoE de altissima qualidade a custo muito baixo. DeepSeek V4 lidera SWE-Bench entre open-source.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **DeepSeek V4 Pro** | [[deepseek-v4]] | ✅ Explorado |> DeepSeek e um lab chinês que surpreendeu o mercado com modelos MoE de altissima qualidade a custo muito baixo. DeepSeek V4 lidera SWE-Bench entre open-source.
 
 ## Arquitetura Interna
 

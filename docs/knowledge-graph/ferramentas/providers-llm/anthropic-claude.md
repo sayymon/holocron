@@ -16,11 +16,18 @@ wikilinks:
   - geracao-texto
   - geracao-codigo
   - benchmarks-generative-ai
+  - claude-fable-5
 ---
 
-# Anthropic Claude — Líder em Coding e Segurança
+# Anthropic Claude — Lider em Coding e Seguranca
 
-> Anthropic é a empresa fundada por ex-pesquisadores da OpenAI (Dario e Daniela Amodei). Foco em AI Safety. A família Claude é líder em coding (#1 SWE-Bench), criou o [[mcp]] (Model Context Protocol), e oferece Claude Code — agente terminal autônomo.
+> Anthropic e a empresa fundada por ex-pesquisadores da OpenAI (Dario e Daniela Amodei). Foco em AI Safety. A familia Claude e lider em coding (#1 SWE-Bench), criou o [[mcp]] (Model Context Protocol), e oferece Claude Code — agente terminal autonomo.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **Claude Fable 5.1** | [[claude-fable-5]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

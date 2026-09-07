@@ -123,6 +123,17 @@ knowledge-graph/
 | [[diffusion-models]] | Modelos de difusao para geracao |
 | [[benchmarks-generative-ai]] | Metricas e leaderboard |
 
+### Generative AI — Modelos Flagship
+| Nó | Descrição |
+|----|-----------|
+| [[gpt-6-astra]] | OpenAI — O modelo mais capaz do mundo |
+| [[claude-fable-5]] | Anthropic — Lider em coding (SWE-Bench #1) |
+| [[gemini-3-flash]] | Google — Melhor custo-beneficio, 1M contexto |
+| [[llama-4]] | Meta — Open-weights, Scout 10M contexto |
+| [[deepseek-v4]] | DeepSeek — #1 open-source coding |
+| [[qwen-3.5]] | Alibaba — Apache 2.0, 200+ idiomas |
+| [[mistral-large-3]] | Mistral — Frontier europeu, GDPR |
+
 ### LLMs & Representações
 | Nó | Descrição |
 |----|-----------|

@@ -17,11 +17,18 @@ wikilinks:
   - geracao-texto
   - geracao-codigo
   - benchmarks-generative-ai
+  - gpt-6-astra
 ---
 
 # OpenAI GPT — O Ecossistema Dominante
 
-> OpenAI é a empresa que popularizou LLMs com o ChatGPT (2022). Oferece a família GPT via API, Assistants API, fine-tuning, embeddings, Agents SDK e Computer Use. Em setembro 2026, lançou o **GPT-6 Astra** — o modelo mais capaz já criado.
+> OpenAI e a empresa que popularizou LLMs com o ChatGPT (2022). Oferece a familia GPT via API, Assistants API, fine-tuning, embeddings, Agents SDK e Computer Use. Em setembro 2026, lancou o **GPT-6 Astra** — o modelo mais capaz ja criado.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **GPT-6 Astra** | [[gpt-6-astra]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

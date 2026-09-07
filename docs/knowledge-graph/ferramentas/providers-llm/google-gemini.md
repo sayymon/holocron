@@ -14,11 +14,18 @@ wikilinks:
   - geracao-texto
   - multimodal
   - benchmarks-generative-ai
+  - gemini-3-flash
 ---
 
 # Google Gemini — Maior Contexto e Multimodal
 
-> Google Gemini é a família de modelos da Google DeepMind. Diferenciais: maior janela de contexto (1M-2M tokens), multimodal nativo (texto+imagem+vídeo+áudio), e custo-benefício entre frontiers.
+> Google Gemini e a familia de modelos da Google DeepMind. Diferenciais: maior janela de contexto (1M-2M tokens), multimodal nativo (texto+video+audio), e custo-beneficio entre frontiers.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **Gemini 3.8 Flash** | [[gemini-3-flash]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

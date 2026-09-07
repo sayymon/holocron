@@ -12,11 +12,18 @@ wikilinks:
   - fine-tuning
   - inference-platforms
   - generative-ai
+  - mistral-large-3
 ---
 
 # Mistral — Open-Source Europeu
 
 > Mistral AI e uma startup francesa (ex-Meta, ex-DeepMind) que produz modelos open-source de alta qualidade. Principal vantagem: empresa europeia com compliance GDPR nativo.
+
+## Modelos Atomicos
+
+| Modelo | Doc | Status |
+|--------|-----|:------:|
+| **Mistral Large 3** | [[mistral-large-3]] | ✅ Explorado |
 
 ## Arquitetura Interna
 

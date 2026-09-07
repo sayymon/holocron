@@ -1,8 +1,8 @@
 ---
-titulo: Estado de Exploração do Knowledge Graph
+titulo: Estado de Exploracao do Knowledge Graph
 ultima_sessao: '2026-09-07'
-total_nodes: 57
-explored: 57
+total_nodes: 64
+explored: 64
 in_progress: 0
 pending: 0
 mapas_criados:
@@ -147,9 +147,18 @@ Nós criados nesta sessão:
 7. [[qdrant]] — Vector DB performance
 
 ### Para Explorar Futuramente
-8. [[multimodal]] — Tendência forte 2026
+8. [[multimodal]] — Tendencia forte 2026
 9. [[reasoning-models]] — O3, DeepSeek R1, etc.
 10. [[deep-learning]] — Fundamento
-11. [[nlp]] — Domínio base
+11. [[nlp]] — Dominio base
 12. [[generative-ai]] — Categoria geral
-13. [[chroma]] — Vector DB para prototipação
+13. [[chroma]] — Vector DB para prototipacao
+
+### Modelos Atomicos (Set 2026)
+14. [[gpt-6-astra]] — OpenAI flagship
+15. [[claude-fable-5]] — Anthropic coding leader
+16. [[gemini-3-flash]] — Google custo-beneficio
+17. [[llama-4]] — Meta open-weights
+18. [[deepseek-v4]] — DeepSeek coding open
+19. [[qwen-3.5]] — Alibaba Apache 2.0
+20. [[mistral-large-3]] — Mistral europeu
