@@ -126,6 +126,7 @@ knowledge-graph/
 ### Generative AI — Modelos Flagship
 | Nó | Descrição |
 |----|-----------|
+| [[flagship-models]] | O que sao modelos topo de linha (tiers) |
 | [[gpt-6-astra]] | OpenAI — O modelo mais capaz do mundo |
 | [[claude-fable-5]] | Anthropic — Lider em coding (SWE-Bench #1) |
 | [[gemini-3-flash]] | Google — Melhor custo-beneficio, 1M contexto |

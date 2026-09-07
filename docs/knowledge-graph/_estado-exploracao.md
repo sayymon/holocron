@@ -1,8 +1,8 @@
 ---
 titulo: Estado de Exploracao do Knowledge Graph
 ultima_sessao: '2026-09-07'
-total_nodes: 64
-explored: 64
+total_nodes: 65
+explored: 65
 in_progress: 0
 pending: 0
 mapas_criados:
@@ -155,10 +155,11 @@ Nós criados nesta sessão:
 13. [[chroma]] — Vector DB para prototipacao
 
 ### Modelos Atomicos (Set 2026)
-14. [[gpt-6-astra]] — OpenAI flagship
-15. [[claude-fable-5]] — Anthropic coding leader
-16. [[gemini-3-flash]] — Google custo-beneficio
-17. [[llama-4]] — Meta open-weights
-18. [[deepseek-v4]] — DeepSeek coding open
-19. [[qwen-3.5]] — Alibaba Apache 2.0
-20. [[mistral-large-3]] — Mistral europeu
+14. [[flagship-models]] — O que sao modelos topo de linha
+15. [[gpt-6-astra]] — OpenAI flagship
+16. [[claude-fable-5]] — Anthropic coding leader
+17. [[gemini-3-flash]] — Google custo-beneficio
+18. [[llama-4]] — Meta open-weights
+19. [[deepseek-v4]] — DeepSeek coding open
+20. [[qwen-3.5]] — Alibaba Apache 2.0
+21. [[mistral-large-3]] — Mistral europeu
