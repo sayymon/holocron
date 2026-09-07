@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindmap — Holocron AI Engineer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, #mindmap { width: 100%; height: 100%; overflow: hidden; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    #mindmap svg { width: 100%; height: 100%; }
+    
+    /* Toolbar */
+    #toolbar {
+      position: fixed; top: 16px; right: 16px; z-index: 100;
+      display: flex; gap: 8px; background: rgba(15,23,42,0.9);
+      padding: 8px 12px; border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    #toolbar button {
+      background: rgba(255,255,255,0.1); border: none; color: #fff;
+      padding: 8px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; transition: all 0.2s;
+    }
+    #toolbar button:hover { background: rgba(255,255,255,0.2); }
+    #toolbar button.active { background: #3b82f6; }
+    
+    /* Header */
+    #header {
+      position: fixed; top: 16px; left: 16px; z-index: 100;
+      background: rgba(15,23,42,0.9); padding: 12px 20px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff;
+    }
+    #header h1 { font-size: 16px; font-weight: 600; }
+    #header p { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+    
+    /* Legend */
+    #legend {
+      position: fixed; bottom: 16px; left: 16px; z-index: 100;
+      background: rgba(15,23,42,0.9); padding: 12px 16px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff;
+      font-size: 12px;
+    }
+    #legend .item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    #legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+    
+    /* Stats */
+    #stats {
+      position: fixed; bottom: 16px; right: 16px; z-index: 100;
+      background: rgba(15,23,42,0.9); padding: 12px 16px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff;
+      font-size: 12px; text-align: right;
+    }
+    #stats .number { font-size: 24px; font-weight: 700; color: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div id="mindmap"></div>
+  
+  <div id="header">
+    <h1>Holocron AI Engineer</h1>
+    <p>Knowledge Graph — 65 docs atomicos</p>
+  </div>
+  
+  <div id="toolbar">
+    <button onclick="zoomIn()" title="Zoom In">+</button>
+    <button onclick="zoomOut()" title="Zoom Out">-</button>
+    <button onclick="resetView()" title="Reset">Reset</button>
+    <button onclick="expandAll()" title="Expandir Tudo">Expandir</button>
+    <button onclick="collapseAll()" title="Recolher Tudo">Recolher</button>
+    <button onclick="toggleDark()" id="darkBtn" title="Dark/Light">🌙</button>
+  </div>
+  
+  <div id="legend">
+    <div class="item"><div class="dot" style="background:#3b82f6"></div> Conceitos</div>
+    <div class="item"><div class="dot" style="background:#10b981"></div> Modelos</div>
+    <div class="item"><div class="dot" style="background:#f59e0b"></div> Ferramentas</div>
+    <div class="item"><div class="dot" style="background:#ef4444"></div> Aplicacoes</div>
+    <div class="item"><div class="dot" style="background:#8b5cf6"></div> Paradigmas</div>
+  </div>
+  
+  <div id="stats">
+    <div class="number">65</div>
+    <div>docs atomicos</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/dist/browser/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.2/dist/browser/index.js"></script>
+  <script>
+    const markdown = `
+# 🧠 IA Generativa & LLMs
+
+## 📚 Fundamentos
+### Inteligência Artificial (IA)
+- O campo inteiro
+- 3 paradigmas: Supervised, Unsupervised, Reinforcement
+
+### Machine Learning
+- Aprendizado de máquina
+- Dados → Padrões → Previsões
+
+### Supervised Learning
+- Com rótulos (input + output)
+- Classificação e Regressão
+
+### Unsupervised Learning
+- Sem rótulos
+- Clustering e Redução de Dimensionalidade
+
+### Reinforcement Learning
+- Com recompensa
+- Agente → Ação → Recompensa
+
+### Deep Learning
+- Redes neurais profundas
+- CNN, RNN, Transformers
+
+### Transformers
+- Arquitetura base dos LLMs
+- Self-Attention
+
+### NLP
+- Processamento de Linguagem Natural
+- Texto → Significado
+
+### Computer Vision
+- Visão computacional
+- Imagem → Significado
+
+### Generative AI
+- IA Generativa
+- Texto, Imagem, Código, Áudio, Vídeo
+
+## 🤖 Modelos Flagship
+### 🏆 Flagship Models
+- Modelos topo de linha
+- 3 tiers: Flagship, Mid-range, Budget
+
+### GPT-6 Astra (OpenAI)
+- $10/$50 por MTok
+- #1 mundial (60.7 AA Index)
+- 1.05M contexto
+- Computer Use
+
+### Claude Fable 5.1 (Anthropic)
+- $3/$15 por MTok
+- #1 Coding (SWE-Bench 78.5%)
+- Extended Thinking
+- Claude Code
+
+### Gemini 3.8 Flash (Google)
+- $0.10/$0.40 por MTok
+- Melhor custo-benefício
+- 1M contexto
+- Multimodal nativo
+
+### Llama 4 (Meta)
+- Self-host (gratuito)
+- Scout: 10M contexto (maior do mundo)
+- Maverick: 400B MoE
+- Open-weights
+
+### DeepSeek V4 Pro
+- $0.27/$1.10 por MTok
+- #1 Open-source coding
+- MIT license
+- 671B MoE
+
+### Qwen 3.5 (Alibaba)
+- $0.60/$3.60 por MTok
+- Apache 2.0
+- 200+ idiomas
+- 397B MoE
+
+### Mistral Large 3
+- $0.50/$1.50 por MTok
+- Empresa europeia (GDPR)
+- Apache 2.0
+- 675B MoE
+
+## 📱 Aplicações
+### Geração de Texto
+- LLMs completos
+- Chat, assitant, creative writing
+
+### Geração de Código
+- Copilot, Kiro, Claude Code
+- Code review, debugging
+
+### Geração de Imagem
+- Stable Diffusion, DALL-E, Midjourney
+- Diffusion models
+
+### Geração de Áudio
+- TTS, STT, música
+- ElevenLabs, Whisper
+
+### Geração de Vídeo
+- Sora, Runway, Kling
+- Text-to-video
+
+### Multimodal
+- Modelos que processam tudo
+- GPT-4o, Gemini
+
+## 🔧 Ferramentas
+### Providers de LLM
+#### OpenAI
+- GPT-6, GPT-5, o-series
+- ChatGPT, API, Agents
+
+#### Anthropic
+- Claude Fable, Opus, Haiku
+- Claude Code, MCP
+
+#### Google
+- Gemini 3.x, Imagen
+- Vertex AI
+
+#### Meta
+- Llama 4, Muse Spark
+- Open-weights
+
+#### DeepSeek
+- V4 Pro, R1
+- MIT license
+
+#### Qwen
+- 3.5-3.8 series
+- Apache 2.0
+
+#### Mistral
+- Large 3, Medium 3.5
+- GDPR
+
+### Frameworks
+#### LangChain
+- Orquestração geral
+- Chains, Agents
+
+#### LangGraph
+- Agentes stateful
+- Grafos
+
+#### CrewAI
+- Multi-agentes
+- Papéis
+
+#### LlamaIndex
+- RAG especializado
+- Indexação
+
+#### OpenAI Agents SDK
+- Agentes managed
+- Tools
+
+### Codificação
+#### Coding Assistants
+- Visão geral
+- Comparativo
+
+#### Kiro
+- IDE AI-native
+- Free / $20/mês
+
+### Infraestrutura
+#### AI Gateway
+- Proxies e routers
+- Rate limiting
+
+#### Inference Platforms
+- Onde rodar LLMs
+- Cloud e local
+
+#### OpenRouter
+- Multi-provider
+- Router
+
+#### Ollama
+- LLMs locais
+- Self-hosting
+
+#### Vector Databases
+- Bancos vetoriais
+- RAG
+
+#### Pgvector
+- Extensão PostgreSQL
+- Vetores
+
+### Observabilidade
+#### Observabilidade LLM
+- Monitoramento
+- Métricas
+
+#### Langfuse
+- Open-source
+- Self-hosted
+
+#### Langsmith
+- Managed
+- LangChain
+
+## 🎯 Paradigmas
+### RAG
+- Retrieval-Augmented Generation
+- Busca + Geração
+
+### Chunking
+- Dividindo documentos
+- Para RAG
+
+### Agentes IA
+- Paradigma agentic
+- Tools + Memory
+
+### Prompt Engineering
+- A arte de instruir LLMs
+- Templates e técnicas
+
+### Fine-tuning
+- Customização de modelos
+- Transfer learning
+
+### PEFT Family
+- Parameter-Efficient Fine-Tuning
+- LoRA, QLoRA
+
+### LoRA
+- Low-Rank Adaptation
+- ~0.1% dos parâmetros
+
+### QLoRA
+- LoRA + Quantização
+- 4-bit
+
+## 📏 Padrões
+### MCP
+- Model Context Protocol
+- "USB-C para IA"
+
+### Human-in-the-loop
+- Supervisão humana
+- Agentes
+
+## 📊 Benchmarks
+### Coding
+- SWE-Bench, Terminal-Bench
+- HumanEval
+
+### Conhecimento
+- MMLU, GPQA Diamond
+
+### Raciocínio
+- ARC-AGI, AIME, FrontierMath
+
+### Agentes
+- OSWorld, BrowseComp
+
+### Segurança
+- ExploitBench, SRE-Bench
+`;
+
+    let mm;
+    const { Markmap, loadCSS, loadJS } = window.markmap;
+    
+    // Cores por nivel
+    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
+    
+    function init() {
+      const { root } = markmap.Transformer.markmap(markdown);
+      
+      mm = Markmap.create('#mindmap', {
+        colorFreezeLevel: 2,
+        duration: 300,
+        maxWidth: 300,
+        paddingX: 16,
+        spacingVertical: 8,
+        spacingHorizontal: 80,
+        autoFit: true,
+        fitRatio: 0.92,
+        zoom: true,
+        pan: true,
+        color: (node) => {
+          const depth = node.state?.depth ?? 0;
+          return colors[Math.min(depth, colors.length - 1)];
+        }
+      }, root);
+    }
+
+    function zoomIn() { mm?.rescale(1.3); }
+    function zoomOut() { mm?.rescale(0.7); }
+    function resetView() { mm?.fit(); }
+    
+    function expandAll() {
+      function expand(node) {
+        if (node.children) {
+          node.payload = { ...node.payload, fold: 0 };
+          node.children.forEach(expand);
+        }
+      }
+      expand(mm.state.data);
+      mm.renderData();
+      mm.fit();
+    }
+    
+    function collapseAll() {
+      function collapse(node, depth = 0) {
+        if (node.children && depth > 0) {
+          node.payload = { ...node.payload, fold: 1 };
+        }
+        if (node.children) {
+          node.children.forEach((c, i) => collapse(c, depth + 1));
+        }
+      }
+      collapse(mm.state.data);
+      mm.renderData();
+      mm.fit();
+    }
+    
+    let isDark = true;
+    function toggleDark() {
+      isDark = !isDark;
+      document.body.style.background = isDark ? '#0f172a' : '#f8fafc';
+      document.getElementById('darkBtn').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
