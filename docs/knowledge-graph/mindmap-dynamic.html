@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindmap Dinâmico — Holocron AI Engineer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, #mindmap { width: 100%; height: 100%; overflow: hidden; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f172a;
+    }
+    #mindmap svg { width: 100%; height: 100%; }
+    
+    /* Toolbar */
+    #toolbar {
+      position: fixed; top: 16px; right: 16px; z-index: 100;
+      display: flex; gap: 8px; background: rgba(15,23,42,0.95);
+      padding: 8px 12px; border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    #toolbar button {
+      background: rgba(255,255,255,0.1); border: none; color: #fff;
+      padding: 8px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; transition: all 0.2s;
+    }
+    #toolbar button:hover { background: rgba(255,255,255,0.2); }
+    #toolbar button.active { background: #3b82f6; }
+    
+    /* Header */
+    #header {
+      position: fixed; top: 16px; left: 16px; z-index: 100;
+      background: rgba(15,23,42,0.95); padding: 12px 20px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    #header h1 { font-size: 16px; font-weight: 600; }
+    #header p { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+    
+    /* Stats */
+    #stats {
+      position: fixed; bottom: 16px; right: 16px; z-index: 100;
+      background: rgba(15,23,42,0.95); padding: 12px 16px;
+      border-radius: 12px; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff; font-size: 12px; text-align: right;
+    }
+    #stats .number { font-size: 24px; font-weight: 700; color: #3b82f6; }
+    
+    /* Loading */
+    #loading {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      color: #fff; font-size: 18px; z-index: 200;
+    }
+    .spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: #3b82f6; border-radius: 50%;
+      animation: spin 1s linear infinite; margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="spinner"></div>
+    Carregando mindmap...
+  </div>
+  <div id="mindmap"></div>
+  
+  <div id="header">
+    <h1>🧠 Holocron AI Engineer</h1>
+    <p>Mindmap dinâmico — Gerado automaticamente</p>
+  </div>
+  
+  <div id="toolbar">
+    <button onclick="zoomIn()" title="Zoom In">+</button>
+    <button onclick="zoomOut()" title="Zoom Out">-</button>
+    <button onclick="resetView()" title="Reset">Reset</button>
+    <button onclick="expandAll()" title="Expandir Tudo">Expandir</button>
+    <button onclick="collapseAll()" title="Recolher Tudo">Recolher</button>
+    <button onclick="regenerate()" title="Regenerar">🔄</button>
+  </div>
+  
+  <div id="stats">
+    <div class="number">85</div>
+    <div>docs atomicos</div>
+    <div style="margin-top: 8px; font-size: 10px; color: #64748b;">
+      Última geração: 07/09/2026, 18:12:51
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/dist/browser/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.2/dist/browser/index.js"></script>
+  <script>
+    const markdown = `# 🧠 Holocron AI Engineer
+
+  - 📚 Fundamentos
+    - Computer Vision — Visao Computacional
+      - Computer Vision
+      - O Problema que Resolve
+      - Tarefas Principais
+      - Arquiteturas Populares
+      - Evolucao
+    - Deep Learning — Redes Neurais Profundas
+      - Deep Learning — Redes Neurais Profundas
+      - O Problema que Deep Learning Resolveu
+      - A Evolução Técnica
+      - A Taxonomia Completa
+      - Por que DL Importa para AI Engineers Hoje
+    - Generative AI — IA Generativa
+      - Generative AI — IA Generativa
+      - Estrutura Atômica (Novos Docs)
+      - O Problema que Generative AI Resolve
+      - A História de Generative AI
+      - Os 3 Tipos de IA Generativa
+    - Inteligência Artificial — Mapa do Conhecimento
+      - 🧠 Inteligência Artificial
+      - Foundations
+      - Learning Paradigms
+      - Application Domains
+      - Architecture & Models
+    - Machine Learning — Aprendizado de Máquina
+      - Machine Learning — Aprendizado de Máquina
+      - O que é
+      - Por que importa
+      - Conceitos-chave
+      - Landscape de Ferramentas
+    - NLP — Processamento de Linguagem Natural
+      - NLP — Processamento de Linguagem Natural
+      - O Problema que NLP Resolve
+      - A História de NLP — De Turing aos LLMs
+      - As 3 Eras do NLP — Resumo Visual
+      - Conceitos Fundamentais de NLP
+    - Reinforcement Learning — Aprendizado por Reforco
+      - Reinforcement Learning
+      - O Problema que Resolve
+      - Como Funciona
+      - Componentes
+      - Algoritmos Principais
+    - Supervised Learning — Aprendizado Supervisionado
+      - Supervised Learning
+      - O Problema que Resolve
+      - Como Funciona
+      - Dois Tipos Principais
+      - Algoritmos Populares
+    - Transformers — A Arquitetura que Revolucionou IA
+      - Transformers — A Arquitetura que Revolucionou IA
+      - O que é
+      - Por que importa
+      - Conceitos-chave
+      - Landscape de Ferramentas
+    - Unsupervised Learning — Aprendizado Nao-Supervisionado
+      - Unsupervised Learning
+      - O Problema que Resolve
+      - Como Funciona
+      - Tipos Principais
+      - Comparativo com Supervised Learning
+  - ✨ Generative AI
+    - Diffusion Models — Modelos de Difusao
+      - Diffusion Models
+      - O Problema que Resolve
+      - Como Funciona
+      - Componentes Principais
+      - Arquitetura Completa
+    - História da Generative AI
+      - História da Generative AI
+      - Linha do Tempo
+      - GANs vs Diffusion vs Transformers
+      - Conexões
+    - Tipos de Modelos Generativos
+      - Tipos de Modelos Generativos
+      - Taxonomia
+      - 1. Transformer-Based (O Dominante)
+      - 2. Diffusion Models
+      - 3. GANs (Generative Adversarial Networks)
+    - Generative AI — Visão Geral
+      - Generative AI — Visão Geral
+      - Definição
+      - Posição no Ecossistema
+      - Arquiteturas
+      - Para Profundar
+  - 🤖 LLMs
+    - Embeddings — Representação Vetorial de Significado
+      - Embeddings — Representação Vetorial de Significado
+      - O que é
+      - Por que importa
+      - Modelos de Embedding (Junho 2026)
+      - Critérios de Escolha
+    - LLMs — Large Language Models
+      - LLMs — Large Language Models
+      - O que é
+      - Por que importa
+      - Taxonomia dos Modelos
+      - Conceitos-chave
+    - Reasoning Models — Modelos de Raciocinio
+      - Reasoning Models
+      - O Problema que Resolve
+      - Como Funcionam
+      - Modelos de Raciocinio (2026)
+      - Extended Thinking
+    - Tokenizacao — Como LLMs leem texto
+      - Tokenizacao
+      - O Problema que Resolve
+      - Tipos de Tokenizacao
+      - Algoritmos de Subword
+      - Tokens Especiais
+  - 🎯 Paradigmas
+    - Agentes de IA — O Paradigma Agentic
+      - Agentes de IA — O Paradigma Agentic
+      - O que é
+      - Por que importa
+      - Componentes de um Agente
+      - Frameworks de Agentes
+    - Chunking — Dividindo documentos para RAG
+      - Chunking
+      - O Problema que Resolve
+      - Estrategias de Chunking
+      - Tamanho Ideal dos Chunks
+      - Overlap (Sobreposição)
+    - Fine-Tuning — Customização de Modelos
+      - Fine-Tuning — Customização de Modelos
+      - O que é
+      - Quando Usar (Regra de Ouro)
+      - Métodos
+      - Plataformas
+    - LoRA — Low-Rank Adaptation
+      - LoRA — Low-Rank Adaptation
+      - O Problema que LoRA Resolve
+      - Como LoRA Funciona
+      - Arquitetura LoRA
+      - Hiperparâmetros LoRA
+    - PEFT — Parameter-Efficient Fine-Tuning
+      - PEFT — Parameter-Efficient Fine-Tuning
+      - O Problema que PEFT Resolve
+      - A Família PEFT
+      - Comparativo Geral
+      - Quando Usar Cada Técnica
+    - Prompt Engineering — A Arte de Instruir LLMs
+      - Prompt Engineering — A Arte de Instruir LLMs
+      - O que é
+      - Por que importa
+      - Técnicas Principais
+      - Estrutura de um Bom Prompt
+    - QLoRA — Quantized LoRA
+      - QLoRA — Quantized LoRA
+      - O Problema que QLoRA Resolve
+      - Como QLoRA Funciona
+      - NF4 — O Segredo do QLoRA
+      - Double Quantization
+    - RAG — Retrieval-Augmented Generation
+      - RAG — Retrieval-Augmented Generation
+      - O que é
+      - Por que importa
+      - Componentes do RAG
+      - Variantes de RAG
+  - 📏 Padrões
+    - Human-in-the-Loop — Supervisão Humana em Agentes
+      - Human-in-the-Loop — Supervisão Humana em Agentes
+      - O que é
+      - Por que importa
+      - Padrões de HITL
+      - Implementação em LangGraph
+    - MCP Architecture — Primitivas, Lifecycle e Capabilities
+      - MCP Architecture — Primitivas, Lifecycle e Capabilities
+      - Arquitetura Geral
+      - As 3 Primitivas
+      - Lifecycle da Conexão
+      - Capabilities (Negociação)
+    - Construindo MCP Servers — SDKs, FastMCP e Padrões
+      - Construindo MCP Servers — SDKs, FastMCP e Padrões
+      - Opções para Construir
+      - 1. TypeScript SDK Oficial (@modelcontextprotocol/sdk)
+      - 2. FastMCP (Python)
+      - ou
+    - MCP — Model Context Protocol
+      - MCP — Model Context Protocol
+      - O que é
+      - Números em 2026
+      - Primitivas MCP
+      - Transporte
+    - MCP Servers — Discovery e Registries
+      - MCP Servers — Discovery e Registries
+      - Ecossistema em Números (Junho 2026)
+      - Registries e Diretórios
+      - Servers Documentados (links para arquivos individuais)
+      - Outros Populares (sem doc individual ainda)
+    - MCP Transports — stdio, Streamable HTTP e SSE
+      - MCP Transports — stdio, Streamable HTTP e SSE
+      - O que é
+      - Transports Disponíveis
+      - Decisão: Qual Transport Usar?
+      - Detalhes Técnicos do JSON-RPC 2.0
+  - 🏢 Providers
+    - Anthropic Claude — Líder em Coding e Segurança
+      - Anthropic Claude — Lider em Coding e Seguranca
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - Claude Fable 5.1 — O Modelo de Coding
+    - DeepSeek — O Coding Champion Open-Source
+      - DeepSeek — O Coding Champion Open-Source
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - DeepSeek V4 Pro — Detalhes
+    - Google Gemini — Maior Contexto e Multimodal
+      - Google Gemini — Maior Contexto e Multimodal
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - Benchmarks
+    - Meta Llama — Open-Weights Lider
+      - Meta Llama — Open-Weights Lider
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - Llama 4 Maverick — Detalhes
+    - Mistral — Open-Source Europeu
+      - Mistral — Open-Source Europeu
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - Mistral Large 3 — Detalhes
+    - OpenAI GPT — O Ecossistema Dominante
+      - OpenAI GPT — O Ecossistema Dominante
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - GPT-6 Astra — O Modelo Mais Capaz
+    - Qwen — Open-Source Apache 2.0 (Alibaba)
+      - Qwen — Open-Source Apache 2.0 (Alibaba)
+      - Modelos Atomicos
+      - Arquitetura Interna
+      - Modelos (Setembro 2026)
+      - Qwen 3.5 397B — Detalhes
+  - ⚙️ Frameworks
+    - CrewAI — Multi-Agentes com Papéis
+      - CrewAI — Multi-Agentes com Papéis
+      - O que é
+      - Conceitos Fundamentais
+      - Preço
+      - Quando Usar
+    - LangChain — O Framework de Orquestração LLM
+      - LangChain — O Framework de Orquestração LLM
+      - O que é
+      - Componentes Principais
+      - Preço
+      - Quando Usar
+    - LangGraph — O Padrão de Produção para Agentes
+      - LangGraph — O Padrão de Produção para Agentes
+      - O que é
+      - Conceitos Fundamentais
+      - Funcionalidades Chave
+      - Preço
+    - LlamaIndex — Framework RAG-First
+      - LlamaIndex — Framework RAG-First
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Quando Usar
+    - OpenAI Agents SDK — Framework Managed de Agentes
+      - OpenAI Agents SDK — Framework Managed de Agentes
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Quando Usar
+  - 💻 Coding
+    - Coding Assistants — IDEs com IA
+      - Coding Assistants — IDEs com IA
+      - O que é
+      - Ferramentas Principais
+      - Critérios de Escolha
+      - Paradigmas
+    - Kiro — IDE Spec-Driven com IA (AWS)
+      - Kiro — IDE Spec-Driven com IA (AWS)
+      - O que é
+      - Diferenciais
+      - Preço
+      - Quando Usar
+  - 🔧 Infraestrutura
+    - AI Gateway — Proxy Inteligente para LLMs
+      - AI Gateway — Proxy Inteligente para LLMs
+      - O que é
+      - Por que importa
+      - Soluções de Gateway
+      - Funcionalidades de um Gateway
+    - Inference Platforms — Onde Rodar LLMs
+      - Inference Platforms — Onde Rodar LLMs
+      - O que é
+      - Plataformas em 2026
+      - Como Escolher
+      - Modelo de Cobrança
+    - Ollama — LLMs Locais Sem Complicação
+      - Ollama — LLMs Locais Sem Complicação
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Requisitos de Hardware
+    - OpenRouter — Router Multi-Provider de LLMs
+      - OpenRouter — Router Multi-Provider de LLMs
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Quando Usar
+    - pgvector — Busca Vetorial no PostgreSQL
+      - pgvector — Busca Vetorial no PostgreSQL
+      - O que é
+      - Por que Escolher pgvector
+      - Limitações
+      - Setup
+    - Vector Databases — Armazenamento de Embeddings
+      - Vector Databases — Armazenamento de Embeddings
+      - O que é
+      - Por que importa
+      - Algoritmos de Busca
+      - Comparação de Soluções
+  - 📊 Observabilidade
+    - LangFuse — Observabilidade Open-Source para LLMs
+      - LangFuse — Observabilidade Open-Source para LLMs
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Integrações
+    - LangSmith — Observabilidade para LangChain
+      - LangSmith — Observabilidade para LangChain
+      - O que é
+      - Funcionalidades
+      - Preço
+      - Quando Usar
+    - Observabilidade LLM — Monitorar IA em Produção
+      - Observabilidade LLM — Monitorar IA em Produção
+      - O que é
+      - Por que importa
+      - Ferramentas Principais
+      - O que Monitorar
+  - 🏆 Modelos Flagship
+    - Claude Fable 5.1 — Lider em Coding
+      - Claude Fable 5.1 — Lider em Coding
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - DeepSeek V4 Pro — Coding Champion Open-Source
+      - DeepSeek V4 Pro — Coding Champion Open-Source
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - Flagship Models — Modelos Topo de Linha
+      - Flagship Models — Modelos Topo de Linha
+      - Analogia com Outros Mercados
+      - Caracteristicas de um Flagship
+      - Os 3 Tiers de Modelos
+      - Flagships por Empresa (Setembro 2026)
+    - Gemini 3.8 Flash — Melhor Custo-Beneficio
+      - Gemini 3.8 Flash — Melhor Custo-Beneficio
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - GPT-6 Astra — O Modelo Mais Capaz
+      - GPT-6 Astra — O Modelo Mais Capaz
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - Llama 4 — Open-Weights MoE
+      - Llama 4 — Open-Weights MoE
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - Mistral Large 3 — Frontier Europeu
+      - Mistral Large 3 — Frontier Europeu
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+    - Qwen 3.5 — Apache 2.0 Frontier
+      - Qwen 3.5 — Apache 2.0 Frontier
+      - O Que e
+      - Especificacoes Tecnicas
+      - Preco
+      - Benchmarks (Setembro 2026)
+  - 📱 Aplicações
+    - Geração de Áudio — TTS, STT, Música
+      - Geração de Áudio — TTS, STT, Música
+      - O que é
+      - Modelos de Áudio (2026)
+      - Aplicações
+      - Pipeline de TTS
+    - Geração de Código
+      - Geração de Código
+      - O que é
+      - Como Funciona
+      - Modelos de Código (2026)
+      - Aplicações
+    - Geração de Imagem — Diffusion Models
+      - Geração de Imagem — Diffusion Models
+      - O que é
+      - Como Funciona (Diffusion)
+      - Modelos de Geração de Imagem (2026)
+      - Aplicações
+    - Geração de Texto — LLMs
+      - Geração de Texto — LLMs
+      - O que é
+      - Como Funciona
+      - Modelos de Geração de Texto (2026)
+      - Aplicações
+    - Geração de Vídeo
+      - Geração de Vídeo
+      - O que é
+      - Modelos de Geração de Vídeo (2026)
+      - Aplicações
+      - Pipeline de Geração de Vídeo
+    - Multimodal — Modelos que Processam Tudo
+      - Multimodal — Modelos que Processam Tudo
+      - O que é
+      - Modelos Multimodais (2026)
+      - Aplicações
+      - Arquitetura Multimodal
+  - 📈 Benchmarks
+    - Benchmarks de Generative AI
+      - Benchmarks de Generative AI
+      - Por que Benchmarks Importam
+      - Principais Benchmarks (2026)
+      - Leaderboard Geral (Setembro 2026)
+      - Como Interpretar Benchmarks
+`;
+    
+    let mm;
+    const { Markmap } = window.markmap;
+    
+    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
+    
+    function init() {
+      document.getElementById('loading').style.display = 'none';
+      
+      const { root } = markmap.Transformer.markmap(markdown);
+      
+      mm = Markmap.create('#mindmap', {
+        colorFreezeLevel: 2,
+        duration: 300,
+        maxWidth: 280,
+        paddingX: 16,
+        spacingVertical: 6,
+        spacingHorizontal: 60,
+        autoFit: true,
+        fitRatio: 0.92,
+        zoom: true,
+        pan: true,
+        color: (node) => {
+          const depth = node.state?.depth ?? 0;
+          return colors[Math.min(depth, colors.length - 1)];
+        }
+      }, root);
+    }
+
+    function zoomIn() { mm?.rescale(1.3); }
+    function zoomOut() { mm?.rescale(0.7); }
+    function resetView() { mm?.fit(); }
+    
+    function expandAll() {
+      function expand(node) {
+        if (node.children) {
+          node.payload = { ...node.payload, fold: 0 };
+          node.children.forEach(expand);
+        }
+      }
+      expand(mm.state.data);
+      mm.renderData();
+      mm.fit();
+    }
+    
+    function collapseAll() {
+      function collapse(node, depth = 0) {
+        if (node.children && depth > 0) {
+          node.payload = { ...node.payload, fold: 1 };
+        }
+        if (node.children) {
+          node.children.forEach((c) => collapse(c, depth + 1));
+        }
+      }
+      collapse(mm.state.data);
+      mm.renderData();
+      mm.fit();
+    }
+    
+    function regenerate() {
+      location.reload();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
