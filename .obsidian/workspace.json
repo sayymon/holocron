@@ -190,6 +190,9 @@
   },
   "active": "3ebae2eaef8969a0",
   "lastOpenFiles": [
+    "docs/knowledge-graph/mindmap-simple.html",
+    "docs/knowledge-graph/mindmap.md",
+    "test-mindmap.html",
     "serve-mindmap.cjs",
     "docs/knowledge-graph/mindmap-dynamic.html",
     "generate-mindmap.cjs",

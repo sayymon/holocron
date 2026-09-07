@@ -174,82 +174,28 @@ function treeToMarkmap(node, depth = 0) {
 // Gerar HTML
 function generateHTML(markdown, stats) {
   return `<!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mindmap — Holocron AI Engineer</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f172a;
-    }
-    
-    /* Toolbar */
-    #toolbar {
-      position: fixed; top: 16px; right: 16px; z-index: 100;
-      display: flex; gap: 8px; background: rgba(15,23,42,0.95);
-      padding: 8px 12px; border-radius: 12px; backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    #toolbar button {
-      background: rgba(255,255,255,0.1); border: none; color: #fff;
-      padding: 8px 12px; border-radius: 8px; cursor: pointer;
-      font-size: 14px; transition: all 0.2s;
-    }
-    #toolbar button:hover { background: rgba(255,255,255,0.2); }
-    
-    /* Header */
-    #header {
-      position: fixed; top: 16px; left: 16px; z-index: 100;
-      background: rgba(15,23,42,0.95); padding: 12px 20px;
-      border-radius: 12px; backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-    }
-    #header h1 { font-size: 16px; font-weight: 600; }
-    #header p { font-size: 12px; color: #94a3b8; margin-top: 4px; }
-    
-    /* Stats */
-    #stats {
-      position: fixed; bottom: 16px; right: 16px; z-index: 100;
-      background: rgba(15,23,42,0.95); padding: 12px 16px;
-      border-radius: 12px; backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff; font-size: 12px; text-align: right;
-    }
-    #stats .number { font-size: 24px; font-weight: 700; color: #3b82f6; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0f172a; }
+    svg { width: 100%; height: 100%; }
   </style>
 </head>
 <body>
-  <div id="header">
-    <h1>🧠 Holocron AI Engineer</h1>
-    <p>Mindmap dinâmico — ${stats.total} docs</p>
-  </div>
-  
-  <div id="toolbar">
-    <button onclick="mm.fit()" title="Reset">Reset</button>
-  </div>
-  
-  <div id="stats">
-    <div class="number">${stats.total}</div>
-    <div>docs atomicos</div>
-  </div>
+<svg id="m"></svg>
+<script type="module">
+import { Transformer } from 'https://cdn.jsdelivr.net/npm/markmap-lib@0.17.2/+esm';
+import { Markmap } from 'https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/+esm';
 
-  <script type="text/template">
----
-markmap:
-  colorFreezeLevel: 2
-  maxWidth: 280
----
-${markdown}
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+const md = ${JSON.stringify(markdown)};
+
+const t = new Transformer();
+const { root } = t.transform(md);
+Markmap.create('#m', { autoFit: true, duration: 300 }, root);
+<\/script>
 </body>
 </html>`;
 }
