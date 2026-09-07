@@ -174,28 +174,22 @@ function treeToMarkmap(node, depth = 0) {
 // Gerar HTML
 function generateHTML(markdown, stats) {
   return `<!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mindmap — Holocron AI Engineer</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #0f172a; }
-    svg { width: 100%; height: 100%; }
+    .markmap { width: 100%; height: 100%; }
   </style>
 </head>
 <body>
-<svg id="m"></svg>
-<script type="module">
-import { Transformer } from 'https://cdn.jsdelivr.net/npm/markmap-lib@0.17.2/+esm';
-import { Markmap } from 'https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/+esm';
-
-const md = ${JSON.stringify(markdown)};
-
-const t = new Transformer();
-const { root } = t.transform(md);
-Markmap.create('#m', { autoFit: true, duration: 300 }, root);
-<\/script>
+<div class="markmap">
+${markdown}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18.12"></script>
 </body>
 </html>`;
 }
