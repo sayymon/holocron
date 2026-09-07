@@ -276,31 +276,46 @@ function generateHTML(markdown, stats) {
     const markdown = \`${markdown.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`;
     
     let mm;
-    const { Markmap } = window.markmap;
-    
     const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
+    
+    function waitForLibs(callback) {
+      if (window.markmap && window.markmap.Transformer && window.markmap.Markmap) {
+        callback();
+      } else {
+        setTimeout(() => waitForLibs(callback), 100);
+      }
+    }
     
     function init() {
       document.getElementById('loading').style.display = 'none';
       
-      const { root } = markmap.Transformer.markmap(markdown);
-      
-      mm = Markmap.create('#mindmap', {
-        colorFreezeLevel: 2,
-        duration: 300,
-        maxWidth: 280,
-        paddingX: 16,
-        spacingVertical: 6,
-        spacingHorizontal: 60,
-        autoFit: true,
-        fitRatio: 0.92,
-        zoom: true,
-        pan: true,
-        color: (node) => {
-          const depth = node.state?.depth ?? 0;
-          return colors[Math.min(depth, colors.length - 1)];
+      waitForLibs(() => {
+        try {
+          const transformer = new markmap.Transformer();
+          const { root } = transformer.transform(markdown);
+          
+          mm = markmap.Markmap.create('#mindmap', {
+            colorFreezeLevel: 2,
+            duration: 300,
+            maxWidth: 280,
+            paddingX: 16,
+            spacingVertical: 6,
+            spacingHorizontal: 60,
+            autoFit: true,
+            fitRatio: 0.92,
+            zoom: true,
+            pan: true,
+            color: (node) => {
+              const depth = node.state?.depth ?? 0;
+              return colors[Math.min(depth, colors.length - 1)];
+            }
+          }, root);
+        } catch (e) {
+          console.error('Erro ao criar mindmap:', e);
+          document.getElementById('loading').textContent = 'Erro: ' + e.message;
+          document.getElementById('loading').style.display = 'block';
         }
-      }, root);
+      });
     }
 
     function zoomIn() { mm?.rescale(1.3); }
