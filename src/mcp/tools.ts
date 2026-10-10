@@ -7,6 +7,7 @@ import matter from 'gray-matter';
 import { hybridSearch } from '../rag/index.js';
 import { runTutor } from '../agents/index.js';
 import { createTask, getTask, cleanOldTasks } from './task-store.js';
+import { updateProgress, getProgress, summarize } from './progress-store.js';
 
 const DOCS_PATH = path.resolve(process.cwd(), 'docs');
 
@@ -137,6 +138,82 @@ export function registerTools(server: McpServer) {
 
       const content = fs.readFileSync(fullPath, 'utf-8');
       return { content: [{ type: 'text', text: content }] };
+    }
+  );
+
+  // --- update_progress ---
+  // Escreve o progresso do aluno na tabela `progress` (Postgres). Idempotente.
+  server.tool(
+    'update_progress',
+    'Registra ou atualiza o progresso do aluno em uma unidade do curso. Marca status (not_started/in_progress/completed) e score opcional. Idempotente — repetir a mesma unidade atualiza em vez de duplicar. Requer banco Postgres rodando (npm run db:up && npm run db:migrate).',
+    {
+      module: z.number().int().min(1).max(12).describe('Número do módulo (1-12)'),
+      unit: z.number().int().min(0).describe('Número da unidade dentro do módulo'),
+      status: z.enum(['not_started', 'in_progress', 'completed']).describe('Status da unidade'),
+      score: z.number().min(0).max(100).optional().describe('Nota/percentual (opcional)'),
+    },
+    async ({ module, unit, status, score }) => {
+      try {
+        const row = await updateProgress({ module, unit, status, score });
+        const icon = status === 'completed' ? '✅' : status === 'in_progress' ? '🟡' : '⬜';
+        return {
+          content: [{
+            type: 'text',
+            text: `${icon} Progresso salvo — módulo ${row.module}, unidade ${row.unit}: **${row.status}**` +
+              (row.score != null ? ` (score: ${row.score})` : ''),
+          }],
+        };
+      } catch (err) {
+        return {
+          content: [{
+            type: 'text',
+            text: `❌ Não foi possível salvar o progresso. O banco está rodando? (npm run db:up && npm run db:migrate)\n\n${err instanceof Error ? err.message : String(err)}`,
+          }],
+        };
+      }
+    }
+  );
+
+  // --- get_progress ---
+  // Lê o progresso registrado e resume por módulo.
+  server.tool(
+    'get_progress',
+    'Consulta o progresso do aluno. Sem parâmetros, resume todos os módulos com percentual. Com module, detalha as unidades daquele módulo.',
+    { module: z.number().int().min(1).max(12).optional().describe('Módulo específico (1-12); omita para resumo geral') },
+    async ({ module }) => {
+      try {
+        const rows = await getProgress(module);
+        if (rows.length === 0) {
+          return { content: [{ type: 'text', text: '📭 Nenhum progresso registrado ainda. Use update_progress para começar.' }] };
+        }
+
+        const summary = summarize(rows);
+        const lines = summary.map(m =>
+          `- **Módulo ${String(m.module).padStart(2, '0')}**: ${m.percent}% ` +
+          `(${m.completed}/${m.units} concluídas${m.inProgress ? `, ${m.inProgress} em andamento` : ''})`
+        );
+
+        let text = `# 📊 Progresso\n\n${lines.join('\n')}`;
+
+        if (typeof module === 'number') {
+          const detail = summary[0].rows
+            .map(r => {
+              const icon = r.status === 'completed' ? '✅' : r.status === 'in_progress' ? '🟡' : '⬜';
+              return `  ${icon} unidade ${r.unit}: ${r.status}${r.score != null ? ` (${r.score})` : ''}`;
+            })
+            .join('\n');
+          text += `\n\n**Detalhe do módulo ${module}:**\n${detail}`;
+        }
+
+        return { content: [{ type: 'text', text }] };
+      } catch (err) {
+        return {
+          content: [{
+            type: 'text',
+            text: `❌ Não foi possível ler o progresso. O banco está rodando? (npm run db:up && npm run db:migrate)\n\n${err instanceof Error ? err.message : String(err)}`,
+          }],
+        };
+      }
     }
   );
 }
