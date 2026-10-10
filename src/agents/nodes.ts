@@ -3,7 +3,7 @@ import { TutorStateType } from './state.js';
 import { hybridSearch } from '../rag/index.js';
 import { getStudentMemory, saveInteraction } from './memory.js';
 
-function getLLM() {
+export function getLLM(temperature = 0.7) {
   const apiKey = process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY;
   return new ChatOpenAI({
     modelName: process.env.CHAT_MODEL || 'openai/gpt-4o-mini',
@@ -12,7 +12,7 @@ function getLLM() {
       baseURL: process.env.OPENROUTER_API_KEY ? 'https://openrouter.ai/api/v1' : undefined,
       apiKey,
     },
-    temperature: 0.7,
+    temperature,
   });
 }
 
