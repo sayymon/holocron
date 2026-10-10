@@ -49,7 +49,7 @@ src/
 ```typescript
 // Tools expostas via MCP
 - search_knowledge(query) → resultados RAG
-- get_progress(user_id) → progresso do aluno
+- get_progress(disciplina, modulo) → progresso do aluno
 - submit_answer(question_id, answer) → feedback
 ```
 

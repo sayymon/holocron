@@ -88,15 +88,15 @@ export function registerTools(server: McpServer) {
     }
   );
 
-  // --- list_modules ---
+  // --- list_disciplinas ---
   server.tool(
-    'list_modules',
-    'Lista todos os 12 módulos do curso de Engenharia de IA Aplicada.',
+    'list_disciplinas',
+    'Lista as disciplinas do curso de Engenharia de IA Aplicada. Atenção: no curso, cada disciplina contém vários MÓDULOS internos — o nível superior se chama "disciplina", não "módulo".',
     {},
     async () => {
-      const moduleDirs = await glob('curso/modulo-*', { cwd: DOCS_PATH });
-      const sorted = moduleDirs.filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory()).sort();
-      const modules = sorted.map(dir => {
+      const disciplinaDirs = await glob('curso/modulo-*', { cwd: DOCS_PATH });
+      const sorted = disciplinaDirs.filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory()).sort();
+      const disciplinas = sorted.map(dir => {
         const readmePath = path.join(DOCS_PATH, dir, 'README.md');
         if (fs.existsSync(readmePath)) {
           const { data } = matter(fs.readFileSync(readmePath, 'utf-8'));
@@ -104,23 +104,30 @@ export function registerTools(server: McpServer) {
         }
         return `- ${dir}`;
       });
-      return { content: [{ type: 'text', text: `# Módulos do Curso\n\n${modules.join('\n')}` }] };
+      return { content: [{ type: 'text', text: `# Disciplinas do Curso\n\n${disciplinas.join('\n')}` }] };
     }
   );
 
-  // --- get_module ---
+  // --- get_disciplina ---
   server.tool(
-    'get_module',
-    'Retorna o índice completo de um módulo específico (unidades, pré-requisitos, conexões).',
-    { module_number: z.number().min(1).max(12).describe('Número do módulo (1-12)') },
-    async ({ module_number }) => {
-      const pattern = `curso/modulo-${String(module_number).padStart(2, '0')}-*`;
-      const dirs = await glob(pattern, { cwd: DOCS_PATH });
-      const filtered = dirs.filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory());
-      if (filtered.length === 0) return { content: [{ type: 'text', text: `Módulo ${module_number} não encontrado.` }] };
+    'get_disciplina',
+    'Retorna o índice completo de uma disciplina (seus módulos, pré-requisitos, conexões). A pasta da disciplina é "curso/modulo-NN-<slug>".',
+    { disciplina: z.string().describe('Disciplina: número (ex: "2") ou slug/nome (ex: "apis-prompt-eng", "APIs de IA Generativa")') },
+    async ({ disciplina }) => {
+      const allDirs = (await glob('curso/modulo-*', { cwd: DOCS_PATH }))
+        .filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory())
+        .sort();
 
-      const readmePath = path.join(DOCS_PATH, filtered[0], 'README.md');
-      if (!fs.existsSync(readmePath)) return { content: [{ type: 'text', text: `README do módulo ${module_number} não encontrado.` }] };
+      const needle = String(disciplina).trim().toLowerCase();
+      let match = allDirs.find(d => d.toLowerCase().includes(needle));
+      if (!match && /^\d+$/.test(needle)) {
+        const num = needle.padStart(2, '0');
+        match = allDirs.find(d => d.includes(`modulo-${num}`));
+      }
+      if (!match) return { content: [{ type: 'text', text: `Disciplina "${disciplina}" não encontrada.` }] };
+
+      const readmePath = path.join(DOCS_PATH, match, 'README.md');
+      if (!fs.existsSync(readmePath)) return { content: [{ type: 'text', text: `README da disciplina "${disciplina}" não encontrado.` }] };
 
       const content = fs.readFileSync(readmePath, 'utf-8');
       return { content: [{ type: 'text', text: content }] };
@@ -145,21 +152,21 @@ export function registerTools(server: McpServer) {
   // Escreve o progresso do aluno na tabela `progress` (Postgres). Idempotente.
   server.tool(
     'update_progress',
-    'Registra ou atualiza o progresso do aluno em uma unidade do curso. Marca status (not_started/in_progress/completed) e score opcional. Idempotente — repetir a mesma unidade atualiza em vez de duplicar. Requer banco Postgres rodando (npm run db:up && npm run db:migrate).',
+    'Registra ou atualiza o progresso do aluno em um MÓDULO de uma DISCIPLINA. Ex: disciplina="APIs de IA Generativa e Prompt Engineering", modulo=7. Idempotente — repetir o mesmo módulo atualiza em vez de duplicar. Requer banco Postgres rodando (npm run db:up && npm run db:migrate).',
     {
-      module: z.number().int().min(1).max(12).describe('Número do módulo (1-12)'),
-      unit: z.number().int().min(0).describe('Número da unidade dentro do módulo'),
-      status: z.enum(['not_started', 'in_progress', 'completed']).describe('Status da unidade'),
+      disciplina: z.string().describe('Nome da disciplina (ex: "APIs de IA Generativa e Prompt Engineering")'),
+      modulo: z.number().int().min(1).describe('Número do módulo dentro da disciplina (ex: 7)'),
+      status: z.enum(['not_started', 'in_progress', 'completed']).describe('Status do módulo'),
       score: z.number().min(0).max(100).optional().describe('Nota/percentual (opcional)'),
     },
-    async ({ module, unit, status, score }) => {
+    async ({ disciplina, modulo, status, score }) => {
       try {
-        const row = await updateProgress({ module, unit, status, score });
+        const row = await updateProgress({ disciplina, modulo, status, score });
         const icon = status === 'completed' ? '✅' : status === 'in_progress' ? '🟡' : '⬜';
         return {
           content: [{
             type: 'text',
-            text: `${icon} Progresso salvo — módulo ${row.module}, unidade ${row.unit}: **${row.status}**` +
+            text: `${icon} Progresso salvo — disciplina "${row.disciplina}", módulo ${row.modulo}: **${row.status}**` +
               (row.score != null ? ` (score: ${row.score})` : ''),
           }],
         };
@@ -175,34 +182,34 @@ export function registerTools(server: McpServer) {
   );
 
   // --- get_progress ---
-  // Lê o progresso registrado e resume por módulo.
+  // Lê o progresso registrado e resume por disciplina.
   server.tool(
     'get_progress',
-    'Consulta o progresso do aluno. Sem parâmetros, resume todos os módulos com percentual. Com module, detalha as unidades daquele módulo.',
-    { module: z.number().int().min(1).max(12).optional().describe('Módulo específico (1-12); omita para resumo geral') },
-    async ({ module }) => {
+    'Consulta o progresso do aluno. Sem parâmetros, resume todas as disciplinas com percentual. Com disciplina, detalha os módulos daquela disciplina.',
+    { disciplina: z.string().optional().describe('Disciplina específica (nome); omita para resumo geral') },
+    async ({ disciplina }) => {
       try {
-        const rows = await getProgress(module);
+        const rows = await getProgress(disciplina);
         if (rows.length === 0) {
           return { content: [{ type: 'text', text: '📭 Nenhum progresso registrado ainda. Use update_progress para começar.' }] };
         }
 
         const summary = summarize(rows);
-        const lines = summary.map(m =>
-          `- **Módulo ${String(m.module).padStart(2, '0')}**: ${m.percent}% ` +
-          `(${m.completed}/${m.units} concluídas${m.inProgress ? `, ${m.inProgress} em andamento` : ''})`
+        const lines = summary.map(d =>
+          `- **${d.disciplina}**: ${d.percent}% ` +
+          `(${d.completed}/${d.modulos} módulos concluídos${d.inProgress ? `, ${d.inProgress} em andamento` : ''})`
         );
 
         let text = `# 📊 Progresso\n\n${lines.join('\n')}`;
 
-        if (typeof module === 'number') {
+        if (disciplina) {
           const detail = summary[0].rows
             .map(r => {
               const icon = r.status === 'completed' ? '✅' : r.status === 'in_progress' ? '🟡' : '⬜';
-              return `  ${icon} unidade ${r.unit}: ${r.status}${r.score != null ? ` (${r.score})` : ''}`;
+              return `  ${icon} módulo ${r.modulo}: ${r.status}${r.score != null ? ` (${r.score})` : ''}`;
             })
             .join('\n');
-          text += `\n\n**Detalhe do módulo ${module}:**\n${detail}`;
+          text += `\n\n**Detalhe — ${summary[0].disciplina}:**\n${detail}`;
         }
 
         return { content: [{ type: 'text', text }] };

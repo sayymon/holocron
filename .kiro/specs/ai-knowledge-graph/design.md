@@ -20,8 +20,8 @@ O AI Knowledge Graph é uma extensão do Holocron que adiciona um grafo de conhe
 │  ─────────────           ──────────────────────────           │
 │  search_content          explore_topic (async→task_id)         │
 │  ask_tutor               crystallize_node (sync)               │
-│  list_modules            get_exploration_state (sync)          │
-│  get_module              suggest_next_topics (sync)            │
+│  list_disciplinas        get_exploration_state (sync)          │
+│  get_disciplina          suggest_next_topics (sync)            │
 │  get_document            list_graph_nodes (sync)               │
 │  get_task_result                                              │
 └────────────────────────────┬──────────────────────────────────┘

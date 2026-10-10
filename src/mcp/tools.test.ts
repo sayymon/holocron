@@ -5,8 +5,8 @@ import { glob } from 'glob';
 
 const DOCS_PATH = path.resolve(process.cwd(), 'docs');
 
-describe('MCP Tools — list_modules (filesystem)', () => {
-  it('deve encontrar 12 diretórios de módulos', async () => {
+describe('MCP Tools — list_disciplinas (filesystem)', () => {
+  it('deve encontrar 12 diretórios de disciplinas', async () => {
     const dirs = await glob('curso/modulo-*', { cwd: DOCS_PATH, onlyDirectories: true });
     expect(dirs.sort()).toHaveLength(12);
     expect(dirs.sort()[0]).toContain('modulo-01');
@@ -14,15 +14,15 @@ describe('MCP Tools — list_modules (filesystem)', () => {
   });
 });
 
-describe('MCP Tools — get_module (filesystem)', () => {
-  it('deve ler README do módulo 1', () => {
+describe('MCP Tools — get_disciplina (filesystem)', () => {
+  it('deve ler README da disciplina 1', () => {
     const readmePath = path.join(DOCS_PATH, 'curso/modulo-01-fundamentos/README.md');
     expect(fs.existsSync(readmePath)).toBe(true);
     const content = fs.readFileSync(readmePath, 'utf-8');
     expect(content).toContain('Módulo 01');
   });
 
-  it('deve ler README do módulo 4 (agentes)', async () => {
+  it('deve ler README da disciplina 4 (agentes)', async () => {
     const dirs = await glob('curso/modulo-04-*', { cwd: DOCS_PATH, onlyDirectories: true });
     expect(dirs.length).toBe(1);
     const readmePath = path.join(DOCS_PATH, dirs[0], 'README.md');

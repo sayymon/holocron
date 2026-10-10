@@ -88,9 +88,11 @@ Conecte o Holocron MCP Server ao **Claude Code, Cursor, Kiro, Windsurf** ou qual
 
 | Tool | Tipo | Descrição |
 |------|------|-----------|
-| `list_modules` | Síncrona | Lista os 12 módulos do curso |
-| `get_module` | Síncrona | Retorna README de um módulo específico |
+| `list_disciplinas` | Síncrona | Lista as disciplinas do curso (cada uma contém vários módulos) |
+| `get_disciplina` | Síncrona | Retorna README de uma disciplina específica |
 | `get_document` | Síncrona | Retorna conteúdo de qualquer doc da KB |
+| `update_progress` | Síncrona | Registra progresso em um módulo de uma disciplina (Postgres) |
+| `get_progress` | Síncrona | Resume o progresso por disciplina/módulo |
 | `search_content` | Async | Busca semântica no conteúdo (retorna `task_id`) |
 | `ask_tutor` | Async | Pergunta ao tutor socrático (retorna `task_id`) |
 | `get_task_result` | Polling | Obtém resultado de uma task async |

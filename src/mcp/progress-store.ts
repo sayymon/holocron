@@ -3,6 +3,10 @@ import pool from '../db/client.js';
 /**
  * Progresso do aluno — persistido na tabela `progress` (Postgres).
  *
+ * Nomenclatura do domínio:
+ * - disciplina: nível superior do curso (ex: "APIs de IA Generativa e Prompt Engineering")
+ * - modulo:     nível interno de cada disciplina (ex: 7)
+ *
  * Diferente das tasks (efêmeras, em memória), o progresso sobrevive entre
  * sessões. Aluno é resolvido por HOLOCRON_STUDENT_ID (env) ou por um registro
  * "default" criado on-demand.
@@ -15,17 +19,17 @@ import pool from '../db/client.js';
 export type ProgressStatus = 'not_started' | 'in_progress' | 'completed';
 
 export interface ProgressRow {
-  module: number;
-  unit: number;
+  disciplina: string;
+  modulo: number;
   status: ProgressStatus;
   score: number | null;
   completed_at: string | null;
   updated_at: string | null;
 }
 
-export interface ModuleSummary {
-  module: number;
-  units: number;
+export interface DisciplinaSummary {
+  disciplina: string;
+  modulos: number;
   completed: number;
   inProgress: number;
   percent: number;
@@ -33,6 +37,11 @@ export interface ModuleSummary {
 }
 
 const DEFAULT_STUDENT_NAME = process.env.HOLOCRON_STUDENT_NAME || 'default';
+
+/** Normaliza o nome da disciplina para evitar duplicatas por variação de caixa/espaço. */
+export function normalizeDisciplina(disciplina: string): string {
+  return disciplina.trim().replace(/\s+/g, ' ');
+}
 
 /** Resolve o id do aluno (env, ou cria/usa um registro "default"). */
 async function getStudentId(): Promise<string> {
@@ -51,69 +60,70 @@ async function getStudentId(): Promise<string> {
   return created.rows[0].id;
 }
 
-/** Cria ou atualiza o progresso de uma unidade (idempotente). */
+/** Cria ou atualiza o progresso de um módulo de uma disciplina (idempotente). */
 export async function updateProgress(input: {
-  module: number;
-  unit: number;
+  disciplina: string;
+  modulo: number;
   status: ProgressStatus;
   score?: number;
 }): Promise<ProgressRow> {
   const studentId = await getStudentId();
+  const disciplina = normalizeDisciplina(input.disciplina);
 
   const { rows } = await pool.query(
-    `INSERT INTO progress (student_id, module, unit, status, score, completed_at, updated_at)
+    `INSERT INTO progress (student_id, disciplina, modulo, status, score, completed_at, updated_at)
      VALUES ($1, $2, $3, $4, $5,
              CASE WHEN $4 = 'completed' THEN NOW() ELSE NULL END, NOW())
-     ON CONFLICT (student_id, module, unit)
+     ON CONFLICT (student_id, disciplina, modulo)
      DO UPDATE SET status       = EXCLUDED.status,
                    score        = COALESCE(EXCLUDED.score, progress.score),
                    completed_at = EXCLUDED.completed_at,
                    updated_at   = NOW()
-     RETURNING module, unit, status, score, completed_at, updated_at`,
-    [studentId, input.module, input.unit, input.status, input.score ?? null]
+     RETURNING disciplina, modulo, status, score, completed_at, updated_at`,
+    [studentId, disciplina, input.modulo, input.status, input.score ?? null]
   );
 
   return rows[0];
 }
 
-/** Lê o progresso registrado (todos os módulos ou um específico). */
-export async function getProgress(module?: number): Promise<ProgressRow[]> {
+/** Lê o progresso registrado (todas as disciplinas ou uma específica). */
+export async function getProgress(disciplina?: string): Promise<ProgressRow[]> {
   const studentId = await getStudentId();
 
   const params: unknown[] = [studentId];
   let where = 'WHERE student_id = $1';
-  if (typeof module === 'number') {
-    params.push(module);
-    where += ' AND module = $2';
+  if (disciplina) {
+    params.push(normalizeDisciplina(disciplina));
+    where += ' AND disciplina = $2';
   }
 
   const { rows } = await pool.query(
-    `SELECT module, unit, status, score, completed_at, updated_at
+    `SELECT disciplina, modulo, status, score, completed_at, updated_at
      FROM progress ${where}
-     ORDER BY module, unit`,
+     ORDER BY disciplina, modulo`,
     params
   );
 
   return rows;
 }
 
-/** Agrupa por módulo e calcula percentual (completas / unidades registradas). */
-export function summarize(rows: ProgressRow[]): ModuleSummary[] {
-  const byModule = new Map<number, ProgressRow[]>();
+/** Agrupa por disciplina e calcula percentual (concluídos / módulos registrados). */
+export function summarize(rows: ProgressRow[]): DisciplinaSummary[] {
+  const byDisciplina = new Map<string, ProgressRow[]>();
   for (const row of rows) {
-    const list = byModule.get(row.module) || [];
+    const list = byDisciplina.get(row.disciplina) || [];
     list.push(row);
-    byModule.set(row.module, list);
+    byDisciplina.set(row.disciplina, list);
   }
 
-  return [...byModule.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([module, list]) => {
+  return [...byDisciplina.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0], 'pt-BR'))
+    .map(([disciplina, list]) => {
       const completed = list.filter(r => r.status === 'completed').length;
       const inProgress = list.filter(r => r.status === 'in_progress').length;
       return {
-        module,
-        units: list.length,
+        disciplina,
+        modulos: list.length,
         completed,
         inProgress,
         percent: list.length ? Math.round((completed / list.length) * 100) : 0,

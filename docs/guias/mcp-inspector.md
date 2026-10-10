@@ -49,9 +49,11 @@ Para cada tool, o Inspector mostra:
 
 | Tool | Descrição | Parâmetros |
 |------|-----------|------------|
-| `list_modules` | Lista os 12 módulos do curso | nenhum |
-| `get_module` | Retorna README de um módulo | `module_number` (1-12) |
+| `list_disciplinas` | Lista as disciplinas do curso (cada uma contém vários módulos) | nenhum |
+| `get_disciplina` | Retorna README de uma disciplina | `disciplina` ("2", "apis-prompt-eng", ...) |
 | `get_document` | Conteúdo de um doc da KB | `document_path` (caminho relativo) |
+| `update_progress` | Registra progresso em um módulo de uma disciplina (Postgres) | `disciplina`, `modulo`, `status`, `score?` |
+| `get_progress` | Resume o progresso por disciplina/módulo | `disciplina?` |
 | `get_exploration_state` | Estado do Knowledge Graph | nenhum |
 | `suggest_next_topics` | Sugere próximos tópicos | `current_topic?` |
 | `list_graph_nodes` | Lista nós do grafo com filtros | `filter?`, `area?` |
@@ -70,15 +72,15 @@ Para cada tool, o Inspector mostra:
 
 ### 1. Testar tool síncrona simples
 
-1. Clique em **Tools** → `list_modules`
+1. Clique em **Tools** → `list_disciplinas`
 2. Clique em **Run Tool** (sem parâmetros)
-3. Veja a lista de módulos retornada
+3. Veja a lista de disciplinas retornada
 
 ### 2. Testar tool com parâmetros
 
-1. Clique em `get_module`
-2. Preencha `module_number`: `3`
-3. **Run Tool** → veja o README do módulo 03 (MCP)
+1. Clique em `get_disciplina`
+2. Preencha `disciplina`: `"apis-prompt-eng"`
+3. **Run Tool** → veja o README da disciplina (Módulo/Disciplina 02 — APIs de IA Generativa)
 
 ### 3. Testar fluxo assíncrono
 
