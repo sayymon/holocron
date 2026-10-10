@@ -13,6 +13,10 @@ import {
   searchEntities,
   resolveEntity,
   whereTaught,
+  matchCategory,
+  categoryLabel,
+  applyCategoryFilter,
+  entitySummary,
 } from './curriculum.js';
 
 const DOCS_PATH = path.resolve(process.cwd(), 'docs');
@@ -248,14 +252,28 @@ export function registerTools(server: McpServer) {
   // registrados no Knowledge Graph, com as relações entre eles.
   server.tool(
     'search_curriculum',
-    'Busca entidades do currículo (ferramentas, frameworks, provedores, conceitos, padrões) no Knowledge Graph. Responde perguntas como "Onde LangGraph foi abordado?" e "Quais ferramentas implementam RAG?".',
-    { query: z.string().describe('Termo a buscar (ex: "LangGraph", "RAG", "LoRA", "langchain")'), limit: z.number().optional().describe('Qtd máxima de resultados (default: 8)') },
-    async ({ query, limit }) => {
+    'Busca entidades do currículo (ferramentas, frameworks, provedores, conceitos, padrões) no Knowledge Graph. Aceita termo específico ("LangGraph", "RAG"), categoria ampla ("ferramentas", "conceitos", "frameworks", "providers", "padrões") ou o filtro explícito `categoria`.',
+    {
+      query: z.string().describe('Termo a buscar (ex: "LangGraph", "RAG", "ferramentas", "conceitos")'),
+      categoria: z.string().optional().describe('Filtro por categoria: ferramenta, conceito, framework, provider, mcp server, infraestrutura, padrao, paradigma, llm, observabilidade'),
+      limit: z.number().optional().describe('Qtd máxima de resultados (default: 8; em listagens por categoria: 40)'),
+    },
+    async ({ query, limit, categoria }) => {
       const entities = await listEntities();
-      const hits = searchEntities(entities, query, limit || 8);
+      const cat = categoria ? matchCategory(categoria) : matchCategory(query);
+      const broad = cat != null;
+      const effectiveLimit = limit ?? (broad ? 40 : 8);
+      const hits = searchEntities(entities, query, effectiveLimit, categoria);
+
       if (hits.length === 0) {
-        return { content: [{ type: 'text', text: `Nenhuma entidade encontrada para "${query}".` }] };
+        const hint = broad ? ` (categoria "${categoryLabel(cat!)}")` : '';
+        return { content: [{ type: 'text', text: `Nenhuma entidade encontrada para "${query}"${hint}.` }] };
       }
+
+      const total = broad ? applyCategoryFilter(entities, cat!).length : hits.length;
+      const header = broad
+        ? `# 🗂️ ${categoryLabel(cat!)} (${total})`
+        : `# 🔎 Entidades do currículo para "${query}"`;
 
       const lines = hits.map((e, i) =>
         `[${i + 1}] **${e.titulo}** — ${e.top} (${e.categoria})\n` +
@@ -263,19 +281,18 @@ export function registerTools(server: McpServer) {
         `    caminho: ${e.caminho}`
       );
 
-      return {
-        content: [{
-          type: 'text',
-          text: `# 🔎 Entidades do currículo para "${query}"\n\n${lines.join('\n\n')}\n\nUse get_curriculum_entity("<slug>") para detalhes, relações e onde é abordado.`
-        }]
-      };
+      const footer = broad
+        ? `\nUse get_curriculum_entity("<slug>") para detalhes, relações e onde cada uma é abordada.`
+        : `\nUse get_curriculum_entity("<slug>") para detalhes, relações e onde é abordado.`;
+
+      return { content: [{ type: 'text', text: `${header}\n\n${lines.join('\n\n')}\n${footer}` }] };
     }
   );
 
   // --- get_curriculum_entity ---
   server.tool(
     'get_curriculum_entity',
-    'Retorna os detalhes de uma entidade do currículo: tipo, tags, relações (conceitos/ferramentas conectados via wikilinks) e onde é abordado no curso (disciplina/módulo).',
+    'Retorna os detalhes de uma entidade do currículo: tipo, resumo, casos de uso (do próprio doc), relações (conceitos/ferramentas conectados via wikilinks) e onde é abordado no curso (disciplina/módulo).',
     { name: z.string().describe('Slug ou nome da entidade (ex: "langgraph", "rag", "lora")') },
     async ({ name }) => {
       const entities = await listEntities();
@@ -286,6 +303,7 @@ export function registerTools(server: McpServer) {
       const slugSet = new Set(entities.map(x => x.slug));
       const related = e.rel.filter(r => slugSet.has(r));
       const outros = e.rel.filter(r => !slugSet.has(r));
+      const { definicao, usos } = entitySummary(e);
 
       const lines = [
         `**${e.titulo}**`,
@@ -293,7 +311,14 @@ export function registerTools(server: McpServer) {
         `- Slug: ${e.slug}`,
         `- Tags: ${e.tags.join(', ') || '-'}`,
         `- Doc: ${e.caminho}`,
+        '',
+        `Resumo: ${definicao}`,
       ];
+
+      if (usos.length > 0) {
+        lines.push('\nCasos de uso / aplicações (do doc):');
+        for (const u of usos) lines.push(`  - ${u}`);
+      }
 
       if (related.length > 0) {
         lines.push('\nRelações (via wikilinks):');

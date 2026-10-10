@@ -51,6 +51,76 @@ function normalizeToken(s: string): string {
   return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
+function stemPT(s: string): string {
+  return s.endsWith('s') ? s.slice(0, -1) : s;
+}
+
+export type CategoryFilter = { top?: 'ferramenta' | 'conceito'; categoria?: string };
+
+const CATEGORIA_SYNS: Record<string, string[]> = {
+  framework: ['framework', 'frameworks', 'frameworks de orquestracao'],
+  'provider de LLM': ['provider', 'providers', 'provedor', 'provedores', 'provider de llm', 'provedor de llm', 'modelo', 'modelos', 'models'],
+  'mcp server': ['mcp server', 'mcp servers', 'mcp-server', 'mcps', 'servidor mcp', 'servidores mcp'],
+  infraestrutura: ['infraestrutura', 'infrastructure', 'infra', 'vector db', 'vector databases', 'banco de dados vetorial', 'bancos vetoriais'],
+  'ferramenta de codificação': ['codificacao', 'codificação', 'ide', 'ferramenta de codificação', 'ferramenta de codificacao'],
+  observabilidade: ['observabilidade', 'observability'],
+  fundamentos: ['fundamentos', 'foundations'],
+  'LLMs': ['llm', 'llms', 'large language models'],
+  paradigma: ['paradigma', 'paradigmas', 'paradigm', 'paradigms'],
+  'IA generativa': ['ia generativa', 'ia generativa aplicada', 'generative ai', 'genai'],
+  'padrão': ['padrao', 'padrão', 'padroes', 'padrões', 'pattern', 'patterns', 'design pattern', 'design patterns'],
+};
+
+const CATEGORIA_PLURAL: Record<string, string> = {
+  framework: 'frameworks',
+  'provider de LLM': 'providers de LLM / modelos',
+  'mcp server': 'MCP servers',
+  infraestrutura: 'infraestrutura',
+  'ferramenta de codificação': 'ferramentas de codificação',
+  observabilidade: 'observabilidade',
+  fundamentos: 'fundamentos',
+  'LLMs': 'LLMs',
+  paradigma: 'paradigmas',
+  'IA generativa': 'IA generativa',
+  'padrão': 'padrões',
+};
+
+/** Detecta se a consulta é uma categoria ampla (ex: "ferramentas", "conceitos", "frameworks"). */
+export function matchCategory(input: string): CategoryFilter | null {
+  const raw = input.trim().toLowerCase();
+  if (!raw) return null;
+  const tok = normalizeToken(raw);
+  const hasSpace = /\s/.test(raw);
+  const t = stemPT(tok);
+
+  if ((!hasSpace && t === stemPT('ferramenta')) || ['ferramenta', 'ferramentas', 'tool', 'tools'].includes(tok)) {
+    return { top: 'ferramenta' };
+  }
+  if ((!hasSpace && t === stemPT('conceito')) || ['conceito', 'conceitos', 'concept', 'concepts'].includes(tok)) {
+    return { top: 'conceito' };
+  }
+
+  for (const [categoria, syns] of Object.entries(CATEGORIA_SYNS)) {
+    const sym = syns.map(normalizeToken);
+    const match = sym.includes(tok) || (!hasSpace && sym.some(s => stemPT(s) === t));
+    if (match) return { categoria };
+  }
+  return null;
+}
+
+export function categoryLabel(cat: CategoryFilter): string {
+  if (cat.categoria) return CATEGORIA_PLURAL[cat.categoria] ?? cat.categoria;
+  if (cat.top) return cat.top === 'ferramenta' ? 'ferramentas' : 'conceitos';
+  return 'currículo';
+}
+
+export function applyCategoryFilter(entities: CurriculumEntity[], cat: CategoryFilter): CurriculumEntity[] {
+  return entities.filter(e =>
+    (!cat.top || e.top === cat.top) &&
+    (!cat.categoria || e.categoria === cat.categoria)
+  );
+}
+
 function isExcluded(file: string): boolean {
   const base = path.basename(file);
   return base.startsWith('_') || /^(MAPA|MINDMAP|PROMPT)/.test(base);
@@ -140,7 +210,17 @@ export async function listEntities(): Promise<CurriculumEntity[]> {
   return out;
 }
 
-export function searchEntities(entities: CurriculumEntity[], query: string, limit = 10): CurriculumEntity[] {
+export function searchEntities(
+  entities: CurriculumEntity[],
+  query: string,
+  limit = 10,
+  categoria?: string
+): CurriculumEntity[] {
+  const cat = categoria ? matchCategory(categoria) : matchCategory(query);
+  if (cat) {
+    return applyCategoryFilter(entities, cat).slice(0, limit);
+  }
+
   const tokens = normalizeToken(query).split(/\s+/).filter(Boolean);
   const scored = entities.map(e => {
     let score = 0;
@@ -165,6 +245,45 @@ export function resolveEntity(entities: CurriculumEntity[], name: string): Curri
   const title = entities.find(e => normalizeToken(e.titulo) === tok);
   if (title) return title;
   return entities.find(e => normalizeToken(e.slug).includes(tok) || normalizeToken(e.titulo).includes(tok)) ?? null;
+}
+
+/** Extrai da própria doc da entidade: definição (1º parágrafo) e bullets de usos/aplicações. */
+export function entitySummary(e: CurriculumEntity): { definicao: string; usos: string[] } {
+  const raw = fs.readFileSync(path.join(DOCS_PATH, e.caminho), 'utf-8');
+  const { content } = matter(raw);
+  const lines = content.split('\n');
+
+  let definicao = '';
+  const h1 = lines.findIndex(l => /^#\s/.test(l));
+  if (h1 >= 0) {
+    const para: string[] = [];
+    for (const l of lines.slice(h1 + 1)) {
+      const t = l.trim();
+      if (!t) { if (para.length) break; continue; }
+      if (t.startsWith('```')) break;
+      if (/^#{1,6}\s/.test(t)) break;
+      para.push(t.replace(/^>\s?/, ''));
+    }
+    definicao = para.join(' ').replace(/`/g, '').slice(0, 420);
+  }
+  if (!definicao) definicao = e.titulo;
+
+  const usos: string[] = [];
+  const secIdx = lines.findIndex(l => /^#{1,6}\s*(Aplica|Casos de uso|Quando usar|Casos de Uso práticos)/i.test(l.trim()));
+  if (secIdx >= 0) {
+    for (const l of lines.slice(secIdx + 1)) {
+      const t = l.trim();
+      if (/^#{1,6}\s/.test(t)) break;
+      const m = t.match(/^[-*]\s+(.*)$/);
+      if (m) {
+        const s = m[1].replace(/\*\*/g, '').trim();
+        if (s && s.length < 160) usos.push(s);
+        if (usos.length >= 4) break;
+      }
+    }
+  }
+
+  return { definicao, usos };
 }
 
 /** Onde a entidade é abordada no curso: busca da palavra no conteúdo, respeitando fronteira de palavra. */

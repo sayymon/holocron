@@ -6,6 +6,9 @@ import {
   searchEntities,
   resolveEntity,
   whereTaught,
+  matchCategory,
+  applyCategoryFilter,
+  entitySummary,
 } from './curriculum.js';
 
 describe('Curriculum — disciplinas', () => {
@@ -40,6 +43,43 @@ describe('Curriculum — entidades', () => {
     expect(searchEntities(entities, 'LangGraph')[0]?.slug).toBe('langgraph');
     expect(searchEntities(entities, 'RAG').some(e => e.slug === 'rag')).toBe(true);
     expect(searchEntities(entities, 'você-é-culpa-do-cosmo')).toHaveLength(0);
+  });
+
+  it('buscas amplas por categoria listam ferramentas e conceitos', async () => {
+    const entities = await listEntities();
+    const ferramentas = searchEntities(entities, 'ferramentas', 100);
+    expect(ferramentas.length).toBeGreaterThan(20);
+    expect(ferramentas.every(e => e.top === 'ferramenta')).toBe(true);
+
+    const conceitos = searchEntities(entities, 'conceitos', 100);
+    expect(conceitos.length).toBeGreaterThan(20);
+    expect(conceitos.every(e => e.top === 'conceito')).toBe(true);
+  });
+
+  it('busca ampla por categoria enumera frameworks e padrões', async () => {
+    const entities = await listEntities();
+    const frameworks = searchEntities(entities, 'frameworks', 100);
+    expect(frameworks.length).toBeGreaterThan(0);
+    expect(frameworks.every(e => e.categoria === 'framework')).toBe(true);
+
+    const padroes = applyCategoryFilter(entities, matchCategory('padrões')!);
+    expect(padroes.length).toBeGreaterThan(0);
+    expect(padroes.every(e => e.categoria === 'padrão')).toBe(true);
+  });
+
+  it('filtro explícito por categoria', async () => {
+    const entities = await listEntities();
+    const providers = searchEntities(entities, '', 100, 'provider');
+    expect(providers.length).toBeGreaterThan(0);
+    expect(providers.every(e => e.categoria === 'provider de LLM')).toBe(true);
+  });
+
+  it('entitySummary extrai definição e usos da doc', async () => {
+    const entities = await listEntities();
+    const lg = resolveEntity(entities, 'langgraph')!;
+    const { definicao, usos } = entitySummary(lg);
+    expect(definicao.length).toBeGreaterThan(20);
+    expect(usos.length).toBeGreaterThanOrEqual(1);
   });
 
   it('resolveEntity encontra por slug', async () => {
