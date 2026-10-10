@@ -1,8 +1,16 @@
-# ADR 003 — Padrão Async com Polling para Tools MCP de Longa Duração
+---
+titulo: "ADR-003 — Padrão Async com Polling para Tools MCP"
+status: aceita
+data: 2026-05-22
+decisores: Saymon Silva
+tags:
+  - mcp
+  - async
+  - tools
+  - arquitetura
+---
 
-**Status:** Aceito  
-**Data:** 2026-05-22  
-**Autor:** Saymon Silva  
+# ADR 003 — Padrão Async com Polling para Tools MCP de Longa Duração
 
 ## Contexto
 
