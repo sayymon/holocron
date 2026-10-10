@@ -23,13 +23,17 @@ Tutor inteligente personalizado para o curso de Engenharia de IA Aplicada. Crist
 | Tool | Tipo | Descrição |
 |------|------|-----------|
 | `list_disciplinas` | Síncrona | Lista as disciplinas do curso (conceito: disciplina → módulos) |
-| `get_disciplina` | Síncrona | Retorna README de uma disciplina |
+| `get_disciplina` | Síncrona | Retorna README de uma disciplina (número, slug ou nome completo) |
+| `search_curriculum` | Síncrona | Busca entidades do currículo (ferramentas/conceitos/frameworks) no KG |
+| `get_curriculum_entity` | Síncrona | Detalhes, relações (wikilinks) e onde a entidade é abordada |
 | `get_document` | Síncrona | Retorna conteúdo de um doc da KB |
 | `update_progress` | Síncrona | Registra progresso (disciplina + módulo) no Postgres |
 | `get_progress` | Síncrona | Resume o progresso por disciplina/módulo |
 | `search_content` | **Async** | Busca semântica (retorna task_id) |
 | `ask_tutor` | **Async** | Pergunta ao tutor socrático (retorna task_id) |
 | `get_task_result` | Polling | Obtém resultado de task async |
+
+> Compatibilidade: `list_modules`/`get_module` registrados como aliases de `list_disciplinas`/`get_disciplina` para clientes antigos.
 
 ### Padrão Async (ADR 003)
 
