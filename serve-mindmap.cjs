@@ -24,7 +24,7 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(DIR, req.url === '/' ? 'mindmap-dynamic.html' : req.url);
+  let filePath = path.join(DIR, req.url === '/' ? 'mindmap.html' : req.url);
   
   const ext = path.extname(filePath);
   const contentType = MIME_TYPES[ext] || 'text/plain';
