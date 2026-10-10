@@ -2,14 +2,26 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import fs from 'fs';
 import path from 'path';
-import { glob } from 'glob';
-import matter from 'gray-matter';
 import { hybridSearch } from '../rag/index.js';
 import { runTutor } from '../agents/index.js';
 import { createTask, getTask, cleanOldTasks } from './task-store.js';
 import { updateProgress, getProgress, summarize } from './progress-store.js';
+import {
+  listDisciplinas,
+  resolveDisciplina,
+  listEntities,
+  searchEntities,
+  resolveEntity,
+  whereTaught,
+} from './curriculum.js';
 
 const DOCS_PATH = path.resolve(process.cwd(), 'docs');
+
+async function renderDisciplinas(): Promise<string> {
+  const disciplinas = await listDisciplinas();
+  const lines = disciplinas.map(d => `- **${d.name}** (número ${d.numero}, slug: ${d.slug})`);
+  return `# Disciplinas do Curso (${disciplinas.length})\n\n${lines.join('\n')}`;
+}
 
 export function registerTools(server: McpServer) {
 
@@ -94,43 +106,50 @@ export function registerTools(server: McpServer) {
     'Lista as disciplinas do curso de Engenharia de IA Aplicada. Atenção: no curso, cada disciplina contém vários MÓDULOS internos — o nível superior se chama "disciplina", não "módulo".',
     {},
     async () => {
-      const disciplinaDirs = await glob('curso/disciplina-*', { cwd: DOCS_PATH });
-      const sorted = disciplinaDirs.filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory()).sort();
-      const disciplinas = sorted.map(dir => {
-        const readmePath = path.join(DOCS_PATH, dir, 'README.md');
-        if (fs.existsSync(readmePath)) {
-          const { data } = matter(fs.readFileSync(readmePath, 'utf-8'));
-          return `- **${data.titulo || dir}** (${dir})`;
-        }
-        return `- ${dir}`;
-      });
-      return { content: [{ type: 'text', text: `# Disciplinas do Curso\n\n${disciplinas.join('\n')}` }] };
+      return { content: [{ type: 'text', text: await renderDisciplinas() }] };
+    }
+  );
+
+  // --- list_modules (alias de compatibilidade) ---
+  server.tool(
+    'list_modules',
+    'Compatibilidade: alias de list_disciplinas para clientes que ainda usam o nome antigo. O nível superior do curso é "disciplina", não "módulo".',
+    {},
+    async () => {
+      return { content: [{ type: 'text', text: await renderDisciplinas() }] };
     }
   );
 
   // --- get_disciplina ---
   server.tool(
     'get_disciplina',
-    'Retorna o índice completo de uma disciplina (seus módulos, pré-requisitos, conexões). A pasta da disciplina é "curso/disciplina-NN-<slug>".',
-    { disciplina: z.string().describe('Disciplina: número (ex: "2") ou slug/nome (ex: "apis-prompt-eng", "APIs de IA Generativa")') },
+    'Retorna o índice completo de uma disciplina (seus módulos, pré-requisitos, conexões). Aceita número ("2"), slug ("apis-prompt-eng") ou nome completo ("APIs de IA Generativa e Prompt Engineering").',
+    { disciplina: z.string().describe('Disciplina: número (ex: "2"), slug (ex: "apis-prompt-eng") ou nome (ex: "APIs de IA Generativa e Prompt Engineering")') },
     async ({ disciplina }) => {
-      const allDirs = (await glob('curso/disciplina-*', { cwd: DOCS_PATH }))
-        .filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory())
-        .sort();
+      const match = await resolveDisciplina(disciplina);
+      if (!match) return { content: [{ type: 'text', text: `Disciplina "${disciplina}" não encontrada. Tente o número (ex: 2) ou o nome completo.` }] };
 
-      const needle = String(disciplina).trim().toLowerCase();
-      let match = allDirs.find(d => d.toLowerCase().includes(needle));
-      if (!match && /^\d+$/.test(needle)) {
-        const num = needle.padStart(2, '0');
-        match = allDirs.find(d => d.includes(`disciplina-${num}`));
-      }
-      if (!match) return { content: [{ type: 'text', text: `Disciplina "${disciplina}" não encontrada.` }] };
-
-      const readmePath = path.join(DOCS_PATH, match, 'README.md');
+      const readmePath = path.join(DOCS_PATH, match.dir, 'README.md');
       if (!fs.existsSync(readmePath)) return { content: [{ type: 'text', text: `README da disciplina "${disciplina}" não encontrado.` }] };
 
       const content = fs.readFileSync(readmePath, 'utf-8');
       return { content: [{ type: 'text', text: content }] };
+    }
+  );
+
+  // --- get_module (alias de compatibilidade) ---
+  server.tool(
+    'get_module',
+    'Compatibilidade: alias de get_disciplina. Espera o número da disciplina (1-12), que nos clientes antigos era chamado de módulo.',
+    { module_number: z.number().int().min(1).max(12).describe('Número da disciplina (1-12)') },
+    async ({ module_number }) => {
+      const match = await resolveDisciplina(String(module_number));
+      if (!match) return { content: [{ type: 'text', text: `Disciplina ${module_number} não encontrada.` }] };
+
+      const readmePath = path.join(DOCS_PATH, match.dir, 'README.md');
+      if (!fs.existsSync(readmePath)) return { content: [{ type: 'text', text: `README da disciplina ${module_number} não encontrado.` }] };
+
+      return { content: [{ type: 'text', text: fs.readFileSync(readmePath, 'utf-8') }] };
     }
   );
 
@@ -221,6 +240,83 @@ export function registerTools(server: McpServer) {
           }],
         };
       }
+    }
+  );
+
+  // --- search_curriculum ---
+  // Visão de entidades do currículo: ferramentas, frameworks, conceitos, provedores e padrões
+  // registrados no Knowledge Graph, com as relações entre eles.
+  server.tool(
+    'search_curriculum',
+    'Busca entidades do currículo (ferramentas, frameworks, provedores, conceitos, padrões) no Knowledge Graph. Responde perguntas como "Onde LangGraph foi abordado?" e "Quais ferramentas implementam RAG?".',
+    { query: z.string().describe('Termo a buscar (ex: "LangGraph", "RAG", "LoRA", "langchain")'), limit: z.number().optional().describe('Qtd máxima de resultados (default: 8)') },
+    async ({ query, limit }) => {
+      const entities = await listEntities();
+      const hits = searchEntities(entities, query, limit || 8);
+      if (hits.length === 0) {
+        return { content: [{ type: 'text', text: `Nenhuma entidade encontrada para "${query}".` }] };
+      }
+
+      const lines = hits.map((e, i) =>
+        `[${i + 1}] **${e.titulo}** — ${e.top} (${e.categoria})\n` +
+        `    slug: ${e.slug} · tags: ${e.tags.slice(0, 6).join(', ') || '-'}\n` +
+        `    caminho: ${e.caminho}`
+      );
+
+      return {
+        content: [{
+          type: 'text',
+          text: `# 🔎 Entidades do currículo para "${query}"\n\n${lines.join('\n\n')}\n\nUse get_curriculum_entity("<slug>") para detalhes, relações e onde é abordado.`
+        }]
+      };
+    }
+  );
+
+  // --- get_curriculum_entity ---
+  server.tool(
+    'get_curriculum_entity',
+    'Retorna os detalhes de uma entidade do currículo: tipo, tags, relações (conceitos/ferramentas conectados via wikilinks) e onde é abordado no curso (disciplina/módulo).',
+    { name: z.string().describe('Slug ou nome da entidade (ex: "langgraph", "rag", "lora")') },
+    async ({ name }) => {
+      const entities = await listEntities();
+      const e = resolveEntity(entities, name);
+      if (!e) return { content: [{ type: 'text', text: `Entidade "${name}" não encontrada. Use search_curriculum para buscar.` }] };
+
+      const taught = whereTaught(e.slug);
+      const slugSet = new Set(entities.map(x => x.slug));
+      const related = e.rel.filter(r => slugSet.has(r));
+      const outros = e.rel.filter(r => !slugSet.has(r));
+
+      const lines = [
+        `**${e.titulo}**`,
+        `- Tipo: ${e.top} (${e.categoria})`,
+        `- Slug: ${e.slug}`,
+        `- Tags: ${e.tags.join(', ') || '-'}`,
+        `- Doc: ${e.caminho}`,
+      ];
+
+      if (related.length > 0) {
+        lines.push('\nRelações (via wikilinks):');
+        for (const slug of related) {
+          const r = entities.find(x => x.slug === slug)!;
+          lines.push(`  - ${r.titulo} (${r.top} / ${r.categoria})`);
+        }
+        if (outros.length > 0) lines.push(`  - outros links: ${outros.slice(0, 8).join(', ')}${outros.length > 8 ? '…' : ''}`);
+      }
+
+      if (taught.length > 0) {
+        lines.push(`\nAbordado no curso (${taught.length} ${taught.length === 1 ? 'documento' : 'documentos'}):`);
+        for (const t of taught.slice(0, 12)) {
+          const onde = t.disciplina != null ? `disciplina ${t.disciplina}` : 'material técnico';
+          const mod = t.modulo != null ? `, módulo ${t.modulo}` : '';
+          lines.push(`  - ${onde}${mod} — ${t.caminho}`);
+        }
+        if (taught.length > 12) lines.push(`  - … e mais ${taught.length - 12} documento(s)`);
+      } else {
+        lines.push('\nNão encontrado explicitamente no conteúdo do curso.');
+      }
+
+      return { content: [{ type: 'text', text: `# 📚 ${e.titulo}\n\n${lines.join('\n')}` }] };
     }
   );
 }

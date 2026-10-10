@@ -89,13 +89,17 @@ Conecte o Holocron MCP Server ao **Claude Code, Cursor, Kiro, Windsurf** ou qual
 | Tool | Tipo | Descrição |
 |------|------|-----------|
 | `list_disciplinas` | Síncrona | Lista as disciplinas do curso (cada uma contém vários módulos) |
-| `get_disciplina` | Síncrona | Retorna README de uma disciplina específica |
+| `get_disciplina` | Síncrona | Retorna README de uma disciplina (por número, slug ou nome) |
+| `search_curriculum` | Síncrona | Busca entidades do currículo (ferramentas, conceitos, frameworks…) |
+| `get_curriculum_entity` | Síncrona | Detalhes, relações e onde uma entidade é abordada |
 | `get_document` | Síncrona | Retorna conteúdo de qualquer doc da KB |
 | `update_progress` | Síncrona | Registra progresso em um módulo de uma disciplina (Postgres) |
 | `get_progress` | Síncrona | Resume o progresso por disciplina/módulo |
 | `search_content` | Async | Busca semântica no conteúdo (retorna `task_id`) |
 | `ask_tutor` | Async | Pergunta ao tutor socrático (retorna `task_id`) |
 | `get_task_result` | Polling | Obtém resultado de uma task async |
+
+> **Compatibilidade:** `list_modules` e `get_module` continuam registrados como aliases de `list_disciplinas`/`get_disciplina` para clientes que não atualizaram os nomes.
 
 **Fluxo async (para tools de longa duração):**
 
@@ -106,7 +110,7 @@ Conecte o Holocron MCP Server ao **Claude Code, Cursor, Kiro, Windsurf** ou qual
 ```
 
 ![MCP Servers - Tools](holocron-mcp-server-tools.png)
-![MCP List Modules Test](holocron-test-mcp-list_modules.png)
+![MCP List Disciplinas Test](holocron-test-mcp-list_disciplinas.png)
 
 **💡 Exemplo:** Enquanto codifica um agente LangGraph, pergunta *"Como implemento memória de longo prazo?"* e o Holocron busca nos docs do módulo 4 + exemplos práticos aplicados.
 

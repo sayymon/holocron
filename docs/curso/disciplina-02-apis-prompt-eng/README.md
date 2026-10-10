@@ -18,6 +18,8 @@ Dominar o ecossistema de APIs de IA generativa, desde a escolha do provedor até
 | 6 | [06-integracao-ia-backend.md](06-integracao-ia-backend.md) | Integração de IA ao back-end |
 | 7 | [07-modelos-multimodais.md](07-modelos-multimodais.md) | Modelos multimodais |
 | 8 | [08-aplicacoes-praticas-multimodais.md](08-aplicacoes-praticas-multimodais.md) | Aplicações práticas multimodais |
+| 9 | [09-estrutura-operacional-prompts.md](09-estrutura-operacional-prompts.md) | Estrutura operacional de prompts (10 blocos do system) |
+| 10 | [10-openrouter-proxy-multi-provider.md](10-openrouter-proxy-multi-provider.md) | OpenRouter como proxy multi-provider com fallback |
 
 ## Pré-requisitos
 

@@ -1,4 +1,5 @@
 import pool from '../db/client.js';
+import { resolveDisciplina } from './curriculum.js';
 
 /**
  * Progresso do aluno — persistido na tabela `progress` (Postgres).
@@ -43,6 +44,12 @@ export function normalizeDisciplina(disciplina: string): string {
   return disciplina.trim().replace(/\s+/g, ' ');
 }
 
+/** Resolve a entrada (número, slug ou nome) para o nome canônico da disciplina. */
+async function canonicalDisciplina(input: string): Promise<string> {
+  const resolved = await resolveDisciplina(input);
+  return resolved ? resolved.name : normalizeDisciplina(input);
+}
+
 /** Resolve o id do aluno (env, ou cria/usa um registro "default"). */
 async function getStudentId(): Promise<string> {
   if (process.env.HOLOCRON_STUDENT_ID) return process.env.HOLOCRON_STUDENT_ID;
@@ -68,7 +75,7 @@ export async function updateProgress(input: {
   score?: number;
 }): Promise<ProgressRow> {
   const studentId = await getStudentId();
-  const disciplina = normalizeDisciplina(input.disciplina);
+  const disciplina = await canonicalDisciplina(input.disciplina);
 
   const { rows } = await pool.query(
     `INSERT INTO progress (student_id, disciplina, modulo, status, score, completed_at, updated_at)
@@ -93,7 +100,7 @@ export async function getProgress(disciplina?: string): Promise<ProgressRow[]> {
   const params: unknown[] = [studentId];
   let where = 'WHERE student_id = $1';
   if (disciplina) {
-    params.push(normalizeDisciplina(disciplina));
+    params.push(await canonicalDisciplina(disciplina));
     where += ' AND disciplina = $2';
   }
 

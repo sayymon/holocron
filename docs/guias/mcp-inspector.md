@@ -50,7 +50,9 @@ Para cada tool, o Inspector mostra:
 | Tool | Descrição | Parâmetros |
 |------|-----------|------------|
 | `list_disciplinas` | Lista as disciplinas do curso (cada uma contém vários módulos) | nenhum |
-| `get_disciplina` | Retorna README de uma disciplina | `disciplina` ("2", "apis-prompt-eng", ...) |
+| `get_disciplina` | Retorna README de uma disciplina | `disciplina` ("2", "apis-prompt-eng", nome completo) |
+| `search_curriculum` | Busca entidades do currículo (ferramentas, conceitos, frameworks…) | `query`, `limit?` |
+| `get_curriculum_entity` | Detalhes, relações e onde a entidade é abordada | `name` (slug/nome) |
 | `get_document` | Conteúdo de um doc da KB | `document_path` (caminho relativo) |
 | `update_progress` | Registra progresso em um módulo de uma disciplina (Postgres) | `disciplina`, `modulo`, `status`, `score?` |
 | `get_progress` | Resume o progresso por disciplina/módulo | `disciplina?` |
@@ -58,6 +60,8 @@ Para cada tool, o Inspector mostra:
 | `suggest_next_topics` | Sugere próximos tópicos | `current_topic?` |
 | `list_graph_nodes` | Lista nós do grafo com filtros | `filter?`, `area?` |
 | `crystallize_node` | Cristaliza tópico no grafo | vários (ver schema) |
+
+> **Compatibilidade:** `list_modules` (alias de `list_disciplinas`) e `get_module` (alias de `get_disciplina`, arg `module_number`) permanecem registrados para clientes antigos.
 
 ### Assíncronas (retorna task_id → polling)
 
