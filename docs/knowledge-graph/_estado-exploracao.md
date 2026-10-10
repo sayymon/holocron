@@ -1,8 +1,8 @@
 ---
 titulo: Estado de Exploracao do Knowledge Graph
-ultima_sessao: '2026-09-07'
-total_nodes: 65
-explored: 65
+ultima_sessao: '2026-10-10'
+total_nodes: 66
+explored: 66
 in_progress: 0
 pending: 0
 mapas_criados:
@@ -64,6 +64,14 @@ Nós criados nesta sessão:
 | [[kiro]] | tools-developers |
 | [[human-in-the-loop]] | patterns |
 
+## Sessão Atual (2026-10-10) — Segurança contra Prompt Injection
+
+Nó criado nesta sessão:
+
+| Nó | Tipo | Descrição |
+|----|------|-----------|
+| [[seguranca-prompt-injection]] | Padrão | Modelos e guardrails contra prompt injection — Tiers open/managed/frontier |
+
 ## Sessão Atual (2026-09-07) — Mapas Conceitual e de Aplicação
 
 Nós criados nesta sessão:
@@ -101,6 +109,7 @@ Nós criados nesta sessão:
 
 | Data | Tópico | Status | Nós criados |
 |------|--------|--------|:-----------:|
+| 2026-10-10 | Segurança contra Prompt Injection | ✅ explored | 1 |
 | 2026-06-28 | Ecossistema AI completo | ✅ explored | 26 |
 | 2026-06-16 | [[transformers]] | ✅ explored | 1 |
 | 2026-06-15 | [[machine-learning]] | ✅ explored | 1 |

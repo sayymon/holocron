@@ -157,6 +157,7 @@ knowledge-graph/
 |----|-----------|
 | [[mcp]] | Model Context Protocol — "USB-C para IA" |
 | [[human-in-the-loop]] | Supervisão humana em agentes |
+| [[seguranca-prompt-injection]] | Modelos e guardrails contra prompt injection |
 
 ---
 
