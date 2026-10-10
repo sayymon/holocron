@@ -1,6 +1,6 @@
 ---
 titulo: Sobre o Curso — Engenharia de IA Aplicada
-modulo: meta
+disciplina: meta
 tags: [curso, informacoes, anhanguera, unipds]
 fonte: https://unipds.com.br/org-pos-ia/
 confiabilidade: oficial

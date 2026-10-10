@@ -1,6 +1,6 @@
 ---
 titulo: Golden-Sets de Respostas Esperadas
-modulo: meta
+disciplina: meta
 tags: [avaliacao, golden-sets, testes, qualidade]
 fonte: Construído a partir do mapa de competências
 confiabilidade: derivado

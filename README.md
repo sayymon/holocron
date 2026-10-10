@@ -124,7 +124,7 @@ holocron ask "Qual padrão usar para multi-agent?"
 holocron review src/agents/tutor.ts
 
 # Quiz adaptativo
-holocron quiz modulo-04-agentes
+holocron quiz disciplina-04-agentes
 
 # Check do progresso
 holocron status

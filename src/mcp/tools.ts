@@ -94,7 +94,7 @@ export function registerTools(server: McpServer) {
     'Lista as disciplinas do curso de Engenharia de IA Aplicada. Atenção: no curso, cada disciplina contém vários MÓDULOS internos — o nível superior se chama "disciplina", não "módulo".',
     {},
     async () => {
-      const disciplinaDirs = await glob('curso/modulo-*', { cwd: DOCS_PATH });
+      const disciplinaDirs = await glob('curso/disciplina-*', { cwd: DOCS_PATH });
       const sorted = disciplinaDirs.filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory()).sort();
       const disciplinas = sorted.map(dir => {
         const readmePath = path.join(DOCS_PATH, dir, 'README.md');
@@ -111,10 +111,10 @@ export function registerTools(server: McpServer) {
   // --- get_disciplina ---
   server.tool(
     'get_disciplina',
-    'Retorna o índice completo de uma disciplina (seus módulos, pré-requisitos, conexões). A pasta da disciplina é "curso/modulo-NN-<slug>".',
+    'Retorna o índice completo de uma disciplina (seus módulos, pré-requisitos, conexões). A pasta da disciplina é "curso/disciplina-NN-<slug>".',
     { disciplina: z.string().describe('Disciplina: número (ex: "2") ou slug/nome (ex: "apis-prompt-eng", "APIs de IA Generativa")') },
     async ({ disciplina }) => {
-      const allDirs = (await glob('curso/modulo-*', { cwd: DOCS_PATH }))
+      const allDirs = (await glob('curso/disciplina-*', { cwd: DOCS_PATH }))
         .filter(d => fs.statSync(path.join(DOCS_PATH, d)).isDirectory())
         .sort();
 
@@ -122,7 +122,7 @@ export function registerTools(server: McpServer) {
       let match = allDirs.find(d => d.toLowerCase().includes(needle));
       if (!match && /^\d+$/.test(needle)) {
         const num = needle.padStart(2, '0');
-        match = allDirs.find(d => d.includes(`modulo-${num}`));
+        match = allDirs.find(d => d.includes(`disciplina-${num}`));
       }
       if (!match) return { content: [{ type: 'text', text: `Disciplina "${disciplina}" não encontrada.` }] };
 
@@ -138,7 +138,7 @@ export function registerTools(server: McpServer) {
   server.tool(
     'get_document',
     'Retorna o conteúdo completo de um documento da Knowledge Base pelo caminho relativo.',
-    { document_path: z.string().describe('Caminho relativo do documento (ex: curso/modulo-01-fundamentos/rag-embeddings-busca.md)') },
+    { document_path: z.string().describe('Caminho relativo do documento (ex: curso/disciplina-01-fundamentos/rag-embeddings-busca.md)') },
     async ({ document_path }) => {
       const fullPath = path.join(DOCS_PATH, document_path);
       if (!fs.existsSync(fullPath)) return { content: [{ type: 'text', text: `Documento não encontrado: ${document_path}` }] };

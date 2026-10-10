@@ -1,6 +1,6 @@
 ---
 titulo: Professores do Curso
-modulo: meta
+disciplina: meta
 tags: [professores, corpo-docente, referências]
 fonte: https://unipds.com.br/org-pos-ia/
 confiabilidade: oficial

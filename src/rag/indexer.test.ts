@@ -27,7 +27,7 @@ function chunkDocument(filePath: string) {
 
 describe('Indexer — Chunking', () => {
   it('deve chunkar um documento com múltiplas seções', () => {
-    const testFile = path.join(DOCS_PATH, 'curso/modulo-01-fundamentos/rag-embeddings-busca.md');
+    const testFile = path.join(DOCS_PATH, 'curso/disciplina-01-fundamentos/rag-embeddings-busca.md');
     if (!fs.existsSync(testFile)) return;
 
     const chunks = chunkDocument(testFile);
@@ -36,7 +36,7 @@ describe('Indexer — Chunking', () => {
   });
 
   it('documento curto deve virar um único chunk', () => {
-    const testFile = path.join(DOCS_PATH, 'curso/modulo-01-fundamentos/historia-ia.md');
+    const testFile = path.join(DOCS_PATH, 'curso/disciplina-01-fundamentos/historia-ia.md');
     if (!fs.existsSync(testFile)) return;
 
     const chunks = chunkDocument(testFile);
@@ -45,7 +45,7 @@ describe('Indexer — Chunking', () => {
   });
 
   it('todos os chunks devem ter conteúdo não-vazio', async () => {
-    const files = await glob('curso/modulo-01-fundamentos/*.md', { cwd: DOCS_PATH, absolute: true });
+    const files = await glob('curso/disciplina-01-fundamentos/*.md', { cwd: DOCS_PATH, absolute: true });
     for (const file of files) {
       const chunks = chunkDocument(file);
       for (const chunk of chunks) {
@@ -55,11 +55,11 @@ describe('Indexer — Chunking', () => {
   });
 
   it('metadata deve preservar front matter original', async () => {
-    const files = await glob('curso/modulo-01-fundamentos/*.md', { cwd: DOCS_PATH, absolute: true });
+    const files = await glob('curso/disciplina-01-fundamentos/*.md', { cwd: DOCS_PATH, absolute: true });
     for (const file of files) {
       if (file.endsWith('README.md')) continue;
       const chunks = chunkDocument(file);
-      expect(chunks[0].metadata.modulo).toBe(1);
+      expect(chunks[0].metadata.disciplina).toBe(1);
     }
   });
 });

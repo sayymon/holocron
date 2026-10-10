@@ -7,23 +7,23 @@ const DOCS_PATH = path.resolve(process.cwd(), 'docs');
 
 describe('MCP Tools — list_disciplinas (filesystem)', () => {
   it('deve encontrar 12 diretórios de disciplinas', async () => {
-    const dirs = await glob('curso/modulo-*', { cwd: DOCS_PATH, onlyDirectories: true });
+    const dirs = await glob('curso/disciplina-*', { cwd: DOCS_PATH, onlyDirectories: true });
     expect(dirs.sort()).toHaveLength(12);
-    expect(dirs.sort()[0]).toContain('modulo-01');
-    expect(dirs.sort()[11]).toContain('modulo-12');
+    expect(dirs.sort()[0]).toContain('disciplina-01');
+    expect(dirs.sort()[11]).toContain('disciplina-12');
   });
 });
 
 describe('MCP Tools — get_disciplina (filesystem)', () => {
   it('deve ler README da disciplina 1', () => {
-    const readmePath = path.join(DOCS_PATH, 'curso/modulo-01-fundamentos/README.md');
+    const readmePath = path.join(DOCS_PATH, 'curso/disciplina-01-fundamentos/README.md');
     expect(fs.existsSync(readmePath)).toBe(true);
     const content = fs.readFileSync(readmePath, 'utf-8');
-    expect(content).toContain('Módulo 01');
+    expect(content).toContain('Disciplina 01');
   });
 
   it('deve ler README da disciplina 4 (agentes)', async () => {
-    const dirs = await glob('curso/modulo-04-*', { cwd: DOCS_PATH, onlyDirectories: true });
+    const dirs = await glob('curso/disciplina-04-*', { cwd: DOCS_PATH, onlyDirectories: true });
     expect(dirs.length).toBe(1);
     const readmePath = path.join(DOCS_PATH, dirs[0], 'README.md');
     expect(fs.existsSync(readmePath)).toBe(true);
@@ -32,7 +32,7 @@ describe('MCP Tools — get_disciplina (filesystem)', () => {
 
 describe('MCP Tools — get_document (filesystem)', () => {
   it('deve retornar conteúdo de um documento existente', () => {
-    const docPath = path.join(DOCS_PATH, 'curso/modulo-01-fundamentos/rag-embeddings-busca.md');
+    const docPath = path.join(DOCS_PATH, 'curso/disciplina-01-fundamentos/rag-embeddings-busca.md');
     expect(fs.existsSync(docPath)).toBe(true);
     const content = fs.readFileSync(docPath, 'utf-8');
     expect(content).toContain('RAG');

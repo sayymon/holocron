@@ -15,7 +15,7 @@ Todo documento da Knowledge Base DEVE ter Front Matter YAML:
 ```yaml
 ---
 titulo: "Nome do Conceito"
-modulo: 1
+disciplina: 1
 unidade: 3
 tags:
   - llm
@@ -67,7 +67,7 @@ Código ou demonstração.
 ```
 docs/
 ├── curso/                    # Conteúdo por módulo
-│   └── modulo-XX-nome/       # Um dir por módulo
+│   └── disciplina-XX-nome/       # Um dir por módulo
 │       └── conceito.md       # Um arquivo por conceito
 ├── conceitos/                # Conceitos transversais
 ├── ferramentas/              # Ferramentas e stack
@@ -79,7 +79,7 @@ docs/
 ## Naming
 
 - Arquivos: `kebab-case.md`
-- Diretórios de módulo: `modulo-XX-nome-curto`
+- Diretórios de módulo: `disciplina-XX-nome-curto`
 - Wikilinks: `[[nome-do-arquivo]]` (sem extensão)
 
 ## O que NÃO vai na Knowledge Base

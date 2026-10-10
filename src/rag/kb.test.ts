@@ -8,12 +8,12 @@ const DOCS_PATH = path.resolve(process.cwd(), 'docs');
 
 describe('Knowledge Base — Estrutura', () => {
   it('deve ter 12 diretórios de módulos', async () => {
-    const dirs = await glob('curso/modulo-*', { cwd: DOCS_PATH, onlyDirectories: true });
+    const dirs = await glob('curso/disciplina-*', { cwd: DOCS_PATH, onlyDirectories: true });
     expect(dirs.length).toBe(12);
   });
 
   it('cada módulo deve ter um README.md', async () => {
-    const dirs = await glob('curso/modulo-*', { cwd: DOCS_PATH, onlyDirectories: true });
+    const dirs = await glob('curso/disciplina-*', { cwd: DOCS_PATH, onlyDirectories: true });
     for (const dir of dirs) {
       const readme = path.join(DOCS_PATH, dir, 'README.md');
       expect(fs.existsSync(readme), `Falta README em ${dir}`).toBe(true);
@@ -28,7 +28,7 @@ describe('Knowledge Base — Estrutura', () => {
 
 describe('Knowledge Base — Front Matter', () => {
   it('todos os docs atômicos devem ter front matter com titulo', async () => {
-    const files = await glob('curso/modulo-*/**/*.md', { cwd: DOCS_PATH });
+    const files = await glob('curso/disciplina-*/**/*.md', { cwd: DOCS_PATH });
     const missing: string[] = [];
 
     for (const file of files) {
@@ -41,22 +41,22 @@ describe('Knowledge Base — Front Matter', () => {
     expect(missing, `Docs sem titulo: ${missing.join(', ')}`).toHaveLength(0);
   });
 
-  it('todos os docs de módulo devem ter campo modulo numérico', async () => {
-    const files = await glob('curso/modulo-*/**/*.md', { cwd: DOCS_PATH });
+  it('todos os docs de disciplina devem ter campo disciplina numérico', async () => {
+    const files = await glob('curso/disciplina-*/**/*.md', { cwd: DOCS_PATH });
     const missing: string[] = [];
 
     for (const file of files) {
       if (file.endsWith('README.md')) continue; // READMEs podem não ter unidade
       const content = fs.readFileSync(path.join(DOCS_PATH, file), 'utf-8');
       const { data } = matter(content);
-      if (typeof data.modulo !== 'number') missing.push(file);
+      if (typeof data.disciplina !== 'number') missing.push(file);
     }
 
-    expect(missing, `Docs sem modulo: ${missing.join(', ')}`).toHaveLength(0);
+    expect(missing, `Docs sem disciplina: ${missing.join(', ')}`).toHaveLength(0);
   });
 
   it('todos os docs atômicos devem ter confiabilidade declarada', async () => {
-    const files = await glob('curso/modulo-*/**/*.md', { cwd: DOCS_PATH });
+    const files = await glob('curso/disciplina-*/**/*.md', { cwd: DOCS_PATH });
     const missing: string[] = [];
 
     for (const file of files) {
@@ -72,7 +72,7 @@ describe('Knowledge Base — Front Matter', () => {
 
 describe('Knowledge Base — Conteúdo', () => {
   it('nenhum doc deve estar vazio (menos de 50 chars de conteúdo)', async () => {
-    const files = await glob('curso/modulo-*/**/*.md', { cwd: DOCS_PATH });
+    const files = await glob('curso/disciplina-*/**/*.md', { cwd: DOCS_PATH });
     const empty: string[] = [];
 
     for (const file of files) {

@@ -1,6 +1,6 @@
 ---
 titulo: Mapa de Competências — Engenharia de IA Aplicada
-modulo: meta
+disciplina: meta
 tags: [competencias, skills, objetivos-aprendizado, avaliacao]
 fonte: Construído a partir da ementa e objetivos do curso
 confiabilidade: derivado
@@ -36,7 +36,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ## 📚 Competências por Módulo
 
-### Módulo 1: Fundamentos de IA
+### Disciplina 1: Fundamentos de IA
 
 #### 🧠 Competências Técnicas
 
@@ -59,7 +59,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 2: APIs de IA & Prompt Engineering
+### Disciplina 2: APIs de IA & Prompt Engineering
 
 #### 🧠 Competências Técnicas
 
@@ -84,7 +84,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 3: Model Context Protocol (MCP)
+### Disciplina 3: Model Context Protocol (MCP)
 
 #### 🧠 Competências Técnicas
 
@@ -107,7 +107,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 4: Agentes de IA
+### Disciplina 4: Agentes de IA
 
 #### 🧠 Competências Técnicas
 
@@ -132,7 +132,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 5: UX/UI para Aplicações de IA
+### Disciplina 5: UX/UI para Aplicações de IA
 
 #### 🧠 Competências Técnicas
 
@@ -155,7 +155,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 6: DevOps para IA
+### Disciplina 6: DevOps para IA
 
 #### 🧠 Competências Técnicas
 
@@ -179,7 +179,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 7: Gestão de Projetos de IA
+### Disciplina 7: Gestão de Projetos de IA
 
 #### 🧠 Competências Técnicas
 
@@ -197,7 +197,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 8: Arquitetura de Sistemas de IA
+### Disciplina 8: Arquitetura de Sistemas de IA
 
 #### 🧠 Competências Técnicas
 
@@ -216,7 +216,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 9: Fine-tuning e Modelos Customizados
+### Disciplina 9: Fine-tuning e Modelos Customizados
 
 #### 🧠 Competências Técnicas
 
@@ -234,7 +234,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 10: Segurança e Governança
+### Disciplina 10: Segurança e Governança
 
 #### 🧠 Competências Técnicas
 
@@ -257,7 +257,7 @@ Cada módulo do curso desenvolve competências específicas, organizadas em 4 di
 
 ---
 
-### Módulo 11: Capstone Project
+### Disciplina 11: Capstone Project
 
 #### 🎯 Objetivo
 
@@ -272,7 +272,7 @@ Aplicar **TODAS** as competências dos módulos anteriores em um projeto complet
 
 ---
 
-### Módulo 12: Carreira e Mercado
+### Disciplina 12: Carreira e Mercado
 
 #### 🧑‍💼 Competências Comportamentais
 
