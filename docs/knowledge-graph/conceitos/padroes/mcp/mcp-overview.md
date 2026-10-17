@@ -12,6 +12,8 @@ connections:
   - anthropic-claude
   - llms
   - coding-assistants
+  - mcp-elicitation
+  - mcp-server-instructions
 ---
 # MCP — Model Context Protocol
 

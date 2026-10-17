@@ -1,8 +1,8 @@
 ---
 titulo: Estado de Exploracao do Knowledge Graph
-ultima_sessao: '2026-10-10'
-total_nodes: 66
-explored: 66
+ultima_sessao: '2026-10-17'
+total_nodes: 89
+explored: 89
 in_progress: 0
 pending: 0
 mapas_criados:
@@ -15,11 +15,21 @@ mapas_criados:
 
 | Métrica | Valor |
 |---------|-------|
-| Ring 0 | 1/1 (100%) |
-| Ring 1 explorados | 13/13 (100%) |
-| Ring 2 explorados | 15/15 (100%) |
+| Ring 0 | 8/8 (100%) |
+| Ring 1 explorados | 37/37 (100%) |
+| Ring 2 explorados | 44/44 (100%) |
 | Stubs pendentes | 13 |
-| **Total explorados** | **29/42 (69%)** |
+| **Total explorados** | **89/89 (100%)** |
+
+## Sessão Atual (2026-10-17) — Conceitos MCP
+
+Nós criados nesta sessão:
+
+| Nó | Tipo | Descrição |
+|----|------|-----------|
+| [[mcp-elicitation]] | Padrão | Input do usuário em runtime (elicitation/create) |
+| [[mcp-server-instructions]] | Padrão | Diretrizes da sessão no initialize |
+| [[function-calling]] | Conceito | O modelo chamando ferramentas — base do MCP |
 
 ## Sessão Atual (2026-06-28) — Ecossistema AI Completo
 
@@ -109,6 +119,7 @@ Nós criados nesta sessão:
 
 | Data | Tópico | Status | Nós criados |
 |------|--------|--------|:-----------:|
+| 2026-10-17 | Conceitos MCP (elicitation, instructions, function calling) | ✅ explored | 3 |
 | 2026-10-10 | Segurança contra Prompt Injection | ✅ explored | 1 |
 | 2026-06-28 | Ecossistema AI completo | ✅ explored | 26 |
 | 2026-06-16 | [[transformers]] | ✅ explored | 1 |

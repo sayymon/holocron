@@ -151,11 +151,14 @@ knowledge-graph/
 | [[agentes-ia]] | O paradigma agentic |
 | [[prompt-engineering]] | A arte de instruir LLMs |
 | [[fine-tuning]] | Customização de modelos |
+| [[function-calling]] | O modelo chamando ferramentas (tool use) — base do MCP |
 
 ### Padrões & Protocolos
 | Nó | Descrição |
 |----|-----------|
-| [[mcp]] | Model Context Protocol — "USB-C para IA" |
+| [[mcp-overview]] | Model Context Protocol — "USB-C para IA" |
+| [[mcp-elicitation]] | Input do usuário em runtime via elicitation/create |
+| [[mcp-server-instructions]] | Diretrizes da sessão no initialize |
 | [[human-in-the-loop]] | Supervisão humana em agentes |
 | [[seguranca-prompt-injection]] | Modelos e guardrails contra prompt injection |
 
@@ -263,4 +266,4 @@ knowledge-graph/
 
 ---
 
-**Totais:** 29 nós explorados | 13 stubs pendentes | Progresso: 69%
+**Totais:** 32 nós explorados | 13 stubs pendentes | Progresso: 71%
