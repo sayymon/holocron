@@ -32,6 +32,7 @@ const NUMERO_RE = /^disciplina-(\d{2})-(.+)$/;
 const ENTITY_GLOBS = [
   'knowledge-graph/ferramentas/**/*.md',
   'knowledge-graph/conceitos/**/*.md',
+  'knowledge-graph/*.md',
 ];
 const CATEGORIA_LABEL: Record<string, string> = {
   frameworks: 'framework',
@@ -45,6 +46,20 @@ const CATEGORIA_LABEL: Record<string, string> = {
   paradigmas: 'paradigma',
   'generative-ai': 'IA generativa',
   padroes: 'padrão',
+};
+
+const AREA_LABELS: Record<string, string> = {
+  patterns: 'padrão',
+  padroes: 'padrão',
+  paradigmas: 'paradigma',
+  llms: 'LLMs',
+  fundamentos: 'fundamentos',
+  foundations: 'fundamentos',
+  infrastructure: 'infraestrutura',
+  'tools-providers': 'provider de LLM',
+  'tools-frameworks': 'framework',
+  'tools-infrastructure': 'infraestrutura',
+  'tools-developers': 'ferramenta de codificação',
 };
 
 function normalizeToken(s: string): string {
@@ -176,7 +191,11 @@ function readEntity(file: string): CurriculumEntity | null {
   const raw = fs.readFileSync(path.join(DOCS_PATH, file), 'utf-8');
   const { data } = matter(raw);
   const top: 'ferramenta' | 'conceito' = file.startsWith('knowledge-graph/ferramentas') ? 'ferramenta' : 'conceito';
-  const categoria = file.split('/')[2] ?? '';
+  const folderSeg = file.split('/')[2] ?? '';
+  const area = typeof data.area === 'string' ? data.area : '';
+  const categoria = folderSeg
+    ? (CATEGORIA_LABEL[folderSeg] ?? folderSeg)
+    : (AREA_LABELS[area] ?? area ?? 'geral');
   const titulo = typeof data.titulo === 'string' && data.titulo.trim()
     ? data.titulo.trim()
     : path.basename(file, '.md').replace(/-/g, ' ');
@@ -188,7 +207,7 @@ function readEntity(file: string): CurriculumEntity | null {
 
   return {
     top,
-    categoria: CATEGORIA_LABEL[categoria] ?? categoria,
+    categoria,
     slug: path.basename(file, '.md'),
     titulo,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
@@ -218,7 +237,9 @@ export function searchEntities(
 ): CurriculumEntity[] {
   const cat = categoria ? matchCategory(categoria) : matchCategory(query);
   if (cat) {
-    return applyCategoryFilter(entities, cat).slice(0, limit);
+    const filtered = applyCategoryFilter(entities, cat);
+    // Categoria vazia (ex: "mcp" casa com "MCP servers" sem entidades) → busca por token
+    if (filtered.length > 0 || categoria) return filtered.slice(0, limit);
   }
 
   const tokens = normalizeToken(query).split(/\s+/).filter(Boolean);

@@ -261,16 +261,19 @@ export function registerTools(server: McpServer) {
     async ({ query, limit, categoria }) => {
       const entities = await listEntities();
       const cat = categoria ? matchCategory(categoria) : matchCategory(query);
-      const broad = cat != null;
+      const filtered = cat ? applyCategoryFilter(entities, cat) : [];
+      const broad = filtered.length > 0;
       const effectiveLimit = limit ?? (broad ? 40 : 8);
-      const hits = searchEntities(entities, query, effectiveLimit, categoria);
+      const hits = broad
+        ? filtered.slice(0, effectiveLimit)
+        : searchEntities(entities, query, effectiveLimit);
 
       if (hits.length === 0) {
-        const hint = broad ? ` (categoria "${categoryLabel(cat!)}")` : '';
+        const hint = categoria ? ` (categoria "${cat ? categoryLabel(cat) : categoria}" sem entidades)` : '';
         return { content: [{ type: 'text', text: `Nenhuma entidade encontrada para "${query}"${hint}.` }] };
       }
 
-      const total = broad ? applyCategoryFilter(entities, cat!).length : hits.length;
+      const total = broad ? filtered.length : hits.length;
       const header = broad
         ? `# 🗂️ ${categoryLabel(cat!)} (${total})`
         : `# 🔎 Entidades do currículo para "${query}"`;

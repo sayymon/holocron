@@ -56,6 +56,13 @@ describe('Curriculum — entidades', () => {
     expect(conceitos.every(e => e.top === 'conceito')).toBe(true);
   });
 
+  it('consulta que casa categoria vazia cai para busca por token', async () => {
+    const entities = await listEntities();
+    const r = searchEntities(entities, 'mcp', 100);
+    expect(r.length).toBeGreaterThan(3);
+    expect(r.every(e => (e.slug + e.tags.join()).includes('mcp'))).toBe(true);
+  });
+
   it('busca ampla por categoria enumera frameworks e padrões', async () => {
     const entities = await listEntities();
     const frameworks = searchEntities(entities, 'frameworks', 100);

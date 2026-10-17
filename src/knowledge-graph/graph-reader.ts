@@ -55,8 +55,11 @@ export async function getAllNodes(): Promise<GraphNode[]> {
     return [];
   }
 
-  const files = await glob('*.md', { cwd: DOCS_PATH });
-  const nodeFiles = files.filter(f => !f.startsWith('_'));
+  const files = await glob('**/*.md', { cwd: DOCS_PATH });
+  const nodeFiles = files.filter(f => {
+    const base = path.basename(f);
+    return !base.startsWith('_') && !/^(MAPA|MINDMAP|PROMPT)/.test(base);
+  });
 
   const nodes: GraphNode[] = [];
   for (const file of nodeFiles) {
